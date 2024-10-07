@@ -8,6 +8,7 @@ public class Aim : MonoBehaviour
     [SerializeField] Transform armPivotTransform;
     [SerializeField] Camera cam;
     [SerializeField] SpriteRenderer spriteToFlip;
+    private SpriteRenderer gunToFlip;
     
     void Update()
     {
@@ -16,14 +17,17 @@ public class Aim : MonoBehaviour
         Vector3 aimDirection = (mousePosition - transform.position).normalized;
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         armPivotTransform.eulerAngles = new Vector3(0, 0, angle);
+        gunToFlip = GetComponent<Inventory>().activeWeapon.GetComponent<SpriteRenderer>(); 
 
         if (angle > 90 || angle < -90)
         {
             spriteToFlip.flipX = true;
+            gunToFlip.flipX = true;
         }
         else
         {
             spriteToFlip.flipX= false;
+            gunToFlip.flipX = false;
         }
     }
 }

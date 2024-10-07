@@ -1,4 +1,7 @@
+using System;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement2D : MonoBehaviour
@@ -13,6 +16,8 @@ public class PlayerMovement2D : MonoBehaviour
 	[SerializeField] float acceleration;
 	[SerializeField] float speed;
 	[SerializeField] float drag;
+
+	[SerializeField] Position handTransform;
 
 	private float horizontalDirection;
 	private bool changingDirection => (rb.linearVelocity.x > 0 && horizontalDirection < 0) || (rb.linearVelocity.x < 0 && horizontalDirection > 0);

@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [Header("Weapons")]
+    [SerializeField] GameObject startingWeapon;
+    public GameObject activeWeapon;
+    private GameObject[] currentWeapons;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("Other Stuff")]
+    [SerializeField] int score;
+
+	private void Start()
+	{
+        activeWeapon = startingWeapon;
+        activeWeapon.SetActive(true);
+	}
 }
