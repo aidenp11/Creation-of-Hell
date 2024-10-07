@@ -9,13 +9,14 @@ public class Aim : MonoBehaviour
     [SerializeField] Camera cam;
     [SerializeField] SpriteRenderer spriteToFlip;
     private SpriteRenderer gunToFlip;
+    public float angle;
     
     void Update()
     {
         Vector3 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
 
         Vector3 aimDirection = (mousePosition - transform.position).normalized;
-        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         armPivotTransform.eulerAngles = new Vector3(0, 0, angle);
         gunToFlip = GetComponent<Inventory>().activeWeapon.GetComponent<SpriteRenderer>(); 
 
