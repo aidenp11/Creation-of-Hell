@@ -166,4 +166,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  bulletLifespan: 0.25
+  bulletLifespan: 0.5

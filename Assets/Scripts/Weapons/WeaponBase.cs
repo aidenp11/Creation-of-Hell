@@ -14,8 +14,10 @@ public class WeaponBase : MonoBehaviour
 	[SerializeField] float reloadSpeed;
 	[SerializeField] float bloom;
 	[SerializeField] float fireRate;
-	[SerializeField] int ammo;
+	[SerializeField] int ammoCapacity;
+	private int maxAmmoCapacity;
 	[SerializeField] int ammoReserve;
+	private bool reloading = false;
 	private float originalFireRate;
 	[SerializeField]
 	enum WeaponType
@@ -30,6 +32,7 @@ public class WeaponBase : MonoBehaviour
 	[Header("Shotgun Stuff")]
 	[SerializeField] bool shotgun = false;
 	[SerializeField] int numPellets;
+	[SerializeField] float horizontalSpread;
 
 	[Header("Burst Stuff")]
 	[SerializeField] float burstFireRate;
@@ -44,63 +47,69 @@ public class WeaponBase : MonoBehaviour
 	{
 		originalFireRate = fireRate;
 		fireRate = 0;
+		maxAmmoCapacity = ammoCapacity;
 	}
 
 	private void Update()
 	{
-		float randomBloom = Random.Range(-bloom, bloom);
+		if (ammoCapacity <= 0 && !reloading)
+		{
+			reloading = true;
+			Invoke("Reload", reloadSpeed);
+		}
+		if (Input.GetKeyDown(KeyCode.R) && ammoCapacity < maxAmmoCapacity && !reloading)
+		{
+			reloading = true;
+			Invoke("Reload", reloadSpeed);
+		}
 		switch (weaponType)
 		{
 			case WeaponType.SEMIAUTO:
-				if (Input.GetMouseButtonDown(0) && fireRate < 0 && !shotgun)
+				if (Input.GetMouseButtonDown(0) && fireRate < 0 && !shotgun && !reloading)
 				{
 					fireRate = originalFireRate;
-					bullet = Instantiate(bulletPrefab, new Vector2(muzzleTransform.position.x, muzzleTransform.position.y), muzzleTransform.rotation);
-					bullet.GetComponent<Rigidbody2D>().gravityScale = bulletDrop;
-					bullet.GetComponent<Rigidbody2D>().AddRelativeForceY(randomBloom);
-					bullet.GetComponent<Rigidbody2D>().AddRelativeForceX(bulletVelocity);
+					Shoot();
+					ammoCapacity--;
 				}
-				else if (Input.GetMouseButtonDown(0) && fireRate < 0 && shotgun)
+				else if (Input.GetMouseButtonDown(0) && fireRate < 0 && shotgun && !reloading)
 				{
 					fireRate = originalFireRate;
+					ammoCapacity--;
 					for (int i = 0; i < numPellets; i++)
 					{
-						randomBloom = Random.Range(-bloom, bloom);
-						bullet = Instantiate(bulletPrefab, new Vector2(muzzleTransform.position.x, muzzleTransform.position.y), muzzleTransform.rotation);
-						bullet.GetComponent<Rigidbody2D>().gravityScale = bulletDrop;
-						bullet.GetComponent<Rigidbody2D>().AddRelativeForceY(randomBloom);
-						bullet.GetComponent<Rigidbody2D>().AddRelativeForceX(bulletVelocity);
+						ShotGunShoot();
 					}
 				}
 				break;
 			case WeaponType.FULLAUTO:
-				if (Input.GetMouseButton(0) && fireRate < 0 && !shotgun)
+				if (Input.GetMouseButton(0) && fireRate < 0 && !shotgun && !reloading)
 				{
 					fireRate = originalFireRate;
-					bullet = Instantiate(bulletPrefab, new Vector2(muzzleTransform.position.x, muzzleTransform.position.y), muzzleTransform.rotation);
-					bullet.GetComponent<Rigidbody2D>().gravityScale = bulletDrop;
-					bullet.GetComponent<Rigidbody2D>().AddRelativeForceY(randomBloom);
-					bullet.GetComponent<Rigidbody2D>().AddRelativeForceX(bulletVelocity);
+					Shoot();
+					ammoCapacity--;
+					
 				}
-				else if (Input.GetMouseButton(0) && fireRate < 0 && shotgun)
+				else if (Input.GetMouseButton(0) && fireRate < 0 && shotgun && !reloading)
 				{
 					fireRate = originalFireRate;
+					ammoCapacity--;
 					for (int i = 0; i < numPellets; i++)
 					{
-						randomBloom = Random.Range(-bloom, bloom);
-						bullet = Instantiate(bulletPrefab, new Vector2(muzzleTransform.position.x, muzzleTransform.position.y), muzzleTransform.rotation);
-						bullet.GetComponent<Rigidbody2D>().gravityScale = bulletDrop;
-						bullet.GetComponent<Rigidbody2D>().AddRelativeForceY(randomBloom);
-						bullet.GetComponent<Rigidbody2D>().AddRelativeForceX(bulletVelocity);
+						ShotGunShoot();
 					}
 				}
 				break;
 			case WeaponType.BURST:
-				if (Input.GetMouseButtonDown(0) && fireRate < 0)
+				if (Input.GetMouseButtonDown(0) && fireRate < 0 && !reloading)
 				{
 					for (int i = 0; i < burstCount; i++) 
 					{
 						Invoke("BurstShoot", burstFireRate * i);
+						ammoCapacity--;
+						if (ammoCapacity <= 0)
+						{
+							break;
+						}
 					}
 				}
 				break;
@@ -117,5 +126,38 @@ public class WeaponBase : MonoBehaviour
 		bullet.GetComponent<Rigidbody2D>().gravityScale = bulletDrop;
 		bullet.GetComponent<Rigidbody2D>().AddRelativeForceY(randomBloom);
 		bullet.GetComponent<Rigidbody2D>().AddRelativeForceX(bulletVelocity);
+	}
+
+	private void Shoot()
+	{
+		float randomBloom = Random.Range(-bloom, bloom);
+		bullet = Instantiate(bulletPrefab, new Vector2(muzzleTransform.position.x, muzzleTransform.position.y), muzzleTransform.rotation);
+		bullet.GetComponent<Rigidbody2D>().gravityScale = bulletDrop;
+		bullet.GetComponent<Rigidbody2D>().AddRelativeForceY(randomBloom);
+		bullet.GetComponent<Rigidbody2D>().AddRelativeForceX(bulletVelocity);
+	}
+
+	private void ShotGunShoot()
+	{
+		float randomBloom = Random.Range(-bloom, bloom);
+		float randomVelocityChange = Random.Range(-horizontalSpread, horizontalSpread);
+		bullet = Instantiate(bulletPrefab, new Vector2(muzzleTransform.position.x, muzzleTransform.position.y), muzzleTransform.rotation);
+		bullet.GetComponent<Rigidbody2D>().gravityScale = bulletDrop;
+		bullet.GetComponent<Rigidbody2D>().AddRelativeForceY(randomBloom);
+		bullet.GetComponent<Rigidbody2D>().AddRelativeForceX(bulletVelocity + randomVelocityChange);
+	}
+
+	private void Reload()
+	{
+		for (int i = 0; i < maxAmmoCapacity; i++)
+		{
+			if (ammoReserve > 0 && ammoCapacity < maxAmmoCapacity)
+			{
+				ammoCapacity++;
+				ammoReserve--;
+			}
+			else break;
+		}
+		reloading = false;
 	}
 }
