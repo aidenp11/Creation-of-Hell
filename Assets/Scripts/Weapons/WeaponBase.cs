@@ -14,6 +14,8 @@ public class WeaponBase : MonoBehaviour
 	[SerializeField] float reloadSpeed;
 	[SerializeField] float bloom;
 	[SerializeField] float fireRate;
+	[SerializeField] int ammo;
+	[SerializeField] int ammoReserve;
 	private float originalFireRate;
 	[SerializeField]
 	enum WeaponType
@@ -31,7 +33,6 @@ public class WeaponBase : MonoBehaviour
 
 	[Header("Burst Stuff")]
 	[SerializeField] float burstFireRate;
-	private float originalBurstFireRate;
 	[SerializeField] int burstCount;
 
 	private GameObject bullet;
@@ -42,7 +43,6 @@ public class WeaponBase : MonoBehaviour
 	private void Start()
 	{
 		originalFireRate = fireRate;
-		originalBurstFireRate = burstFireRate;
 		fireRate = 0;
 	}
 
@@ -96,26 +96,11 @@ public class WeaponBase : MonoBehaviour
 				}
 				break;
 			case WeaponType.BURST:
-				burstFireRate -= Time.deltaTime;
 				if (Input.GetMouseButtonDown(0) && fireRate < 0)
 				{
-					burstFireRate = 0;
-					fireRate = originalFireRate;
-					for (int i = 0; i < burstCount; i++)
+					for (int i = 0; i < burstCount; i++) 
 					{
-						if (burstFireRate <= 0)
-						{
-							while (i < burstCount - 1)
-							{
-
-								burstFireRate = originalBurstFireRate;
-								randomBloom = Random.Range(-bloom, bloom);
-								bullet = Instantiate(bulletPrefab, new Vector2(muzzleTransform.position.x, muzzleTransform.position.y), muzzleTransform.rotation);
-								bullet.GetComponent<Rigidbody2D>().gravityScale = bulletDrop;
-								bullet.GetComponent<Rigidbody2D>().AddRelativeForceY(randomBloom);
-								bullet.GetComponent<Rigidbody2D>().AddRelativeForceX(bulletVelocity);
-							}
-						}
+						Invoke("BurstShoot", burstFireRate * i);
 					}
 				}
 				break;
@@ -124,4 +109,13 @@ public class WeaponBase : MonoBehaviour
 		fireRate -= Time.deltaTime;
 	}
 
+	private void BurstShoot()
+	{
+		float randomBloom = Random.Range(-bloom, bloom);
+		fireRate = originalFireRate;
+		bullet = Instantiate(bulletPrefab, new Vector2(muzzleTransform.position.x, muzzleTransform.position.y), muzzleTransform.rotation);
+		bullet.GetComponent<Rigidbody2D>().gravityScale = bulletDrop;
+		bullet.GetComponent<Rigidbody2D>().AddRelativeForceY(randomBloom);
+		bullet.GetComponent<Rigidbody2D>().AddRelativeForceX(bulletVelocity);
+	}
 }
