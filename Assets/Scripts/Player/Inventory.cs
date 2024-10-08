@@ -1,11 +1,15 @@
+using NUnit.Framework;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
     [Header("Weapons")]
     [SerializeField] GameObject startingWeapon;
+    [SerializeField] Transform handPosition;
     public GameObject activeWeapon;
-    private GameObject[] currentWeapons;
+    private List<GameObject> currentWeapons = new List<GameObject>();
 
     [Header("Other Stuff")]
     [SerializeField] int score;
@@ -13,6 +17,7 @@ public class Inventory : MonoBehaviour
 	private void Start()
 	{
         activeWeapon = startingWeapon;
-        activeWeapon.SetActive(true);
+        Instantiate(activeWeapon, handPosition);
+        currentWeapons.Add(activeWeapon);
 	}
 }
