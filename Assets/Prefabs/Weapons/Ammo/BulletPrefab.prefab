@@ -167,4 +167,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   bulletLifespan: 0.5
-  pierce: 1
+  pierce: 2
+  pierceDamageFalloff: 0.5

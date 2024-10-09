@@ -6,6 +6,9 @@ public class AmmoBase : MonoBehaviour
     [SerializeField] int damage;
 	[SerializeField] float bulletLifespan;
 	[SerializeField] int pierce;
+	[SerializeField][Range(0, 1)] float pierceDamageFalloff;
+
+	private float newDamage;
 
 	private void Update()
 	{
@@ -27,6 +30,8 @@ public class AmmoBase : MonoBehaviour
 		{
 			collision.GetComponent<DamagableTest>().ApplyDamage(damage);
 			pierce--;
+			newDamage = (float)damage * pierceDamageFalloff;
+			damage = (int)newDamage;
 		}
 	}
 }
