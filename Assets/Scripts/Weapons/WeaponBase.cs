@@ -29,6 +29,15 @@ public class WeaponBase : MonoBehaviour
 
 	[SerializeField] WeaponType weaponType = WeaponType.SEMIAUTO;
 
+	[SerializeField]
+	public enum WeaponClass
+	{
+		PRIMARY,
+		SECONDARY
+	}
+
+	[SerializeField] public WeaponClass weaponClass = WeaponClass.PRIMARY;
+
 	[Header("Shotgun Stuff")]
 	[SerializeField] bool shotgun = false;
 	[SerializeField] int numPellets;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 290109865679335095}
   - component: {fileID: 7753993892100336818}
   m_Layer: 8
-  m_Name: GunTest
+  m_Name: GunTest3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.36252785, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,20 +101,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d6a34d18f86514599d01f78b7b63ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletVelocity: 1000
-  bulletDrop: 0.75
+  bulletVelocity: 1250
+  bulletDrop: 0
   bulletPrefab: {fileID: 65834749046109083, guid: 9a46233ad68a1f548b49eadf4afe634f, type: 3}
-  reloadSpeed: 2
-  bloom: 300
-  fireRate: 0.5
-  ammoCapacity: 7
-  ammoReserve: 14
-  weaponType: 1
+  reloadSpeed: 2.5
+  bloom: 0
+  fireRate: 0
+  ammoCapacity: 1
+  ammoReserve: 20
+  weaponType: 0
   weaponClass: 1
-  shotgun: 1
+  shotgun: 0
   numPellets: 18
   horizontalSpread: 500
-  burstFireRate: 0.125
+  burstFireRate: 0.08
   burstCount: 3
   muzzleTransform: {fileID: 3902931389203763424}
 --- !u!1 &8713521122756718199
