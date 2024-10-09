@@ -19,6 +19,8 @@ public class PlayerMovement2D : MonoBehaviour
 
 	[SerializeField] Position handTransform;
 
+	[SerializeField] Animator animator;
+
 	private float horizontalDirection;
 	private bool changingDirection => (rb.linearVelocity.x > 0 && horizontalDirection < 0) || (rb.linearVelocity.x < 0 && horizontalDirection > 0);
 
@@ -42,6 +44,8 @@ public class PlayerMovement2D : MonoBehaviour
 
 	private void Update()
 	{
+		animator.SetFloat("Speed", Math.Abs(rb.linearVelocity.x));
+		animator.SetBool("Jump", onGround);
 		horizontalDirection = GetInput().x;
 		if (canJump) Jump();
 	}
