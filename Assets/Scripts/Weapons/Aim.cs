@@ -18,7 +18,8 @@ public class Aim : MonoBehaviour
         Vector3 aimDirection = (mousePosition - transform.position).normalized;
         angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         armPivotTransform.eulerAngles = new Vector3(0, 0, angle);
-        gunToFlip = GetComponent<Inventory>().activeWeapon.GetComponent<SpriteRenderer>(); 
+        gunToFlip = GetComponent<Inventory>().activeWeapon.GetComponent<SpriteRenderer>();
+
 
         if (angle > 90 || angle < -90)
         {

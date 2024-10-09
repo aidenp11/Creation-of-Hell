@@ -13,8 +13,9 @@ public class Inventory : MonoBehaviour
 	public GameObject activeWeapon;
 	public List<GameObject> currentWeapons = new List<GameObject>();
 
-	[Header("Other Stuff")]
-	[SerializeField] int score;
+	[Header("PlayerData")]
+	[SerializeField] IntVariable Health;
+	[SerializeField] IntVariable Score;
 
 	private void Start()
 	{
