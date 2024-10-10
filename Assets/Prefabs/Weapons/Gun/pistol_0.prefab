@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1587351885625849198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6292196341009130322}
+  m_Layer: 0
+  m_Name: cartridgeejection (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6292196341009130322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587351885625849198}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.254, y: -0.204, z: -0.0045683784}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1027013901345750502}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1837868250399730890
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8602246152481855531}
+  m_Layer: 0
+  m_Name: cartridgeejection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8602246152481855531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837868250399730890}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.254, y: 0.184, z: -0.0045683784}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1027013901345750502}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2383315606957800594
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,6 +96,8 @@ Transform:
   m_Children:
   - {fileID: 4643173351987554596}
   - {fileID: 5754969235804887139}
+  - {fileID: 8602246152481855531}
+  - {fileID: 6292196341009130322}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &672570451713156951
@@ -107,22 +171,25 @@ MonoBehaviour:
   bulletDrop: 0.5
   bulletPrefab: {fileID: 8095836295945202249, guid: 843e4cfe1cebccd489fe5e8a4e41dea1, type: 3}
   reloadSpeed: 2.15
-  bloom: 75
+  bloom: 100
   fireRate: 0.3
   ammoCapacity: 10
   ammoReserve: 40
   flippedMuzzleTransform: {fileID: 5754969235804887139}
   notFlippedMuzzleTransform: {fileID: 4643173351987554596}
-  weaponType: 0
+  weaponType: 2
   weaponClass: 1
   shotgun: 0
-  numPellets: 0
-  horizontalSpread: 0
-  burstFireRate: 0
-  burstCount: 0
+  numPellets: 5
+  horizontalSpread: 50
+  burstFireRate: 0.08
+  burstCount: 5
   animator: {fileID: 6208973305407743961}
   shotEffect: {fileID: 7972419756491564369, guid: c1db2af525488154eb363da118e53fac, type: 3}
   secondsToDestroyShotEffect: 0.15
+  cartridge: {fileID: 964497685209325265, guid: 5ab9fbcb652c90b45b2beeb6401cb0ff, type: 3}
+  cartridgeEjectionTransformFlipped: {fileID: 6292196341009130322}
+  cartridgeEjectionTransformNotFlipped: {fileID: 8602246152481855531}
 --- !u!95 &6208973305407743961
 Animator:
   serializedVersion: 7
