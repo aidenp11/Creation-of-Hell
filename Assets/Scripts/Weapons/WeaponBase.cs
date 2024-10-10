@@ -1,5 +1,8 @@
 using NUnit.Framework.Constraints;
+using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,7 +22,7 @@ public class WeaponBase : MonoBehaviour
 	[SerializeField] int ammoReserve;
 	private bool reloading = false;
 	private float originalFireRate;
-	public Transform muzzleTransform;
+	private Transform muzzleTransform;
 	[SerializeField] Transform flippedMuzzleTransform;
 	[SerializeField] Transform notFlippedMuzzleTransform;
 	[SerializeField]
@@ -50,6 +53,12 @@ public class WeaponBase : MonoBehaviour
 	[SerializeField] float burstFireRate;
 	[SerializeField] int burstCount;
 
+	[Header("Animation Stuff")]
+	[SerializeField] Animator animator;
+	[SerializeField] GameObject shotEffect;
+	[SerializeField] float secondsToDestroyShotEffect;
+	[SerializeField] GameObject cartridge;
+
 	private GameObject bullet;	
 
 	private void Start()
@@ -77,14 +86,20 @@ public class WeaponBase : MonoBehaviour
 		{
 			muzzleTransform = notFlippedMuzzleTransform;
 		}
-        if (ammoCapacity <= 0 && !reloading)
+		if (ammoCapacity <= 0 && ammoReserve <= 0)
 		{
 			reloading = true;
+		}
+        else if (ammoCapacity <= 0 && !reloading)
+		{
+			reloading = true;
+			animator.SetTrigger("Reload");
 			Invoke("Reload", reloadSpeed);
 		}
-		if (Input.GetKeyDown(KeyCode.R) && ammoCapacity < maxAmmoCapacity && !reloading)
+		else if (Input.GetKeyDown(KeyCode.R) && ammoCapacity < maxAmmoCapacity && ammoReserve > 0 && !reloading)
 		{
 			reloading = true;
+			animator.SetTrigger("Reload");
 			Invoke("Reload", reloadSpeed);
 		}
 		switch (weaponType)
@@ -94,11 +109,16 @@ public class WeaponBase : MonoBehaviour
 				{
 					fireRate = originalFireRate;
 					Shoot();
+					animator.SetTrigger("Shoot");
+					cartridge.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 0));
+					Destroy(Instantiate(shotEffect, muzzleTransform), secondsToDestroyShotEffect);
 					ammoCapacity--;
 				}
 				else if (Input.GetMouseButtonDown(0) && fireRate < 0 && shotgun && !reloading)
 				{
 					fireRate = originalFireRate;
+					animator.SetTrigger("Shoot");
+					Destroy(Instantiate(shotEffect, muzzleTransform), secondsToDestroyShotEffect);
 					ammoCapacity--;
 					for (int i = 0; i < numPellets; i++)
 					{
@@ -110,6 +130,8 @@ public class WeaponBase : MonoBehaviour
 				if (Input.GetMouseButton(0) && fireRate < 0 && !shotgun && !reloading)
 				{
 					fireRate = originalFireRate;
+					animator.SetTrigger("Shoot");
+					Destroy(Instantiate(shotEffect, muzzleTransform), secondsToDestroyShotEffect);
 					Shoot();
 					ammoCapacity--;
 					
@@ -117,6 +139,8 @@ public class WeaponBase : MonoBehaviour
 				else if (Input.GetMouseButton(0) && fireRate < 0 && shotgun && !reloading)
 				{
 					fireRate = originalFireRate;
+					animator.SetTrigger("Shoot");
+					Destroy(Instantiate(shotEffect, muzzleTransform), secondsToDestroyShotEffect);
 					ammoCapacity--;
 					for (int i = 0; i < numPellets; i++)
 					{
@@ -129,6 +153,8 @@ public class WeaponBase : MonoBehaviour
 				{
 					for (int i = 0; i < burstCount; i++) 
 					{
+						animator.SetTrigger("Shoot");
+						Destroy(Instantiate(shotEffect, muzzleTransform), secondsToDestroyShotEffect);
 						Invoke("BurstShoot", burstFireRate * i);
 						ammoCapacity--;
 						if (ammoCapacity <= 0)
@@ -139,13 +165,12 @@ public class WeaponBase : MonoBehaviour
 				}
 				break;
 		}
-
 		fireRate -= Time.deltaTime;
 	}
 
 	private void BurstShoot()
 	{
-		float randomBloom = Random.Range(-bloom, bloom);
+		float randomBloom = UnityEngine.Random.Range(-bloom, bloom);
 		fireRate = originalFireRate;
 		bullet = Instantiate(bulletPrefab, new Vector2(muzzleTransform.position.x, muzzleTransform.position.y), muzzleTransform.rotation);
 		bullet.GetComponent<Rigidbody2D>().gravityScale = bulletDrop;
@@ -155,7 +180,7 @@ public class WeaponBase : MonoBehaviour
 
 	private void Shoot()
 	{
-		float randomBloom = Random.Range(-bloom, bloom);
+		float randomBloom = UnityEngine.Random.Range(-bloom, bloom);
 		bullet = Instantiate(bulletPrefab, new Vector2(muzzleTransform.position.x, muzzleTransform.position.y), muzzleTransform.rotation);
 		bullet.GetComponent<Rigidbody2D>().gravityScale = bulletDrop;
 		bullet.GetComponent<Rigidbody2D>().AddRelativeForceY(randomBloom);
@@ -164,8 +189,8 @@ public class WeaponBase : MonoBehaviour
 
 	private void ShotGunShoot()
 	{
-		float randomBloom = Random.Range(-bloom, bloom);
-		float randomVelocityChange = Random.Range(-horizontalSpread, horizontalSpread);
+		float randomBloom = UnityEngine.Random.Range(-bloom, bloom);
+		float randomVelocityChange = UnityEngine.Random.Range(-horizontalSpread, horizontalSpread);
 		bullet = Instantiate(bulletPrefab, new Vector2(muzzleTransform.position.x, muzzleTransform.position.y), muzzleTransform.rotation);
 		bullet.GetComponent<Rigidbody2D>().gravityScale = bulletDrop;
 		bullet.GetComponent<Rigidbody2D>().AddRelativeForceY(randomBloom);

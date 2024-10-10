@@ -109,6 +109,9 @@ MonoBehaviour:
   fireRate: 0.65
   ammoCapacity: 21
   ammoReserve: 42
+  muzzleTransform: {fileID: 3902931389203763424}
+  flippedMuzzleTransform: {fileID: 0}
+  notFlippedMuzzleTransform: {fileID: 0}
   weaponType: 2
   weaponClass: 0
   shotgun: 0
@@ -116,7 +119,6 @@ MonoBehaviour:
   horizontalSpread: 500
   burstFireRate: 0.08
   burstCount: 3
-  muzzleTransform: {fileID: 3902931389203763424}
 --- !u!1 &8713521122756718199
 GameObject:
   m_ObjectHideFlags: 0

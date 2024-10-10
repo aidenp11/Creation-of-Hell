@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1027013901345750502}
   - component: {fileID: 672570451713156951}
   - component: {fileID: 2846108160215173006}
+  - component: {fileID: 6208973305407743961}
   m_Layer: 0
   m_Name: pistol_0
   m_TagString: Untagged
@@ -105,12 +106,11 @@ MonoBehaviour:
   bulletVelocity: 650
   bulletDrop: 0.5
   bulletPrefab: {fileID: 8095836295945202249, guid: 843e4cfe1cebccd489fe5e8a4e41dea1, type: 3}
-  reloadSpeed: 2
+  reloadSpeed: 2.15
   bloom: 75
   fireRate: 0.3
   ammoCapacity: 10
   ammoReserve: 40
-  muzzleTransform: {fileID: 0}
   flippedMuzzleTransform: {fileID: 5754969235804887139}
   notFlippedMuzzleTransform: {fileID: 4643173351987554596}
   weaponType: 0
@@ -120,6 +120,31 @@ MonoBehaviour:
   horizontalSpread: 0
   burstFireRate: 0
   burstCount: 0
+  animator: {fileID: 6208973305407743961}
+  shotEffect: {fileID: 7972419756491564369, guid: c1db2af525488154eb363da118e53fac, type: 3}
+  secondsToDestroyShotEffect: 0.15
+--- !u!95 &6208973305407743961
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2383315606957800594}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fed27f4e2ef66af4686123301d611227, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3750509030105198286
 GameObject:
   m_ObjectHideFlags: 0
