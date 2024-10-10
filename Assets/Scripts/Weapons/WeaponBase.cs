@@ -19,6 +19,9 @@ public class WeaponBase : MonoBehaviour
 	[SerializeField] int ammoReserve;
 	private bool reloading = false;
 	private float originalFireRate;
+	public Transform muzzleTransform;
+	[SerializeField] Transform flippedMuzzleTransform;
+	[SerializeField] Transform notFlippedMuzzleTransform;
 	[SerializeField]
 	enum WeaponType
 	{
@@ -47,21 +50,34 @@ public class WeaponBase : MonoBehaviour
 	[SerializeField] float burstFireRate;
 	[SerializeField] int burstCount;
 
-	private GameObject bullet;
-
-	[Header("Other Stuff")]
-	[SerializeField] Transform muzzleTransform;
+	private GameObject bullet;	
 
 	private void Start()
 	{
 		originalFireRate = fireRate;
 		fireRate = 0;
 		maxAmmoCapacity = ammoCapacity;
+		if (GetComponent<SpriteRenderer>().flipY == true)
+		{
+			muzzleTransform = flippedMuzzleTransform;
+		}
+		else
+		{
+			muzzleTransform = notFlippedMuzzleTransform;
+		}
 	}
 
 	private void Update()
 	{
-		if (ammoCapacity <= 0 && !reloading)
+        if (GetComponent<SpriteRenderer>().flipY == true)
+        {
+			muzzleTransform = flippedMuzzleTransform;
+        }
+		else
+		{
+			muzzleTransform = notFlippedMuzzleTransform;
+		}
+        if (ammoCapacity <= 0 && !reloading)
 		{
 			reloading = true;
 			Invoke("Reload", reloadSpeed);

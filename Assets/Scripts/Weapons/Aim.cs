@@ -24,12 +24,13 @@ public class Aim : MonoBehaviour
         if (angle > 90 || angle < -90)
         {
             spriteToFlip.flipX = true;
-            gunToFlip.flipX = true;
+            gunToFlip.flipY = true;
+            
         }
         else
         {
             spriteToFlip.flipX= false;
-            gunToFlip.flipX = false;
-        }
+            gunToFlip.flipY = false;
+		}
     }
 }
