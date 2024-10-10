@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d6a34d18f86514599d01f78b7b63ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletVelocity: 650
+  bulletVelocity: 850
   bulletDrop: 0.5
   bulletPrefab: {fileID: 8095836295945202249, guid: 843e4cfe1cebccd489fe5e8a4e41dea1, type: 3}
   reloadSpeed: 2.15
@@ -177,7 +177,7 @@ MonoBehaviour:
   ammoReserve: 40
   flippedMuzzleTransform: {fileID: 5754969235804887139}
   notFlippedMuzzleTransform: {fileID: 4643173351987554596}
-  weaponType: 2
+  weaponType: 0
   weaponClass: 1
   shotgun: 0
   numPellets: 5
