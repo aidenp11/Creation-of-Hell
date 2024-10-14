@@ -29,7 +29,7 @@ public class Inventory : MonoBehaviour
 		{
 
 		}
-		else if (Input.GetAxis("Mouse ScrollWheel") > 0)
+		else if (Input.GetAxis("Mouse ScrollWheel") > 0 && !activeWeapon.GetComponent<WeaponBase>().reloading)
 		{
 			if (currentWeapons.IndexOf(activeWeapon) == currentWeapons.Count - 1)
 			{
@@ -51,7 +51,7 @@ public class Inventory : MonoBehaviour
 				}
 			}
 		}
-		else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+		else if (Input.GetAxis("Mouse ScrollWheel") < 0 && !activeWeapon.GetComponent<WeaponBase>().reloading)
 		{
 			if (currentWeapons.IndexOf(activeWeapon) == 0)
 			{

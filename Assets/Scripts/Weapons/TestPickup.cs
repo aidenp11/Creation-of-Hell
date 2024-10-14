@@ -6,7 +6,7 @@ public class TestPickup : MonoBehaviour
 	[SerializeField] GameObject weapon;
 	private void OnTriggerStay2D(Collider2D collision)
 	{
-		if (collision.CompareTag("Player") && Input.GetKey(KeyCode.E))
+		if (collision.CompareTag("Player") && Input.GetKey(KeyCode.E) && !collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().reloading)
 		{
 			if (collision.GetComponent<Inventory>().currentWeapons.Count <= 2)
 			{

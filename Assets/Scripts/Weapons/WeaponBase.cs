@@ -20,7 +20,7 @@ public class WeaponBase : MonoBehaviour
 	[SerializeField] int ammoCapacity;
 	private int maxAmmoCapacity;
 	[SerializeField] int ammoReserve;
-	private bool reloading = false;
+	public bool reloading = false;
 	private float originalFireRate;
 	private Transform muzzleTransform;
 	[SerializeField] Transform flippedMuzzleTransform;
