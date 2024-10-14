@@ -21,6 +21,7 @@ public class WeaponBase : MonoBehaviour
 	private int maxAmmoCapacity;
 	[SerializeField] int ammoReserve;
 	public bool reloading = false;
+	private bool outOfBullts = false;
 	private float originalFireRate;
 	private Transform muzzleTransform;
 	[SerializeField] Transform flippedMuzzleTransform;
@@ -96,15 +97,15 @@ public class WeaponBase : MonoBehaviour
 		}
 		if (ammoCapacity <= 0 && ammoReserve <= 0)
 		{
-			reloading = true;
+			outOfBullts = true;
 		}
-        else if (ammoCapacity <= 0 && !reloading)
+        else if (ammoCapacity <= 0 && !reloading && !outOfBullts)
 		{
 			reloading = true;
 			animator.SetTrigger("Reload");
 			Invoke("Reload", reloadSpeed);
 		}
-		else if (Input.GetKeyDown(KeyCode.R) && ammoCapacity < maxAmmoCapacity && ammoReserve > 0 && !reloading && !burstFiring)
+		else if (Input.GetKeyDown(KeyCode.R) && ammoCapacity < maxAmmoCapacity && ammoReserve > 0 && !reloading && !burstFiring && !outOfBullts)
 		{
 			reloading = true;
 			animator.SetTrigger("Reload");
@@ -113,7 +114,7 @@ public class WeaponBase : MonoBehaviour
 		switch (weaponType)
 		{
 			case WeaponType.SEMIAUTO:
-				if (Input.GetMouseButtonDown(0) && fireRate < 0 && !shotgun && !reloading)
+				if (Input.GetMouseButtonDown(0) && fireRate < 0 && !shotgun && !reloading && !outOfBullts)
 				{
 					fireRate = originalFireRate;
 					Shoot();
@@ -124,7 +125,7 @@ public class WeaponBase : MonoBehaviour
 					Destroy(Instantiate(shotEffect, muzzleTransform), secondsToDestroyShotEffect);
 					ammoCapacity--;
 				}
-				else if (Input.GetMouseButtonDown(0) && fireRate < 0 && shotgun && !reloading)
+				else if (Input.GetMouseButtonDown(0) && fireRate < 0 && shotgun && !reloading && !outOfBullts)
 				{
 					fireRate = originalFireRate;
 					animator.SetTrigger("Shoot");
@@ -140,7 +141,7 @@ public class WeaponBase : MonoBehaviour
 				}
 				break;
 			case WeaponType.FULLAUTO:
-				if (Input.GetMouseButton(0) && fireRate < 0 && !shotgun && !reloading)
+				if (Input.GetMouseButton(0) && fireRate < 0 && !shotgun && !reloading && !outOfBullts)
 				{
 					fireRate = originalFireRate;
 					animator.SetTrigger("Shoot");
@@ -152,7 +153,7 @@ public class WeaponBase : MonoBehaviour
 					ammoCapacity--;
 					
 				}
-				else if (Input.GetMouseButton(0) && fireRate < 0 && shotgun && !reloading)
+				else if (Input.GetMouseButton(0) && fireRate < 0 && shotgun && !reloading && !outOfBullts)
 				{
 					fireRate = originalFireRate;
 					animator.SetTrigger("Shoot");
@@ -168,7 +169,7 @@ public class WeaponBase : MonoBehaviour
 				}
 				break;
 			case WeaponType.BURST:
-				if (Input.GetMouseButtonDown(0) && fireRate < 0 && !reloading)
+				if (Input.GetMouseButtonDown(0) && fireRate < 0 && !reloading && !outOfBullts)
 				{
 					burstFiring = true;
 					for (int i = 0; i < burstCount; i++) 

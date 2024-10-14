@@ -144,13 +144,14 @@ MonoBehaviour:
   fireRate: 0.1
   ammoCapacity: 1
   ammoReserve: 20
+  reloading: 0
   flippedMuzzleTransform: {fileID: 3795663062774458171}
   notFlippedMuzzleTransform: {fileID: 5182271728843314949}
   weaponType: 0
   weaponClass: 1
   shotgun: 0
-  numPellets: 0
-  horizontalSpread: 0
+  numPellets: 10
+  horizontalSpread: 10
   burstFireRate: 0
   burstCount: 0
   animator: {fileID: 2455421453948520946}

@@ -175,6 +175,7 @@ MonoBehaviour:
   fireRate: 0.3
   ammoCapacity: 10
   ammoReserve: 40
+  reloading: 0
   flippedMuzzleTransform: {fileID: 5754969235804887139}
   notFlippedMuzzleTransform: {fileID: 4643173351987554596}
   weaponType: 0
