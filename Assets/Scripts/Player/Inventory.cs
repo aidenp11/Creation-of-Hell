@@ -122,4 +122,9 @@ public class Inventory : MonoBehaviour
 			}
 		}
 	}
+
+	public void ApplyDamage(int damage)
+	{
+		Health.value -= damage;
+	}
 }

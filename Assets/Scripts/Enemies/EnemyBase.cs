@@ -7,13 +7,17 @@ public class EnemyBase : MonoBehaviour
 	private Rigidbody2D rb;
 	private SpriteRenderer sr;
 	[SerializeField] int Health;
-	[SerializeField] int damage;
 	[SerializeField] float speed;
 	[SerializeField] float acceleration;
+	[SerializeField] GameObject attackObject;
+	private GameObject attack;
 	[SerializeField] float attackSpeed;
-	[SerializeField] Transform attackPosition;
+	[SerializeField] float attackCooldown;
+	[SerializeField] Transform notFlippedAttackPosition;
+	[SerializeField] Transform flippedAttackPosition;
+	private Transform attackPosition;
 	[SerializeField] float fadeSeconds;
-	private bool attacking;
+	public bool attacking;
 
 	[SerializeField] GameObject player;
 	[SerializeField] float howCloseToPlayer;
@@ -23,12 +27,29 @@ public class EnemyBase : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody2D>();
 		sr = GetComponent<SpriteRenderer>();
+		if (GetComponent<SpriteRenderer>().flipX == true)
+		{
+			attackPosition = flippedAttackPosition;
+		}
+		else
+		{
+			attackPosition = notFlippedAttackPosition;
+		}
 	}
 
 	private void Update()
 	{
+		if (GetComponent<SpriteRenderer>().flipX == true)
+		{
+			attackPosition = flippedAttackPosition;
+		}
+		else
+		{
+			attackPosition = notFlippedAttackPosition;
+		}
 		if (Health <= 0)
 		{
+			if (attack != null) Destroy(attack);
 			GetComponent<Collider2D>().enabled = false;
 			GetComponent<Rigidbody2D>().Sleep();
 			Destroy(gameObject, fadeSeconds);
@@ -36,11 +57,16 @@ public class EnemyBase : MonoBehaviour
 		}
 		else if (Mathf.Abs(playerTransform.position.x - transform.position.x) <= howCloseToPlayer && !attacking)
 		{
-
+			attacking = true;
+			Invoke("Attack", attackSpeed);
 		}
 		else if (!attacking)
 		{
 			MoveEnemy();
+		}
+		if (attack != null)
+		{
+			Destroy(attack, attackCooldown);
 		}
 	}
 
@@ -71,7 +97,7 @@ public class EnemyBase : MonoBehaviour
 
 	private void Attack()
 	{
-
+		attack = Instantiate(attackObject, attackPosition);
 	}
 
 	public void ApplyDamage(int damage)
