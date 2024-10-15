@@ -13,7 +13,7 @@ public class DamagableTest : MonoBehaviour
 		{
 			GetComponent<Collider2D>().enabled = false;
 			Destroy(gameObject, fadeSeconds);
-			GetComponent<SpriteRenderer>().color -= new Color(0, 0, 0, fadeSeconds * 0.0005f);
+			GetComponent<SpriteRenderer>().color -= new Color(0, 0, 0, fadeSeconds * 0.005f);
 		}
 	}
 

@@ -151,7 +151,7 @@ MonoBehaviour:
   weaponClass: 1
   shotgun: 0
   numPellets: 10
-  horizontalSpread: 10
+  horizontalSpread: 100
   burstFireRate: 0
   burstCount: 0
   animator: {fileID: 2455421453948520946}
