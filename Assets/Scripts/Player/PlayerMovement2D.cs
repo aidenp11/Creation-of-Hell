@@ -21,7 +21,7 @@ public class PlayerMovement2D : MonoBehaviour
 
 	[SerializeField] Animator animator;
 
-	private float horizontalDirection;
+	public float horizontalDirection;
 	private bool changingDirection => (rb.linearVelocity.x > 0 && horizontalDirection < 0) || (rb.linearVelocity.x < 0 && horizontalDirection > 0);
 
 	[Header("Jump Variables")]

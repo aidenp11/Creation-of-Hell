@@ -28,7 +28,7 @@ public class AmmoBase : MonoBehaviour
 		if (collision.CompareTag("Wall")) Destroy(gameObject);
 		if (pierce > 0 && collision.CompareTag("Enemy"))
 		{
-			collision.GetComponent<DamagableTest>().ApplyDamage(damage);
+			collision.GetComponent<EnemyBase>().ApplyDamage(damage);
 			pierce--;
 			newDamage = (float)damage * pierceDamageFalloff;
 			damage = (int)newDamage;
