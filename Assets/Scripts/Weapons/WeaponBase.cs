@@ -64,7 +64,7 @@ public class WeaponBase : MonoBehaviour
 	[SerializeField] Transform cartridgeEjectionTransformFlipped;
 	[SerializeField] Transform cartridgeEjectionTransformNotFlipped;
 
-	private GameObject bullet;	
+	private GameObject bullet;
 
 	private void Start()
 	{
@@ -85,8 +85,8 @@ public class WeaponBase : MonoBehaviour
 
 	private void Update()
 	{
-        if (GetComponent<SpriteRenderer>().flipY == true)
-        {
+		if (GetComponent<SpriteRenderer>().flipY == true)
+		{
 			muzzleTransform = flippedMuzzleTransform;
 			cartridgeEjectionTransform = cartridgeEjectionTransformFlipped;
 		}
@@ -99,7 +99,7 @@ public class WeaponBase : MonoBehaviour
 		{
 			outOfBullts = true;
 		}
-        else if (ammoCapacity <= 0 && !reloading && !outOfBullts)
+		else if (ammoCapacity <= 0 && !reloading && !outOfBullts)
 		{
 			reloading = true;
 			animator.SetTrigger("Reload");
@@ -151,7 +151,7 @@ public class WeaponBase : MonoBehaviour
 					Destroy(Instantiate(shotEffect, muzzleTransform), secondsToDestroyShotEffect);
 					Shoot();
 					ammoCapacity--;
-					
+
 				}
 				else if (Input.GetMouseButton(0) && fireRate < 0 && shotgun && !reloading && !outOfBullts)
 				{
@@ -172,7 +172,7 @@ public class WeaponBase : MonoBehaviour
 				if (Input.GetMouseButtonDown(0) && fireRate < 0 && !reloading && !outOfBullts)
 				{
 					burstFiring = true;
-					for (int i = 0; i < burstCount; i++) 
+					for (int i = 0; i < burstCount; i++)
 					{
 						Invoke("BurstShoot", burstFireRate * i);
 						ammoCapacity--;
@@ -191,7 +191,10 @@ public class WeaponBase : MonoBehaviour
 
 	private void BurstShoot()
 	{
-		animator.SetTrigger("Shoot");
+		if (!reloading)
+		{
+			animator.SetTrigger("Shoot");
+		}
 		GameObject cartridged = Instantiate(cartridge, cartridgeEjectionTransform.position, cartridgeEjectionTransform.rotation);
 		cartridged.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 125));
 		Destroy(cartridged, 0.8f);
