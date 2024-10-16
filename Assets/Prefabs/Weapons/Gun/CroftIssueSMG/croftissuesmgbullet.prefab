@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 629544204119859337}
   - component: {fileID: 3079745912346267645}
   m_Layer: 0
-  m_Name: elephantpistolbullet
+  m_Name: croftissuesmgbullet
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: -2346302928887187388, guid: abb68be4f658de74da9f08ef4bef9d28, type: 3}
+  m_Sprite: {fileID: 607841160790397413, guid: 3fa26a27cfa1ce942ba9605cae6e7da2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -129,10 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2baace41bde6f2540959d60f5a7c1213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 500
-  bulletLifespan: 1.5
-  pierce: 8
-  pierceDamageFalloff: 0.895
+  damage: 85
+  bulletLifespan: 1.15
+  pierce: 3
+  pierceDamageFalloff: 0.75
 --- !u!58 &3079745912346267645
 CircleCollider2D:
   m_ObjectHideFlags: 0
