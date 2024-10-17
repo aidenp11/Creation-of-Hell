@@ -18,19 +18,23 @@ public class EnemyBase : MonoBehaviour
 	private Transform attackPosition;
 	[SerializeField] float fadeSeconds;
 	public bool attacking;
-	enum EnemyType
+	public enum EnemyType
 	{
 		normal,
 		jumper,
 		hugger
 	}
-	[SerializeField] EnemyType enemyType;
+	[SerializeField] public EnemyType enemyType;
+	[Header("Jumper Stuff")]
 	[SerializeField] float jumpForce;
 	[SerializeField] float jumpForwardForce;
 	private float positiveJumpForwardForce;
 	private float negativeJumpForwardForce;
 	[SerializeField] float jumpAttackWaitSpeed;
 
+	[Header("Hugger Stuff")]
+
+	[Header("Player Stuff")]
 	[SerializeField] GameObject player;
 	[SerializeField] float howCloseToPlayer;
 	private Transform playerTransform;
