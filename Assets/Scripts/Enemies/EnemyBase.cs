@@ -29,6 +29,7 @@ public class EnemyBase : MonoBehaviour
 	[SerializeField] float jumpForwardForce;
 	private float positiveJumpForwardForce;
 	private float negativeJumpForwardForce;
+	[SerializeField] float jumpAttackWaitSpeed;
 
 	[SerializeField] GameObject player;
 	[SerializeField] float howCloseToPlayer;
@@ -77,7 +78,7 @@ public class EnemyBase : MonoBehaviour
 			if (enemyType == EnemyType.jumper)
 			{
 				MoveEnemy();
-				rb.AddForce(new Vector2(jumpForwardForce, jumpForce));
+				Invoke("JumpAttack", jumpAttackWaitSpeed);
 				attacking = true;
 				Invoke("Attack", attackSpeed);
 			}
@@ -125,6 +126,11 @@ public class EnemyBase : MonoBehaviour
 	private void Attack()
 	{
 		attack = Instantiate(attackObject, attackPosition);
+	}
+
+	private void JumpAttack()
+	{
+		rb.AddForce(new Vector2(jumpForwardForce, jumpForce));
 	}
 
 	public void ApplyDamage(int damage)
