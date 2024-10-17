@@ -18,6 +18,17 @@ public class EnemyBase : MonoBehaviour
 	private Transform attackPosition;
 	[SerializeField] float fadeSeconds;
 	public bool attacking;
+	enum EnemyType
+	{
+		normal,
+		jumper,
+		hugger
+	}
+	[SerializeField] EnemyType enemyType;
+	[SerializeField] float jumpForce;
+	[SerializeField] float jumpForwardForce;
+	private float positiveJumpForwardForce;
+	private float negativeJumpForwardForce;
 
 	[SerializeField] GameObject player;
 	[SerializeField] float howCloseToPlayer;
@@ -27,13 +38,17 @@ public class EnemyBase : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody2D>();
 		sr = GetComponent<SpriteRenderer>();
+		positiveJumpForwardForce = jumpForwardForce;
+		negativeJumpForwardForce = -jumpForwardForce;
 		if (GetComponent<SpriteRenderer>().flipX == true)
 		{
 			attackPosition = flippedAttackPosition;
+			jumpForwardForce = negativeJumpForwardForce;
 		}
 		else
 		{
 			attackPosition = notFlippedAttackPosition;
+			jumpForwardForce = positiveJumpForwardForce;
 		}
 	}
 
@@ -42,10 +57,12 @@ public class EnemyBase : MonoBehaviour
 		if (GetComponent<SpriteRenderer>().flipX == true)
 		{
 			attackPosition = flippedAttackPosition;
+			jumpForwardForce = negativeJumpForwardForce;
 		}
 		else
 		{
 			attackPosition = notFlippedAttackPosition;
+			jumpForwardForce = positiveJumpForwardForce;
 		}
 		if (Health <= 0)
 		{
@@ -57,8 +74,18 @@ public class EnemyBase : MonoBehaviour
 		}
 		else if (Mathf.Abs(playerTransform.position.x - transform.position.x) <= howCloseToPlayer && !attacking)
 		{
-			attacking = true;
-			Invoke("Attack", attackSpeed);
+			if (enemyType == EnemyType.jumper)
+			{
+				MoveEnemy();
+				rb.AddForce(new Vector2(jumpForwardForce, jumpForce));
+				attacking = true;
+				Invoke("Attack", attackSpeed);
+			}
+			else
+			{
+				attacking = true;
+				Invoke("Attack", attackSpeed);
+			}
 		}
 		else if (!attacking)
 		{
