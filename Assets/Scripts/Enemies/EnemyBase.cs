@@ -32,7 +32,8 @@ public class EnemyBase : MonoBehaviour
 	private float negativeJumpForwardForce;
 	[SerializeField] float jumpAttackWaitSpeed;
 
-	[Header("Hugger Stuff")]
+	[Header("Animation")]
+	[SerializeField] Animator animator;
 
 	[Header("Player Stuff")]
 	[SerializeField] GameObject player;
@@ -59,6 +60,7 @@ public class EnemyBase : MonoBehaviour
 
 	private void Update()
 	{
+		animator.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
 		if (GetComponent<SpriteRenderer>().flipX == true)
 		{
 			attackPosition = flippedAttackPosition;
@@ -71,6 +73,7 @@ public class EnemyBase : MonoBehaviour
 		}
 		if (Health <= 0)
 		{
+			animator.SetTrigger("Death");
 			if (attack != null) Destroy(attack);
 			GetComponent<Collider2D>().enabled = false;
 			GetComponent<Rigidbody2D>().Sleep();
@@ -129,6 +132,7 @@ public class EnemyBase : MonoBehaviour
 
 	private void Attack()
 	{
+		animator.SetTrigger("Attack");
 		attack = Instantiate(attackObject, attackPosition);
 	}
 
