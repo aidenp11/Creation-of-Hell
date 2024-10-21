@@ -169,4 +169,4 @@ MonoBehaviour:
   bulletLifespan: 0.3
   pierce: 2
   pierceDamageFalloff: 0.3
-  hitEffect: {fileID: 4525796128998122878, guid: 044e93fcf53cfbc40b837f5538f0bea3, type: 3}
+  hitEffect: {fileID: 8088427377927014934, guid: 79f50474c2c86304896dbbec6b2c97e5, type: 3}
