@@ -138,12 +138,16 @@ public class EnemyBase : MonoBehaviour
 
 	private void Attack()
 	{
-		animator.SetTrigger("Attack");
+		if (enemyType != EnemyType.jumper)
+		{
+			animator.SetTrigger("Attack");
+		}
 		attack = Instantiate(attackObject, attackPosition);
 	}
 
 	private void JumpAttack()
 	{
+		animator.SetTrigger("Attack");
 		rb.AddForce(new Vector2(jumpForwardForce, jumpForce));
 	}
 

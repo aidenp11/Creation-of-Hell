@@ -11,7 +11,7 @@ public class WeaponBase : MonoBehaviour
 	[Header("Bullet Data")]
 	[SerializeField] float bulletVelocity;
 	[SerializeField] float bulletDrop;
-	[SerializeField] GameObject bulletPrefab;
+	[SerializeField] public GameObject bulletPrefab;
 
 	[Header("Weapon Data")]
 	[SerializeField] float reloadSpeed;
