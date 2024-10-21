@@ -133,6 +133,7 @@ MonoBehaviour:
   bulletLifespan: 1.5
   pierce: 8
   pierceDamageFalloff: 0.895
+  hitEffect: {fileID: 4525796128998122878, guid: 044e93fcf53cfbc40b837f5538f0bea3, type: 3}
 --- !u!58 &3079745912346267645
 CircleCollider2D:
   m_ObjectHideFlags: 0

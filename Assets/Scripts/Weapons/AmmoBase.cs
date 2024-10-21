@@ -1,12 +1,15 @@
 using UnityEngine;
 
-[RequireComponent (typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class AmmoBase : MonoBehaviour
 {
-    [SerializeField] int damage;
+	[SerializeField] int damage;
 	[SerializeField] float bulletLifespan;
 	[SerializeField] int pierce;
 	[SerializeField][Range(0, 1)] float pierceDamageFalloff;
+	[SerializeField] GameObject hitEffect;
+	private GameObject destroyHitEffect;
+	//[SerializeField] GameObject wallHitEffect;
 
 	private float newDamage;
 
@@ -17,7 +20,7 @@ public class AmmoBase : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
-		if (bulletLifespan < 0) 
+		if (bulletLifespan < 0)
 		{
 			Destroy(gameObject);
 		}
@@ -25,9 +28,15 @@ public class AmmoBase : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.CompareTag("Wall")) Destroy(gameObject);
+		if (collision.CompareTag("Wall"))
+		{
+			//Instantiate(wallHitEffect, collision.transform);
+			Destroy(gameObject);
+		}
 		if (pierce > 0 && collision.CompareTag("Enemy"))
 		{
+			destroyHitEffect = Instantiate(hitEffect, collision.transform);
+			Destroy(destroyHitEffect, 0.5f);
 			collision.GetComponent<EnemyBase>().ApplyDamage(damage);
 			pierce--;
 			newDamage = (float)damage * pierceDamageFalloff;
