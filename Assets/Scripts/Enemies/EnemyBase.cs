@@ -1,5 +1,8 @@
+using System.Linq;
 using Unity.VisualScripting;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyBase : MonoBehaviour
 {
@@ -36,12 +39,20 @@ public class EnemyBase : MonoBehaviour
 	[SerializeField] Animator animator;
 
 	[Header("Player Stuff")]
-	[SerializeField] GameObject player;
+	private GameObject player;
 	[SerializeField] float howCloseToPlayer;
 	private Transform playerTransform;
 
 	private void Start()
 	{
+		for (int i = 0; i < SceneManager.GetActiveScene().GetRootGameObjects().Length; i++)
+		{
+			if (SceneManager.GetActiveScene().GetRootGameObjects().ElementAt(i).GetComponent<PlayerMovement2D>())
+			{
+				player = SceneManager.GetActiveScene().GetRootGameObjects().ElementAt(i);
+				break;
+			}
+		}
 		rb = GetComponent<Rigidbody2D>();
 		sr = GetComponent<SpriteRenderer>();
 		positiveJumpForwardForce = jumpForwardForce;
@@ -60,6 +71,7 @@ public class EnemyBase : MonoBehaviour
 
 	private void Update()
 	{
+		playerTransform = player.GetComponent<Transform>();
 		animator.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
 		if (GetComponent<SpriteRenderer>().flipX == true)
 		{
@@ -103,12 +115,6 @@ public class EnemyBase : MonoBehaviour
 		{
 			Destroy(attack, attackCooldown);
 		}
-	}
-
-
-	private void FixedUpdate()
-	{
-		playerTransform = player.GetComponent<Transform>();
 	}
 
 	private void MoveEnemy()
