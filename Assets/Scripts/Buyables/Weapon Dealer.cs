@@ -1,17 +1,28 @@
 using System.Linq;
+using TMPro;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class TestPickup : MonoBehaviour
+public class WeaponsDealer : MonoBehaviour
 {
 	[SerializeField] GameObject weapon;
 	[SerializeField] GameObject text;
+	private string ogText;
 	private GameObject player;
 	private Transform playerTransform;
 	[SerializeField] int cost;
+	[SerializeField] int ammoCost;
+	[SerializeField] Sprite spriteToShow;
+	[SerializeField] GameObject spotToShow;
+	private bool alreadyEquipped;
+	[SerializeField] string weaponName;
 
 	private void Start()
 	{
+		ogText = text.GetComponent<TextMeshProUGUI>().text.ToString();
+		spotToShow.GetComponent<SpriteRenderer>().sprite = spriteToShow;
 		for (int i = 0; i < SceneManager.GetActiveScene().GetRootGameObjects().Length; i++)
 		{
 			if (SceneManager.GetActiveScene().GetRootGameObjects().ElementAt(i).GetComponent<PlayerMovement2D>())
@@ -26,7 +37,7 @@ public class TestPickup : MonoBehaviour
 	{
 		playerTransform = player.GetComponent<Transform>();
 
-		if (Mathf.Abs(transform.position.x - playerTransform.position.x) <= 1.5)
+		if (Mathf.Abs(transform.position.x - playerTransform.position.x) <= 1)
 		{
 			text.SetActive(true);
 		}
@@ -36,16 +47,55 @@ public class TestPickup : MonoBehaviour
 		}
 	}
 
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.CompareTag("Player"))
+		{
+			for (int i = 0; i < collision.GetComponent<Inventory>().currentWeapons.Count; i++)
+			{
+				if (collision.GetComponent<Inventory>().currentWeapons.ElementAt(i).GetComponent<WeaponBase>().weaponName == weaponName)
+				{
+					alreadyEquipped = true;
+					break;
+				}
+				else
+				{
+					alreadyEquipped = false;
+				}
+			}
+		}
+	}
+
 	private void OnTriggerStay2D(Collider2D collision)
 	{
-		if (collision.CompareTag("Player") && Input.GetKey(KeyCode.E) && !collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().reloading &&
-			collision.GetComponent<Inventory>().GetPoints() >= cost)
+		if (collision.CompareTag("Player") && Input.GetKey(KeyCode.E) &&
+			collision.GetComponent<Inventory>().GetPoints() >= ammoCost && alreadyEquipped)
 		{
+			text.GetComponent<TextMeshProUGUI>().text = "Press E to Buy Ammo: 250";
+			for (int i = 0; i < collision.GetComponent<Inventory>().currentWeapons.Count; i++)
+			{
+				if (collision.GetComponent<Inventory>().currentWeapons.ElementAt(i).GetComponent<WeaponBase>().weaponName == weaponName)
+				{
+					if (collision.GetComponent<Inventory>().currentWeapons.ElementAt(i).GetComponent<WeaponBase>().ammoReserve <
+						collision.GetComponent<Inventory>().currentWeapons.ElementAt(i).GetComponent<WeaponBase>().maxAmmoReserve)
+					{
+						collision.GetComponent<Inventory>().currentWeapons.ElementAt(i).GetComponent<WeaponBase>().ammoReserve = collision.GetComponent<Inventory>().currentWeapons.ElementAt(i).GetComponent<WeaponBase>().maxAmmoReserve;
+						collision.GetComponent<Inventory>().AddPoints(-ammoCost);
+						break;
+					}
+					break;
+				}
+			}
+		}
+		if (collision.CompareTag("Player") && Input.GetKey(KeyCode.E) && !collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().reloading &&
+			collision.GetComponent<Inventory>().GetPoints() >= cost && !alreadyEquipped)
+		{
+			text.GetComponent<TextMeshProUGUI>().text = ogText;
 			if (collision.GetComponent<Inventory>().currentWeapons.Count <= 2)
 			{
 				collision.GetComponent<Inventory>().AddWeapon(weapon);
 				collision.GetComponent<Inventory>().AddPoints(-cost);
-				Destroy(gameObject);
+				alreadyEquipped = true;
 				return;
 			}
 			int secondaryCount = 0;
@@ -55,7 +105,7 @@ public class TestPickup : MonoBehaviour
 				{
 					collision.GetComponent<Inventory>().AddWeapon(weapon);
 					collision.GetComponent<Inventory>().AddPoints(-cost);
-					Destroy(gameObject);
+					alreadyEquipped = true;
 					return;
 				}
 				for (int i = 0; i < collision.GetComponent<Inventory>().currentWeapons.Count; i++)
@@ -69,7 +119,7 @@ public class TestPickup : MonoBehaviour
 				{
 					collision.GetComponent<Inventory>().AddWeapon(weapon);
 					collision.GetComponent<Inventory>().AddPoints(-cost);
-					Destroy(gameObject);
+					alreadyEquipped = true;
 					return;
 				}
 				else
@@ -81,7 +131,7 @@ public class TestPickup : MonoBehaviour
 			{
 				collision.GetComponent<Inventory>().AddWeapon(weapon);
 				collision.GetComponent<Inventory>().AddPoints(-cost);
-				Destroy(gameObject);
+				alreadyEquipped = true;
 				return;
 			}
 		}

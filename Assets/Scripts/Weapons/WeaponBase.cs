@@ -14,12 +14,14 @@ public class WeaponBase : MonoBehaviour
 	[SerializeField] public GameObject bulletPrefab;
 
 	[Header("Weapon Data")]
+	[SerializeField] public string weaponName;
 	[SerializeField] float reloadSpeed;
 	[SerializeField] float bloom;
 	[SerializeField] float fireRate;
-	[SerializeField] int ammoCapacity;
-	private int maxAmmoCapacity;
-	[SerializeField] int ammoReserve;
+	[SerializeField] public int ammoCapacity;
+	public int maxAmmoCapacity;
+	[SerializeField] public int ammoReserve;
+	public int maxAmmoReserve;
 	public bool reloading = false;
 	private bool outOfBullts = false;
 	private float originalFireRate;
@@ -71,6 +73,7 @@ public class WeaponBase : MonoBehaviour
 		originalFireRate = fireRate;
 		fireRate = 0;
 		maxAmmoCapacity = ammoCapacity;
+		maxAmmoReserve = ammoReserve;
 		if (GetComponent<SpriteRenderer>().flipY == true)
 		{
 			muzzleTransform = flippedMuzzleTransform;
