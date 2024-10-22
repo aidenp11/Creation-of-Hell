@@ -89,6 +89,7 @@ public class EnemyBase : MonoBehaviour
 			if (attack != null) Destroy(attack);
 			GetComponent<Collider2D>().enabled = false;
 			GetComponent<Rigidbody2D>().Sleep();
+			Invoke("AddPointsToPlayer", fadeSeconds);
 			Destroy(gameObject, fadeSeconds);
 			GetComponent<SpriteRenderer>().color -= new Color(0, 0, 0, fadeSeconds * 0.005f);
 		}
@@ -156,7 +157,7 @@ public class EnemyBase : MonoBehaviour
 		Health -= damage;
 	}
 
-	private void OnDisable()
+	private void AddPointsToPlayer()
 	{
 		if (enemyType == EnemyType.normal)
 		{

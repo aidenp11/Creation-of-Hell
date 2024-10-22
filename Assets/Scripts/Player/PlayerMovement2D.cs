@@ -11,11 +11,13 @@ public class PlayerMovement2D : MonoBehaviour
 
 	[Header("Layer Masks")]
 	[SerializeField] LayerMask groundLayer;
+	[SerializeField] LayerMask slopeLayer;
 
 	[Header("Movement Variables")]
 	[SerializeField] float acceleration;
 	[SerializeField] float speed;
 	[SerializeField] float drag;
+	private float ogAccel;
 
 	[SerializeField] Position handTransform;
 
@@ -36,16 +38,25 @@ public class PlayerMovement2D : MonoBehaviour
 	[SerializeField] float groundRaycastLength;
 	[SerializeField] private Vector3 groundRaycastOffset;
 	private bool onGround;
+	private bool onSlope;
 
 	private void Start()
 	{
+		ogAccel = acceleration;
 		rb = GetComponent<Rigidbody2D>();
 	}
 
 	private void Update()
 	{
 		animator.SetFloat("Speed", Math.Abs(rb.linearVelocity.x));
-		animator.SetBool("Jump", onGround);
+		if (onSlope == true && onGround == false)
+		{
+			animator.SetBool("Jump", onSlope);
+		}
+		else
+		{
+			animator.SetBool("Jump", onGround);
+		}
 		horizontalDirection = GetInput().x;
 		if (canJump) Jump();
 	}
@@ -62,6 +73,15 @@ public class PlayerMovement2D : MonoBehaviour
 		{
 			ApplyAirDrag();
 			FallMultiplier();
+		}
+
+		if (onSlope)
+		{
+			acceleration = ogAccel * 5;
+		}
+		else
+		{
+			acceleration = ogAccel;
 		}
 	}
 
@@ -106,6 +126,8 @@ public class PlayerMovement2D : MonoBehaviour
 	{
 		onGround = Physics2D.Raycast(transform.position + groundRaycastOffset, Vector2.down, groundRaycastLength, groundLayer) ||
 				   Physics2D.Raycast(transform.position - groundRaycastOffset, Vector2.down, groundRaycastLength, groundLayer);
+		onSlope = Physics2D.Raycast(transform.position + groundRaycastOffset, Vector2.down, groundRaycastLength, slopeLayer) ||
+				   Physics2D.Raycast(transform.position - groundRaycastOffset, Vector2.down, groundRaycastLength, slopeLayer);
 	}
 
 	private void OnDrawGizmos()
