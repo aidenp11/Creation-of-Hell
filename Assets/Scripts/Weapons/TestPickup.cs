@@ -8,6 +8,7 @@ public class TestPickup : MonoBehaviour
 	[SerializeField] GameObject text;
 	private GameObject player;
 	private Transform playerTransform;
+	[SerializeField] int cost;
 
 	private void Start()
 	{
@@ -37,11 +38,13 @@ public class TestPickup : MonoBehaviour
 
 	private void OnTriggerStay2D(Collider2D collision)
 	{
-		if (collision.CompareTag("Player") && Input.GetKey(KeyCode.E) && !collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().reloading)
+		if (collision.CompareTag("Player") && Input.GetKey(KeyCode.E) && !collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().reloading &&
+			collision.GetComponent<Inventory>().GetPoints() >= cost)
 		{
 			if (collision.GetComponent<Inventory>().currentWeapons.Count <= 2)
 			{
 				collision.GetComponent<Inventory>().AddWeapon(weapon);
+				collision.GetComponent<Inventory>().AddPoints(-cost);
 				Destroy(gameObject);
 				return;
 			}
@@ -51,6 +54,7 @@ public class TestPickup : MonoBehaviour
 				if (weapon.GetComponent<WeaponBase>().weaponClass == WeaponBase.WeaponClass.SECONDARY)
 				{
 					collision.GetComponent<Inventory>().AddWeapon(weapon);
+					collision.GetComponent<Inventory>().AddPoints(-cost);
 					Destroy(gameObject);
 					return;
 				}
@@ -64,6 +68,7 @@ public class TestPickup : MonoBehaviour
 				if (secondaryCount >= 2)
 				{
 					collision.GetComponent<Inventory>().AddWeapon(weapon);
+					collision.GetComponent<Inventory>().AddPoints(-cost);
 					Destroy(gameObject);
 					return;
 				}
@@ -75,6 +80,7 @@ public class TestPickup : MonoBehaviour
 			else
 			{
 				collision.GetComponent<Inventory>().AddWeapon(weapon);
+				collision.GetComponent<Inventory>().AddPoints(-cost);
 				Destroy(gameObject);
 				return;
 			}

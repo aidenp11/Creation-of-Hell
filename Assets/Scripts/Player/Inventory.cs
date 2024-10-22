@@ -127,4 +127,14 @@ public class Inventory : MonoBehaviour
 	{
 		Health.value -= damage;
 	}
+
+	public void AddPoints(int points)
+	{
+		Score.value += points;
+	}
+
+	public int GetPoints()
+	{
+		return Score.value;
+	}
 }

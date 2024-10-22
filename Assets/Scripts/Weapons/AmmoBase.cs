@@ -1,5 +1,7 @@
+using System.Linq;
 using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class AmmoBase : MonoBehaviour
@@ -11,9 +13,22 @@ public class AmmoBase : MonoBehaviour
 	[SerializeField] GameObject hitEffect;
 	private GameObject destroyHitEffect;
 	//[SerializeField] GameObject wallHitEffect;
+	private GameObject player;
 
 	private float newDamage;
 
+
+	private void Start()
+	{
+		for (int i = 0; i < SceneManager.GetActiveScene().GetRootGameObjects().Length; i++)
+		{
+			if (SceneManager.GetActiveScene().GetRootGameObjects().ElementAt(i).GetComponent<PlayerMovement2D>())
+			{
+				player = SceneManager.GetActiveScene().GetRootGameObjects().ElementAt(i);
+				break;
+			}
+		}
+	}
 	private void Update()
 	{
 		bulletLifespan -= Time.deltaTime;
@@ -36,6 +51,7 @@ public class AmmoBase : MonoBehaviour
 		}
 		if (pierce > 0 && collision.CompareTag("Enemy"))
 		{
+			player.GetComponent<Inventory>().AddPoints(5);
 			destroyHitEffect = Instantiate(hitEffect, transform.position, transform.rotation);
 			Destroy(destroyHitEffect, 0.5f);
 			collision.GetComponent<EnemyBase>().ApplyDamage(damage);

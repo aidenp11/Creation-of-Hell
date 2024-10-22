@@ -155,4 +155,20 @@ public class EnemyBase : MonoBehaviour
 	{
 		Health -= damage;
 	}
+
+	private void OnDisable()
+	{
+		if (enemyType == EnemyType.normal)
+		{
+			player.GetComponent<Inventory>().AddPoints(50);
+		}
+		else if (enemyType == EnemyType.jumper)
+		{
+			player.GetComponent<Inventory>().AddPoints(65);
+		}
+		else
+		{
+			player.GetComponent<Inventory>().AddPoints(90);
+		}
+	}
 }
