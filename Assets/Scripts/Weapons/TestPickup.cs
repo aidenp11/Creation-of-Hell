@@ -17,6 +17,12 @@ public class TestPickup : MonoBehaviour
 			int secondaryCount = 0;
 			if (collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponClass == WeaponBase.WeaponClass.SECONDARY)
 			{
+				if (weapon.GetComponent<WeaponBase>().weaponClass == WeaponBase.WeaponClass.SECONDARY)
+				{
+					collision.GetComponent<Inventory>().AddWeapon(weapon);
+					Destroy(gameObject);
+					return;
+				}
 				for (int i = 0; i < collision.GetComponent<Inventory>().currentWeapons.Count; i++)
 				{
 					if (collision.GetComponent<Inventory>().currentWeapons.ElementAt(i).GetComponent<WeaponBase>().weaponClass == WeaponBase.WeaponClass.SECONDARY)

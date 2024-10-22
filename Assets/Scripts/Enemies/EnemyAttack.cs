@@ -3,6 +3,8 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] int damage;
+	[SerializeField] GameObject hitEffect;
+	private GameObject destroyHitEffect;
 
 	private Collider2D collided;
 
@@ -10,6 +12,8 @@ public class EnemyAttack : MonoBehaviour
 	{
 		if (collision.CompareTag("Player") && GetComponentInParent<EnemyBase>().enemyType != EnemyBase.EnemyType.hugger)
 		{
+			destroyHitEffect = Instantiate(hitEffect, transform.position, transform.rotation);
+			Destroy(destroyHitEffect, 0.5f);
 			collision.GetComponent<Inventory>().ApplyDamage(damage);
 			GetComponent<Collider2D>().enabled = false;
 		}

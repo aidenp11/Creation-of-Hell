@@ -36,7 +36,7 @@ public class AmmoBase : MonoBehaviour
 		}
 		if (pierce > 0 && collision.CompareTag("Enemy"))
 		{
-			destroyHitEffect = Instantiate(hitEffect, collision.transform);
+			destroyHitEffect = Instantiate(hitEffect, transform.position, transform.rotation);
 			Destroy(destroyHitEffect, 0.5f);
 			collision.GetComponent<EnemyBase>().ApplyDamage(damage);
 			pierce--;
