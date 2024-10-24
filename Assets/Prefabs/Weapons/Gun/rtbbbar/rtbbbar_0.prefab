@@ -170,11 +170,15 @@ MonoBehaviour:
   bulletVelocity: 1125
   bulletDrop: 1.1
   bulletPrefab: {fileID: 8671244544192245551, guid: 645e8d8b5ef12fd459eb432c70f83525, type: 3}
+  weaponName: RTBBBAR
+  genieChance: 3
   reloadSpeed: 2.1
   bloom: 35
   fireRate: 0.75
   ammoCapacity: 30
+  maxAmmoCapacity: 0
   ammoReserve: 210
+  maxAmmoReserve: 0
   reloading: 0
   flippedMuzzleTransform: {fileID: 4762292897277611949}
   notFlippedMuzzleTransform: {fileID: 4664533640084132254}

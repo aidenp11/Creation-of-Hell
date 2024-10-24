@@ -15,6 +15,7 @@ public class WeaponBase : MonoBehaviour
 
 	[Header("Weapon Data")]
 	[SerializeField] public string weaponName;
+	[SerializeField] public int genieChance;
 	[SerializeField] float reloadSpeed;
 	[SerializeField] float bloom;
 	[SerializeField] float fireRate;

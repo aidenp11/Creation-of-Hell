@@ -56,11 +56,13 @@ public class WeaponsDealer : MonoBehaviour
 				if (collision.GetComponent<Inventory>().currentWeapons.ElementAt(i).GetComponent<WeaponBase>().weaponName == weaponName)
 				{
 					alreadyEquipped = true;
+					text.GetComponent<TextMeshProUGUI>().text = "Press E to Buy Ammo: 250";
 					break;
 				}
 				else
 				{
 					alreadyEquipped = false;
+					text.GetComponent<TextMeshProUGUI>().text = ogText;
 				}
 			}
 		}
@@ -135,10 +137,5 @@ public class WeaponsDealer : MonoBehaviour
 				return;
 			}
 		}
-	}
-
-	private void OnDestroy()
-	{
-		Destroy(text);
 	}
 }
