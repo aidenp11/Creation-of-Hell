@@ -140,7 +140,7 @@ MonoBehaviour:
   bulletDrop: 0
   bulletPrefab: {fileID: 8095836295945202249, guid: d3de6a16de5c82942aec7827a7c023ad, type: 3}
   weaponName: Elephant Pistol
-  genieChance: 5
+  genieChance: 1
   reloadSpeed: 2.45
   bloom: 0
   fireRate: 0.1

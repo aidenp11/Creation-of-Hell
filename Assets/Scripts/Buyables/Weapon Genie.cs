@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -8,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class WeaponGenie : MonoBehaviour
 {
 	[SerializeField] List<GameObject> weapons = new List<GameObject>();
+	[SerializeField] List<GameObject> weaponsList = new List<GameObject>();
 	private GameObject weapon;
 	[SerializeField] GameObject text;
 	private string ogText;
@@ -17,7 +19,8 @@ public class WeaponGenie : MonoBehaviour
 	private Sprite spriteToShow;
 	[SerializeField] GameObject spotToShow;
 	private bool alreadySpinning;
-	private bool weaponing;
+
+	private int random;
 
 	private void Start()
 	{
@@ -51,21 +54,15 @@ public class WeaponGenie : MonoBehaviour
 		if (collision.CompareTag("Player") && Input.GetKey(KeyCode.E) &&
 			collision.GetComponent<Inventory>().GetPoints() >= cost && !alreadySpinning)
 		{
+			weaponsList.Clear();
 			text.GetComponent<TextMeshProUGUI>().text = "";
 			player.GetComponent<Inventory>().AddPoints(-cost);
-			weaponing = true;
 			Invoke("GetRandomWeapon", 2.5f);
 			Invoke("SwitchState", 9f);
 			alreadySpinning = true;
 		}
-		if (collision.CompareTag("Player") && weapon == null && alreadySpinning && !weaponing)
-		{
-			while (weapon == null)
-			{
-				GetRandomWeapon();
-			}
-		}
-		if (collision.CompareTag("Player") && Input.GetKey(KeyCode.E) && alreadySpinning && weapon != null)
+		if (collision.CompareTag("Player") && Input.GetKey(KeyCode.E) && alreadySpinning && weapon != null &&
+			!collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().reloading)
 		{
 			if (collision.GetComponent<Inventory>().currentWeapons.Count <= 2)
 			{
@@ -123,30 +120,31 @@ public class WeaponGenie : MonoBehaviour
 
 	private void GetRandomWeapon()
 	{
-		int random = Random.Range(0, weapons.Count);
-		weapon = weapons.ElementAt(random);
-		int weaponGood = Random.Range(0, weapon.GetComponent<WeaponBase>().genieChance);
-		if (weaponGood == weapon.GetComponent<WeaponBase>().genieChance)
+		bool add = true;
+		foreach (GameObject weapon in weapons)
 		{
-			for (int i = 0; i < player.GetComponent<Inventory>().currentWeapons.Count; i++)
+			add = true;
+			foreach (GameObject equippedWeapon in player.GetComponent<Inventory>().currentWeapons)
 			{
-				if (player.GetComponent<Inventory>().currentWeapons.ElementAt(i).GetComponent<WeaponBase>().weaponName == weapon.GetComponent<WeaponBase>().weaponName)
+				if (weapon.GetComponent<WeaponBase>().weaponName == equippedWeapon.GetComponent<WeaponBase>().weaponName)
 				{
-					weaponing = false;
-					weapon = null;
-					return;
+					add = false;
+					break;
 				}
 			}
-			weaponing = true;
-			spriteToShow = weapon.GetComponent<SpriteRenderer>().sprite;
-			spotToShow.GetComponent<SpriteRenderer>().sprite = spriteToShow;
-			text.GetComponent<TextMeshProUGUI>().text = "Press E to pick up " + weapon.GetComponent<WeaponBase>().weaponName;
+			if (add)
+			{
+				for (int i = 0; i < weapon.GetComponent<WeaponBase>().genieChance; i++)
+				{
+					weaponsList.Add(weapon);
+				}
+			}
 		}
-		else
-		{
-			weaponing = false;
-			weapon = null;
-		}
+		random = UnityEngine.Random.Range(0, weaponsList.Count);
+		weapon = weaponsList.ElementAt(random);
+		spriteToShow = weapon.GetComponent<SpriteRenderer>().sprite;
+		spotToShow.GetComponent<SpriteRenderer>().sprite = spriteToShow;
+		text.GetComponent<TextMeshProUGUI>().text = "Press E to pick up " + weapon.GetComponent<WeaponBase>().weaponName;
 	}
 
 	private void SwitchState()

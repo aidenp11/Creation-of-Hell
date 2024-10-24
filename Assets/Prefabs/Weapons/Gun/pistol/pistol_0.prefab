@@ -171,6 +171,7 @@ MonoBehaviour:
   bulletDrop: 0.5
   bulletPrefab: {fileID: 8095836295945202249, guid: 843e4cfe1cebccd489fe5e8a4e41dea1, type: 3}
   weaponName: Pistol
+  genieChance: 0
   reloadSpeed: 2.15
   bloom: 100
   fireRate: 0.3
