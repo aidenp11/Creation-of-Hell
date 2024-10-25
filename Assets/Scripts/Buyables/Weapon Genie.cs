@@ -20,6 +20,11 @@ public class WeaponGenie : MonoBehaviour
 	[SerializeField] GameObject spotToShow;
 	private bool alreadySpinning;
 
+	private float timeToShow = 0;
+	private bool spinning = false;
+
+	[SerializeField] Animator animator;
+
 	private int random;
 
 	private void Start()
@@ -39,13 +44,27 @@ public class WeaponGenie : MonoBehaviour
 	{
 		playerTransform = player.GetComponent<Transform>();
 
-		if (Mathf.Abs(transform.position.x - playerTransform.position.x) <= 1)
+		if (Mathf.Abs(transform.position.x - playerTransform.position.x) <= 2.25f)
 		{
+			animator.SetBool("PlayerClose", true);
 			text.SetActive(true);
 		}
 		else
 		{
+			animator.SetBool("PlayerClose", false);
 			text.SetActive(false);
+		}
+
+		if (spinning && weapon == null)
+		{
+			timeToShow -= Time.deltaTime;
+			if (timeToShow <= 0)
+			{
+				timeToShow = 0.25f;
+				Sprite randomSprite = weapons.ElementAt(UnityEngine.Random.Range(0, weapons.Count)).GetComponent<SpriteRenderer>().sprite;
+				spriteToShow = randomSprite;
+				spotToShow.GetComponent<SpriteRenderer>().sprite = spriteToShow;
+			}
 		}
 	}
 
@@ -60,9 +79,11 @@ public class WeaponGenie : MonoBehaviour
 			Invoke("GetRandomWeapon", 2.5f);
 			Invoke("SwitchState", 9f);
 			alreadySpinning = true;
+			spinning = true;
 		}
 		if (collision.CompareTag("Player") && Input.GetKey(KeyCode.E) && alreadySpinning && weapon != null &&
-			!collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().reloading)
+			!collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().reloading 
+			&& collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().fireRate <= 0)
 		{
 			if (collision.GetComponent<Inventory>().currentWeapons.Count <= 2)
 			{
@@ -70,6 +91,7 @@ public class WeaponGenie : MonoBehaviour
 				text.GetComponent<TextMeshProUGUI>().text = "";
 				weapon = null;
 				spriteToShow = null;
+				spinning = false;
 				spotToShow.GetComponent<SpriteRenderer>().sprite = null;
 				return;
 			}
@@ -82,6 +104,7 @@ public class WeaponGenie : MonoBehaviour
 					text.GetComponent<TextMeshProUGUI>().text = "";
 					weapon = null;
 					spriteToShow = null;
+					spinning = false;
 					spotToShow.GetComponent<SpriteRenderer>().sprite = null;
 					return;
 				}
@@ -98,6 +121,7 @@ public class WeaponGenie : MonoBehaviour
 					text.GetComponent<TextMeshProUGUI>().text = "";
 					weapon = null;
 					spriteToShow = null;
+					spinning = false;
 					spotToShow.GetComponent<SpriteRenderer>().sprite = null;
 					return;
 				}
@@ -112,6 +136,7 @@ public class WeaponGenie : MonoBehaviour
 				text.GetComponent<TextMeshProUGUI>().text = "";
 				weapon = null;
 				spriteToShow = null;
+				spinning = false;
 				spotToShow.GetComponent<SpriteRenderer>().sprite = null;
 				return;
 			}

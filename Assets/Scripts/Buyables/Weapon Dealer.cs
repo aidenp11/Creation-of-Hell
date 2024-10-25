@@ -90,7 +90,7 @@ public class WeaponsDealer : MonoBehaviour
 			}
 		}
 		if (collision.CompareTag("Player") && Input.GetKey(KeyCode.E) && !collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().reloading &&
-			collision.GetComponent<Inventory>().GetPoints() >= cost && !alreadyEquipped)
+			collision.GetComponent<Inventory>().GetPoints() >= cost && !alreadyEquipped && collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().fireRate <= 0)
 		{
 			text.GetComponent<TextMeshProUGUI>().text = ogText;
 			if (collision.GetComponent<Inventory>().currentWeapons.Count <= 2)

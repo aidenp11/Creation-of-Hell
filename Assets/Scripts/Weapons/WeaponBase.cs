@@ -18,7 +18,7 @@ public class WeaponBase : MonoBehaviour
 	[SerializeField] public int genieChance;
 	[SerializeField] float reloadSpeed;
 	[SerializeField] float bloom;
-	[SerializeField] float fireRate;
+	[SerializeField] public float fireRate;
 	[SerializeField] public int ammoCapacity;
 	public int maxAmmoCapacity;
 	[SerializeField] public int ammoReserve;
