@@ -49,9 +49,13 @@ public class WeaponGenie : MonoBehaviour
 			animator.SetBool("PlayerClose", true);
 			text.SetActive(true);
 		}
-		else
+		else if(!spinning)
 		{
 			animator.SetBool("PlayerClose", false);
+			text.SetActive(false);
+		}
+		else
+		{
 			text.SetActive(false);
 		}
 
@@ -78,6 +82,7 @@ public class WeaponGenie : MonoBehaviour
 			player.GetComponent<Inventory>().AddPoints(-cost);
 			Invoke("GetRandomWeapon", 2.5f);
 			Invoke("SwitchState", 9f);
+			Invoke("SwitchAnimState", 9f);
 			alreadySpinning = true;
 			spinning = true;
 		}
@@ -182,5 +187,10 @@ public class WeaponGenie : MonoBehaviour
 			spotToShow.GetComponent<SpriteRenderer>().sprite = null;
 			alreadySpinning = false;
 		}
+	}
+
+	private void SwitchAnimState()
+	{
+		if (spinning) spinning = false; 
 	}
 }
