@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerScore
   m_EditorClassIdentifier: 
   initialValue: 5000
-  value: 1235
+  value: 5000

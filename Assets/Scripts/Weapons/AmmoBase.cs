@@ -51,7 +51,14 @@ public class AmmoBase : MonoBehaviour
 		}
 		if (pierce > 0 && collision.CompareTag("Enemy"))
 		{
-			player.GetComponent<Inventory>().AddPoints(5);
+			if (player.GetComponent<Inventory>().gambler == true)
+			{
+				player.GetComponent<Inventory>().AddPoints(Random.Range(-10, 30));
+			}
+			else
+			{
+				player.GetComponent<Inventory>().AddPoints(5);
+			}
 			destroyHitEffect = Instantiate(hitEffect, transform.position, transform.rotation);
 			Destroy(destroyHitEffect, 0.5f);
 			collision.GetComponent<EnemyBase>().ApplyDamage(damage);

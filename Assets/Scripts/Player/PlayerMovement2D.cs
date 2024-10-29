@@ -15,7 +15,7 @@ public class PlayerMovement2D : MonoBehaviour
 
 	[Header("Movement Variables")]
 	[SerializeField] float acceleration;
-	[SerializeField] float speed;
+	[SerializeField] public float speed;
 	[SerializeField] float drag;
 	private float ogAccel;
 

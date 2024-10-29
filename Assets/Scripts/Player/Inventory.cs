@@ -14,17 +14,49 @@ public class Inventory : MonoBehaviour
 	public List<GameObject> currentWeapons = new List<GameObject>();
 
 	[Header("PlayerData")]
-	[SerializeField] IntVariable Health;
+	[SerializeField] public IntVariable Health;
+	public int maxHealth;
 	[SerializeField] IntVariable Score;
+
+	[SerializeField] public float healingRecharge;
+	private float ogHealingRecharge;
+	[SerializeField] public int healthToHeal;
+	public bool justAttacked;
+	[SerializeField] public float afterAttackHealingRecharge;
+	[SerializeField] float ableToBeAttackedCooldown;
+
+	[Header("Perks")]
+	public bool gambler;
 
 	private void Start()
 	{
 		activeWeapon = Instantiate(startingWeapon, handPosition);
 		currentWeapons.Add(activeWeapon);
+		ogHealingRecharge = healingRecharge;
+		maxHealth = Health.value;
+		gambler = false;
 	}
 
 	private void Update()
 	{
+		if (justAttacked)
+		{
+			Invoke("SwitchAbleToBeAttackedState", ableToBeAttackedCooldown);
+			healingRecharge = afterAttackHealingRecharge;
+		}
+		else if (!justAttacked)
+		{
+			if (healingRecharge <= 0 && Health.value + healthToHeal < maxHealth)
+			{
+				Health.value += healthToHeal;
+				healingRecharge = ogHealingRecharge;
+			}
+			else if (healingRecharge <= 0 && Health.value + healthToHeal >= maxHealth)
+			{
+				Health.value = maxHealth;
+			}
+		}
+		healingRecharge -= Time.deltaTime;
 		if (currentWeapons.Count == 1)
 		{
 
@@ -136,5 +168,10 @@ public class Inventory : MonoBehaviour
 	public int GetPoints()
 	{
 		return Score.value;
+	}
+
+	private void SwitchAbleToBeAttackedState()
+	{
+		justAttacked = false;
 	}
 }

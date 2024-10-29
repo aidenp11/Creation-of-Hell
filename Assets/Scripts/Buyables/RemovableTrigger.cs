@@ -12,6 +12,11 @@ public class RemovableTrigger : MonoBehaviour
 	[SerializeField] GameObject text;
 	private bool done = false;
 
+	private void Start()
+	{
+		text.SetActive(false);
+	}
+
 	private void OnTriggerStay2D(Collider2D collision)
 	{
 		if (collision.CompareTag("Player") && !done)

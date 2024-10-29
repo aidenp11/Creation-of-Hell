@@ -10,14 +10,16 @@ public class EnemyAttack : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.CompareTag("Player") && GetComponentInParent<EnemyBase>().enemyType != EnemyBase.EnemyType.hugger)
+		if (collision.CompareTag("Player") && GetComponentInParent<EnemyBase>().enemyType != EnemyBase.EnemyType.hugger
+			&& !collision.GetComponent<Inventory>().justAttacked)
 		{
 			destroyHitEffect = Instantiate(hitEffect, transform.position, transform.rotation);
 			Destroy(destroyHitEffect, 0.5f);
 			collision.GetComponent<Inventory>().ApplyDamage(damage);
+			collision.GetComponent<Inventory>().justAttacked = true;
 			GetComponent<Collider2D>().enabled = false;
 		}
-		else if (collision.CompareTag("Player"))
+		else if (collision.CompareTag("Player") && GetComponentInParent<EnemyBase>().enemyType == EnemyBase.EnemyType.hugger)
 		{
 			collision.GetComponent<Inventory>().ApplyDamage(damage);
 			collision.GetComponent<PlayerMovement2D>().enabled = false;
