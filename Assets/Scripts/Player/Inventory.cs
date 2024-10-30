@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -15,8 +16,10 @@ public class Inventory : MonoBehaviour
 
 	[Header("PlayerData")]
 	[SerializeField] public IntVariable Health;
+	[SerializeField] Slider healthSlider;
 	public int maxHealth;
 	[SerializeField] IntVariable Score;
+	[SerializeField] TextMeshProUGUI scoreText;
 
 	[SerializeField] public float healingRecharge;
 	private float ogHealingRecharge;
@@ -41,6 +44,7 @@ public class Inventory : MonoBehaviour
 		currentWeapons.Add(activeWeapon);
 		ogHealingRecharge = healingRecharge;
 		maxHealth = Health.value;
+		healthSlider.maxValue = maxHealth;
 		afterAttackHealingRecharge = afterAttackRegenRecharge;
 		healthToHeal = healthToRegen;
 		gambler = false;
@@ -53,6 +57,8 @@ public class Inventory : MonoBehaviour
 
 	private void Update()
 	{
+		scoreText.text = "" + Score.value;
+		healthSlider.value = Health.value;
 		if (regenPerk && !regenDone)
 		{
 			healthToHeal = (int)((float)healthToRegen * 1.35f);
@@ -63,6 +69,7 @@ public class Inventory : MonoBehaviour
 		if (healthPerk && !healthDone)
 		{
 			maxHealth = maxHealth * 2;
+			healthSlider.maxValue = maxHealth;
 			Health.value = maxHealth;
 			healthDone = true;
 		}
