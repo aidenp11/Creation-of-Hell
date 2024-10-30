@@ -24,6 +24,7 @@ public class WeaponBase : MonoBehaviour
 	public int maxAmmoCapacity;
 	[SerializeField] public int ammoReserve;
 	public bool upgraded;
+	public bool upgraded2;
 	public int maxAmmoReserve;
 	public bool reloading = false;
 	private bool outOfBullts = false;
@@ -72,10 +73,12 @@ public class WeaponBase : MonoBehaviour
 
 	private GameObject bullet;
 	private bool upgradeDone = false;
+	private bool upgrade2Done = false;
 
 	private void Start()
 	{
 		upgraded = false;
+		upgraded2 = false;
 		originalFireRate = fireRate;
 		numPelletsToUse = numPellets;
 		fireRateToUse = 0;
@@ -99,6 +102,11 @@ public class WeaponBase : MonoBehaviour
 		{
 			Upgrade();
 			upgradeDone = true;
+		}
+		if (upgraded2 && !upgrade2Done)
+		{
+			Upgrade();
+			upgrade2Done = true;
 		}
 		if (GetComponent<SpriteRenderer>().flipY == true)
 		{
@@ -248,37 +256,48 @@ public class WeaponBase : MonoBehaviour
 
 	private void Upgrade()
 	{
+		if (upgraded && !upgraded2)
+		{
+			GetComponent<SpriteRenderer>().color = new Color(1 * 2, 0.9109956f * 2, 0.4371068f * 2);
+		}
+		else
+		{
+			GetComponent<SpriteRenderer>().color = new Color(1.5f, 0, 2.3f);
+		}
 		if (weaponType == WeaponType.SEMIAUTO && !shotgun)
 		{
 			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 1.5f);
-			maxAmmoReserve = (int)((float)maxAmmoReserve * 3.5f);
+			maxAmmoReserve = (int)((float)maxAmmoReserve * 2.5f);
 			InstaReload();
-		} 
+		}
 		else if (weaponType == WeaponType.SEMIAUTO && shotgun)
 		{
-			numPelletsToUse = (int)((float)numPellets * 1.5f);
+			numPelletsToUse = (int)((float)numPelletsToUse * 1.5f);
 			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 1.25f);
-			maxAmmoReserve = (int)((float)maxAmmoReserve * 2.75f);
+			maxAmmoReserve = (int)((float)maxAmmoReserve * 1.75f);
 			InstaReload();
 		}
 		else if (weaponType == WeaponType.FULLAUTO && !shotgun)
 		{
-			fireRateToUse = originalFireRate * 0.3f;
+			originalFireRate = originalFireRate * 0.75f;
 			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 1.25f);
-			maxAmmoReserve = (int)((float)maxAmmoReserve * 2);
+			maxAmmoReserve = (int)((float)maxAmmoReserve * 1.85f);
+			InstaReload();
 		}
 		else if (weaponType == WeaponType.FULLAUTO && shotgun)
 		{
-			fireRateToUse = originalFireRate * 0.2f;
-			numPelletsToUse = (int)((float)numPellets * 2);
-			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 3);
-			maxAmmoReserve = (int)((float)maxAmmoReserve * 4);
+			originalFireRate = originalFireRate * 0.55f;
+			numPelletsToUse = (int)((float)numPelletsToUse * 1.65f);
+			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 2.25f);
+			maxAmmoReserve = (int)((float)maxAmmoReserve * 2.5f);
+			InstaReload();
 		}
 		else if (weaponType == WeaponType.BURST)
 		{
-			fireRateToUse = originalFireRate * 0.8f;
+			originalFireRate = originalFireRate * 0.8f;
 			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 1.5f);
-			maxAmmoReserve = (int)((float)maxAmmoReserve * 2.85);
+			maxAmmoReserve = (int)((float)maxAmmoReserve * 2.85f);
+			InstaReload();
 		}
 	}
 

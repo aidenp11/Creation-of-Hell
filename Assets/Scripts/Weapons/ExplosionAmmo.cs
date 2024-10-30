@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class AmmoBase : MonoBehaviour
+public class ExplosionAmmo : MonoBehaviour
 {
 	[SerializeField] int damage;
-	public int damageToUse;
+	private int damageToUse;
 	[SerializeField] float bulletLifespan;
 	[SerializeField] int pierce;
 	private int piercePerkPierce;
-	public int pierceToUse;
+	private int pierceToUse;
 	[SerializeField][Range(0, 1)] float pierceDamageFalloff;
 	[SerializeField] GameObject hitEffect;
 	private GameObject destroyHitEffect;
@@ -21,7 +21,6 @@ public class AmmoBase : MonoBehaviour
 	private float newDamage;
 
 	private bool doneUpgrade = false;
-	private bool doneUpgrade2 = false;
 
 	private void Start()
 	{
@@ -41,13 +40,8 @@ public class AmmoBase : MonoBehaviour
 	{
 		if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded == true && !doneUpgrade)
 		{
-			UpgradeBullet();
+			UpgradeExplosionBullet();
 			doneUpgrade = true;
-		}
-		if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded2 == true && !doneUpgrade2)
-		{
-			UpgradeBullet();
-			doneUpgrade2 = true;
 		}
 		if (player.GetComponent<Inventory>().piercePerk == true)
 		{
@@ -90,48 +84,40 @@ public class AmmoBase : MonoBehaviour
 		}
 	}
 
-	private void UpgradeBullet()
+	private void UpgradeExplosionBullet()
 	{
-		if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded && !player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded2)
-		{
-			GetComponent<SpriteRenderer>().color = new Color(1 * 2, 0.9109956f * 2, 0.4371068f * 2);
-		}
-		else
-		{
-			GetComponent<SpriteRenderer>().color = new Color(1.5f, 0, 2.3f);
-		}
 		if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.SEMIAUTO
 			&& player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().shotgun == false)
 		{
-			damageToUse = (int)((float)damageToUse * 1.5f);
-			pierceToUse = (int)((float)pierceToUse * 2.5f);
+			damageToUse = (int)((float)damage * 2.5f);
+			pierceToUse = (int)((float)pierce * 3.5f);
 			piercePerkPierce = pierceToUse + 3;
 		}
 		else if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.SEMIAUTO
 			&& player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().shotgun == true)
 		{
-			damageToUse = (int)((float)damageToUse * 1.75f);
-			pierceToUse = pierceToUse + 2;
+			damageToUse = (int)((float)damage * 2.75f);
+			pierceToUse = pierce + 3;
 			piercePerkPierce = pierceToUse + 3;
 		}
 		else if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.FULLAUTO
 			&& player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().shotgun == false)
 		{
-			damageToUse = (int)((float)damageToUse * 1.25f);
-			pierceToUse = (int)((float)pierceToUse * 1.25f);
+			damageToUse = (int)((float)damage * 2.25f);
+			pierceToUse = (int)((float)pierce * 2.25f);
 			piercePerkPierce = pierceToUse + 3;
 		}
 		else if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.FULLAUTO
 			&& player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().shotgun == true)
 		{
-			damageToUse = (int)((float)damageToUse * 2.5f);
-			pierceToUse = pierceToUse + 3;
+			damageToUse = (int)((float)damage * 3.5f);
+			pierceToUse = pierce + 4;
 			piercePerkPierce = pierceToUse + 3;
 		}
 		else if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.BURST)
 		{
-			damageToUse = (int)((float)damageToUse * 2.25f);
-			pierceToUse = pierceToUse + 2;
+			damageToUse = (int)((float)damage * 3.25f);
+			pierceToUse = pierce + 2;
 			piercePerkPierce = pierceToUse + 3;
 		}
 	}
