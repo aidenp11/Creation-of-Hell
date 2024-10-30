@@ -87,8 +87,24 @@ public class PerkStation : MonoBehaviour
 					}
 					break;
 				case PerkType.HEALTH:
+					if (Input.GetKeyDown(KeyCode.E) && collision.GetComponent<Inventory>().GetPoints() >= cost)
+					{
+						collision.GetComponent<Inventory>().healthPerk = true;
+						collision.GetComponent<Inventory>().AddPoints(-cost);
+						Destroy(text);
+						Destroy(gameObject.GetComponent<Collider2D>(), 0.1f);
+						done = true;
+					}
 					break;
 				case PerkType.REGEN:
+					if (Input.GetKeyDown(KeyCode.E) && collision.GetComponent<Inventory>().GetPoints() >= cost)
+					{
+						collision.GetComponent<Inventory>().regenPerk = true;
+						collision.GetComponent<Inventory>().AddPoints(-cost);
+						Destroy(text);
+						Destroy(gameObject.GetComponent<Collider2D>(), 0.1f);
+						done = true;
+					}
 					break;
 				case PerkType.PIERCE:
 					if (Input.GetKeyDown(KeyCode.E) && collision.GetComponent<Inventory>().GetPoints() >= cost)

@@ -20,14 +20,20 @@ public class Inventory : MonoBehaviour
 
 	[SerializeField] public float healingRecharge;
 	private float ogHealingRecharge;
-	[SerializeField] public int healthToHeal;
+	[SerializeField] int healthToRegen;
+	private int healthToHeal;
 	public bool justAttacked;
-	[SerializeField] public float afterAttackHealingRecharge;
+	[SerializeField] float afterAttackRegenRecharge;
+	private float afterAttackHealingRecharge;
 	[SerializeField] float ableToBeAttackedCooldown;
 
 	[Header("Perks")]
 	public bool gambler;
 	public bool piercePerk;
+	public bool healthPerk;
+	private bool healthDone;
+	public bool regenPerk;
+	private bool regenDone;
 
 	private void Start()
 	{
@@ -35,12 +41,31 @@ public class Inventory : MonoBehaviour
 		currentWeapons.Add(activeWeapon);
 		ogHealingRecharge = healingRecharge;
 		maxHealth = Health.value;
+		afterAttackHealingRecharge = afterAttackRegenRecharge;
+		healthToHeal = healthToRegen;
 		gambler = false;
 		piercePerk = false;
+		healthPerk = false;
+		healthDone = false;
+		regenPerk = false;
+		regenDone = false;
 	}
 
 	private void Update()
 	{
+		if (regenPerk && !regenDone)
+		{
+			healthToHeal = (int)((float)healthToRegen * 1.35f);
+			afterAttackHealingRecharge = afterAttackRegenRecharge * 0.85f;
+			ogHealingRecharge = ogHealingRecharge * 0.35f;
+			regenDone = true;
+		}
+		if (healthPerk && !healthDone)
+		{
+			maxHealth = maxHealth * 2;
+			Health.value = maxHealth;
+			healthDone = true;
+		}
 		if (justAttacked)
 		{
 			Invoke("SwitchAbleToBeAttackedState", ableToBeAttackedCooldown);
