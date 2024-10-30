@@ -9,6 +9,8 @@ public class AmmoBase : MonoBehaviour
 	[SerializeField] int damage;
 	[SerializeField] float bulletLifespan;
 	[SerializeField] int pierce;
+	private int piercePerkPierce;
+	public int pierceToUse;
 	[SerializeField][Range(0, 1)] float pierceDamageFalloff;
 	[SerializeField] GameObject hitEffect;
 	private GameObject destroyHitEffect;
@@ -20,6 +22,8 @@ public class AmmoBase : MonoBehaviour
 
 	private void Start()
 	{
+		piercePerkPierce = pierce + 3;
+		pierceToUse = pierce;
 		for (int i = 0; i < SceneManager.GetActiveScene().GetRootGameObjects().Length; i++)
 		{
 			if (SceneManager.GetActiveScene().GetRootGameObjects().ElementAt(i).GetComponent<PlayerMovement2D>())
@@ -31,8 +35,12 @@ public class AmmoBase : MonoBehaviour
 	}
 	private void Update()
 	{
+		if (player.GetComponent<Inventory>().piercePerk == true)
+		{
+			pierceToUse = piercePerkPierce;
+		}
 		bulletLifespan -= Time.deltaTime;
-		if (pierce <= 0)
+		if (pierceToUse <= 0)
 		{
 			Destroy(gameObject);
 		}
@@ -49,7 +57,7 @@ public class AmmoBase : MonoBehaviour
 			//Instantiate(wallHitEffect, collision.transform);
 			Destroy(gameObject);
 		}
-		if (pierce > 0 && collision.CompareTag("Enemy"))
+		if (pierceToUse > 0 && collision.CompareTag("Enemy"))
 		{
 			if (player.GetComponent<Inventory>().gambler == true)
 			{
@@ -62,7 +70,7 @@ public class AmmoBase : MonoBehaviour
 			destroyHitEffect = Instantiate(hitEffect, transform.position, transform.rotation);
 			Destroy(destroyHitEffect, 0.5f);
 			collision.GetComponent<EnemyBase>().ApplyDamage(damage);
-			pierce--;
+			pierceToUse--;
 			newDamage = (float)damage * pierceDamageFalloff;
 			damage = (int)newDamage;
 		}

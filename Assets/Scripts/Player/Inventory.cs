@@ -27,6 +27,7 @@ public class Inventory : MonoBehaviour
 
 	[Header("Perks")]
 	public bool gambler;
+	public bool piercePerk;
 
 	private void Start()
 	{
@@ -35,6 +36,7 @@ public class Inventory : MonoBehaviour
 		ogHealingRecharge = healingRecharge;
 		maxHealth = Health.value;
 		gambler = false;
+		piercePerk = false;
 	}
 
 	private void Update()

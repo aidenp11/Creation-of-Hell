@@ -1,4 +1,5 @@
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,6 +33,27 @@ public class PerkStation : MonoBehaviour
 				break;
 			}
 		}
+		switch(perkType)
+		{
+			case PerkType.SPEED:
+				text.GetComponent<TextMeshProUGUI>().text = "Press E to buy Speed" + '\n' + "Cost: " + cost;
+				break;
+			case PerkType.HEALTH:
+				text.GetComponent<TextMeshProUGUI>().text = "Press E to buy More Health" + '\n' + "Cost: " + cost;
+				break;
+			case PerkType.REGEN:
+				text.GetComponent<TextMeshProUGUI>().text = "Press E to buy Faster Healing" + '\n' + "Cost: " + cost;
+				break;
+			case PerkType.PIERCE:
+				text.GetComponent<TextMeshProUGUI>().text = "Press E to buy Sharper Bullets" + '\n' + "Cost: " + cost;
+				break;
+			case PerkType.NOEXPLOSIONDAMAGE:
+				text.GetComponent<TextMeshProUGUI>().text = "Press E to buy Explosion Resistance" + '\n' + "Cost: " + cost;
+				break;
+			case PerkType.GAMBLER:
+				text.GetComponent<TextMeshProUGUI>().text = "Press E to buy Gambler" + '\n' + "Cost: " + cost;
+				break;
+		}
 	}
 
 	private void Update()
@@ -55,12 +77,28 @@ public class PerkStation : MonoBehaviour
 			switch (perkType)
 			{
 				case PerkType.SPEED:
+					if (Input.GetKeyDown(KeyCode.E) && collision.GetComponent<Inventory>().GetPoints() >= cost)
+					{
+						collision.GetComponent<PlayerMovement2D>().speedPerk = true;
+						collision.GetComponent<Inventory>().AddPoints(-cost);
+						Destroy(text);
+						Destroy(gameObject.GetComponent<Collider2D>(), 0.1f);
+						done = true;
+					}
 					break;
 				case PerkType.HEALTH:
 					break;
 				case PerkType.REGEN:
 					break;
 				case PerkType.PIERCE:
+					if (Input.GetKeyDown(KeyCode.E) && collision.GetComponent<Inventory>().GetPoints() >= cost)
+					{
+						collision.GetComponent<Inventory>().piercePerk = true;
+						collision.GetComponent<Inventory>().AddPoints(-cost);
+						Destroy(text);
+						Destroy(gameObject.GetComponent<Collider2D>(), 0.1f);
+						done = true;
+					}
 					break;
 				case PerkType.NOEXPLOSIONDAMAGE:
 					break;

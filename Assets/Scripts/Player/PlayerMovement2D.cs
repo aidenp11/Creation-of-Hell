@@ -16,6 +16,7 @@ public class PlayerMovement2D : MonoBehaviour
 	[Header("Movement Variables")]
 	[SerializeField] float acceleration;
 	[SerializeField] public float speed;
+	private float speedToUse;
 	[SerializeField] float drag;
 	private float ogAccel;
 
@@ -40,14 +41,23 @@ public class PlayerMovement2D : MonoBehaviour
 	private bool onGround;
 	private bool onSlope;
 
+	[Header("Perks")]
+	public bool speedPerk;
+
 	private void Start()
 	{
+		speedPerk = false;
+		speedToUse = speed;
 		ogAccel = acceleration;
 		rb = GetComponent<Rigidbody2D>();
 	}
 
 	private void Update()
 	{
+		if (speedPerk)
+		{
+			speedToUse = speed * 1.5f;
+		}
 		animator.SetFloat("Speed", Math.Abs(rb.linearVelocity.x));
 		if (onSlope == true && onGround == false)
 		{
@@ -94,9 +104,9 @@ public class PlayerMovement2D : MonoBehaviour
 	{
 		rb.AddForce(new Vector2(horizontalDirection, 0f) * acceleration);
 
-		if (Mathf.Abs(rb.linearVelocity.x) > speed)
+		if (Mathf.Abs(rb.linearVelocity.x) > speedToUse)
 		{
-			rb.linearVelocity = new Vector2(Mathf.Sign(rb.linearVelocity.x) * speed, rb.linearVelocity.y);
+			rb.linearVelocity = new Vector2(Mathf.Sign(rb.linearVelocity.x) * speedToUse, rb.linearVelocity.y);
 		}
 	}
 
