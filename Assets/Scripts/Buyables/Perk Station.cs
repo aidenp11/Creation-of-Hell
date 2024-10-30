@@ -7,7 +7,6 @@ public class PerkStation : MonoBehaviour
 {
 	[SerializeField] GameObject text;
 	private GameObject player;
-	private Transform playerTransform;
 	[SerializeField] int cost;
 	private bool done;
 
@@ -24,6 +23,7 @@ public class PerkStation : MonoBehaviour
 
 	private void Start()
 	{
+		text.SetActive(false);
 		done = false;
 		for (int i = 0; i < SceneManager.GetActiveScene().GetRootGameObjects().Length; i++)
 		{
@@ -39,10 +39,10 @@ public class PerkStation : MonoBehaviour
 				text.GetComponent<TextMeshProUGUI>().text = "Press E to buy Speed" + '\n' + "Cost: " + cost;
 				break;
 			case PerkType.HEALTH:
-				text.GetComponent<TextMeshProUGUI>().text = "Press E to buy More Health" + '\n' + "Cost: " + cost;
+				text.GetComponent<TextMeshProUGUI>().text = "Press E to buy Health Milk" + '\n' + "Cost: " + cost;
 				break;
 			case PerkType.REGEN:
-				text.GetComponent<TextMeshProUGUI>().text = "Press E to buy Faster Healing" + '\n' + "Cost: " + cost;
+				text.GetComponent<TextMeshProUGUI>().text = "Press E to buy Regeneration Serum" + '\n' + "Cost: " + cost;
 				break;
 			case PerkType.PIERCE:
 				text.GetComponent<TextMeshProUGUI>().text = "Press E to buy Sharper Bullets" + '\n' + "Cost: " + cost;
@@ -56,22 +56,9 @@ public class PerkStation : MonoBehaviour
 		}
 	}
 
-	private void Update()
-	{
-		playerTransform = player.GetComponent<Transform>();
-
-		if (Mathf.Abs(transform.position.x - playerTransform.position.x) <= 1 && text != null)
-		{
-			text.SetActive(true);
-		}
-		else if (text != null)
-		{
-			text.SetActive(false);
-		}
-	}
-
 	private void OnTriggerStay2D(Collider2D collision)
 	{
+		if (text != null) text.SetActive(true);
 		if (collision.CompareTag("Player") && !done)
 		{
 			switch (perkType)
@@ -130,5 +117,10 @@ public class PerkStation : MonoBehaviour
 					break;
 			}
 		}
+	}
+
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+		if (text != null) text.SetActive(false);
 	}
 }

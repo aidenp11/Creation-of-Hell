@@ -130,8 +130,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 500
+  damageToUse: 0
   bulletLifespan: 1.5
   pierce: 8
+  pierceToUse: 0
   pierceDamageFalloff: 0.895
   hitEffect: {fileID: 8088427377927014934, guid: 79f50474c2c86304896dbbec6b2c97e5, type: 3}
 --- !u!58 &3079745912346267645

@@ -180,6 +180,7 @@ MonoBehaviour:
   maxAmmoCapacity: 0
   ammoReserve: 40
   upgraded: 0
+  upgraded2: 0
   maxAmmoReserve: 0
   reloading: 0
   flippedMuzzleTransform: {fileID: 5754969235804887139}

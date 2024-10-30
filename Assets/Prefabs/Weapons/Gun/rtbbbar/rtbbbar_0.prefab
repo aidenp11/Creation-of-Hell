@@ -175,9 +175,12 @@ MonoBehaviour:
   reloadSpeed: 2.1
   bloom: 35
   fireRate: 0.75
+  fireRateToUse: 0
   ammoCapacity: 30
   maxAmmoCapacity: 0
   ammoReserve: 210
+  upgraded: 0
+  upgraded2: 0
   maxAmmoReserve: 0
   reloading: 0
   flippedMuzzleTransform: {fileID: 4762292897277611949}
