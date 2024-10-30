@@ -88,7 +88,7 @@ public class Inventory : MonoBehaviour
 		{
 
 		}
-		else if (Input.GetAxis("Mouse ScrollWheel") > 0 && !activeWeapon.GetComponent<WeaponBase>().reloading && activeWeapon.GetComponent<WeaponBase>().fireRate <= 0)
+		else if (Input.GetAxis("Mouse ScrollWheel") > 0 && !activeWeapon.GetComponent<WeaponBase>().reloading && activeWeapon.GetComponent<WeaponBase>().fireRateToUse <= 0)
 		{
 			if (currentWeapons.IndexOf(activeWeapon) == currentWeapons.Count - 1)
 			{
@@ -110,7 +110,7 @@ public class Inventory : MonoBehaviour
 				}
 			}
 		}
-		else if (Input.GetAxis("Mouse ScrollWheel") < 0 && !activeWeapon.GetComponent<WeaponBase>().reloading && activeWeapon.GetComponent<WeaponBase>().fireRate <= 0)
+		else if (Input.GetAxis("Mouse ScrollWheel") < 0 && !activeWeapon.GetComponent<WeaponBase>().reloading && activeWeapon.GetComponent<WeaponBase>().fireRateToUse <= 0)
 		{
 			if (currentWeapons.IndexOf(activeWeapon) == 0)
 			{

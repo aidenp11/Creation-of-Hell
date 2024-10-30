@@ -88,7 +88,7 @@ public class WeaponGenie : MonoBehaviour
 		}
 		if (collision.CompareTag("Player") && Input.GetKey(KeyCode.E) && alreadySpinning && weapon != null &&
 			!collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().reloading 
-			&& collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().fireRate <= 0)
+			&& collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().fireRateToUse <= 0)
 		{
 			if (collision.GetComponent<Inventory>().currentWeapons.Count <= 2)
 			{

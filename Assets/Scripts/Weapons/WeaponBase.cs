@@ -19,9 +19,11 @@ public class WeaponBase : MonoBehaviour
 	[SerializeField] float reloadSpeed;
 	[SerializeField] float bloom;
 	[SerializeField] public float fireRate;
+	public float fireRateToUse;
 	[SerializeField] public int ammoCapacity;
 	public int maxAmmoCapacity;
 	[SerializeField] public int ammoReserve;
+	public bool upgraded;
 	public int maxAmmoReserve;
 	public bool reloading = false;
 	private bool outOfBullts = false;
@@ -30,14 +32,14 @@ public class WeaponBase : MonoBehaviour
 	[SerializeField] Transform flippedMuzzleTransform;
 	[SerializeField] Transform notFlippedMuzzleTransform;
 	[SerializeField]
-	enum WeaponType
+	public enum WeaponType
 	{
 		SEMIAUTO,
 		FULLAUTO,
 		BURST
 	}
 
-	[SerializeField] WeaponType weaponType = WeaponType.SEMIAUTO;
+	[SerializeField] public WeaponType weaponType = WeaponType.SEMIAUTO;
 
 	[SerializeField]
 	public enum WeaponClass
@@ -49,8 +51,9 @@ public class WeaponBase : MonoBehaviour
 	[SerializeField] public WeaponClass weaponClass = WeaponClass.PRIMARY;
 
 	[Header("Shotgun Stuff")]
-	[SerializeField] bool shotgun = false;
+	[SerializeField] public bool shotgun = false;
 	[SerializeField] int numPellets;
+	private int numPelletsToUse;
 	[SerializeField] float horizontalSpread;
 
 	[Header("Burst Stuff")]
@@ -68,11 +71,14 @@ public class WeaponBase : MonoBehaviour
 	[SerializeField] Transform cartridgeEjectionTransformNotFlipped;
 
 	private GameObject bullet;
+	private bool upgradeDone = false;
 
 	private void Start()
 	{
+		upgraded = false;
 		originalFireRate = fireRate;
-		fireRate = 0;
+		numPelletsToUse = numPellets;
+		fireRateToUse = 0;
 		maxAmmoCapacity = ammoCapacity;
 		maxAmmoReserve = ammoReserve;
 		if (GetComponent<SpriteRenderer>().flipY == true)
@@ -89,6 +95,11 @@ public class WeaponBase : MonoBehaviour
 
 	private void Update()
 	{
+		if (upgraded && !upgradeDone)
+		{
+			Upgrade();
+			upgradeDone = true;
+		}
 		if (GetComponent<SpriteRenderer>().flipY == true)
 		{
 			muzzleTransform = flippedMuzzleTransform;
@@ -118,9 +129,9 @@ public class WeaponBase : MonoBehaviour
 		switch (weaponType)
 		{
 			case WeaponType.SEMIAUTO:
-				if (Input.GetMouseButtonDown(0) && fireRate < 0 && !shotgun && !reloading && !outOfBullts)
+				if (Input.GetMouseButtonDown(0) && fireRateToUse < 0 && !shotgun && !reloading && !outOfBullts)
 				{
-					fireRate = originalFireRate;
+					fireRateToUse = originalFireRate;
 					Shoot();
 					animator.SetTrigger("Shoot");
 					GameObject cartridged = Instantiate(cartridge, cartridgeEjectionTransform.position, cartridgeEjectionTransform.rotation);
@@ -129,25 +140,25 @@ public class WeaponBase : MonoBehaviour
 					Destroy(Instantiate(shotEffect, muzzleTransform), secondsToDestroyShotEffect);
 					ammoCapacity--;
 				}
-				else if (Input.GetMouseButtonDown(0) && fireRate < 0 && shotgun && !reloading && !outOfBullts)
+				else if (Input.GetMouseButtonDown(0) && fireRateToUse < 0 && shotgun && !reloading && !outOfBullts)
 				{
-					fireRate = originalFireRate;
+					fireRateToUse = originalFireRate;
 					animator.SetTrigger("Shoot");
 					GameObject cartridged = Instantiate(cartridge, cartridgeEjectionTransform.position, cartridgeEjectionTransform.rotation);
 					cartridged.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 125));
 					Destroy(cartridged, 0.8f);
 					Destroy(Instantiate(shotEffect, muzzleTransform), secondsToDestroyShotEffect);
 					ammoCapacity--;
-					for (int i = 0; i < numPellets; i++)
+					for (int i = 0; i < numPelletsToUse; i++)
 					{
 						ShotGunShoot();
 					}
 				}
 				break;
 			case WeaponType.FULLAUTO:
-				if (Input.GetMouseButton(0) && fireRate < 0 && !shotgun && !reloading && !outOfBullts)
+				if (Input.GetMouseButton(0) && fireRateToUse < 0 && !shotgun && !reloading && !outOfBullts)
 				{
-					fireRate = originalFireRate;
+					fireRateToUse = originalFireRate;
 					animator.SetTrigger("Shoot");
 					GameObject cartridged = Instantiate(cartridge, cartridgeEjectionTransform.position, cartridgeEjectionTransform.rotation);
 					cartridged.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 125));
@@ -157,23 +168,23 @@ public class WeaponBase : MonoBehaviour
 					ammoCapacity--;
 
 				}
-				else if (Input.GetMouseButton(0) && fireRate < 0 && shotgun && !reloading && !outOfBullts)
+				else if (Input.GetMouseButton(0) && fireRateToUse < 0 && shotgun && !reloading && !outOfBullts)
 				{
-					fireRate = originalFireRate;
+					fireRateToUse = originalFireRate;
 					animator.SetTrigger("Shoot");
 					GameObject cartridged = Instantiate(cartridge, cartridgeEjectionTransform.position, cartridgeEjectionTransform.rotation);
 					cartridged.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 125));
 					Destroy(cartridged, 0.8f);
 					Destroy(Instantiate(shotEffect, muzzleTransform), secondsToDestroyShotEffect);
 					ammoCapacity--;
-					for (int i = 0; i < numPellets; i++)
+					for (int i = 0; i < numPelletsToUse; i++)
 					{
 						ShotGunShoot();
 					}
 				}
 				break;
 			case WeaponType.BURST:
-				if (Input.GetMouseButtonDown(0) && fireRate < 0 && !reloading && !outOfBullts)
+				if (Input.GetMouseButtonDown(0) && fireRateToUse < 0 && !reloading && !outOfBullts)
 				{
 					burstFiring = true;
 					for (int i = 0; i < burstCount; i++)
@@ -190,7 +201,7 @@ public class WeaponBase : MonoBehaviour
 				}
 				break;
 		}
-		fireRate -= Time.deltaTime;
+		fireRateToUse -= Time.deltaTime;
 	}
 
 	private void BurstShoot()
@@ -204,7 +215,7 @@ public class WeaponBase : MonoBehaviour
 		Destroy(cartridged, 0.8f);
 		Destroy(Instantiate(shotEffect, muzzleTransform), secondsToDestroyShotEffect);
 		float randomBloom = UnityEngine.Random.Range(-bloom, bloom);
-		fireRate = originalFireRate;
+		fireRateToUse = originalFireRate;
 		bullet = Instantiate(bulletPrefab, new Vector2(muzzleTransform.position.x, muzzleTransform.position.y), muzzleTransform.rotation);
 		bullet.GetComponent<Rigidbody2D>().gravityScale = bulletDrop;
 		bullet.GetComponent<Rigidbody2D>().AddRelativeForceY(randomBloom);
@@ -235,6 +246,42 @@ public class WeaponBase : MonoBehaviour
 		bullet.GetComponent<Rigidbody2D>().AddRelativeForceX(bulletVelocity + randomVelocityChange);
 	}
 
+	private void Upgrade()
+	{
+		if (weaponType == WeaponType.SEMIAUTO && !shotgun)
+		{
+			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 1.5f);
+			maxAmmoReserve = (int)((float)maxAmmoReserve * 3.5f);
+			InstaReload();
+		} 
+		else if (weaponType == WeaponType.SEMIAUTO && shotgun)
+		{
+			numPelletsToUse = (int)((float)numPellets * 1.5f);
+			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 1.25f);
+			maxAmmoReserve = (int)((float)maxAmmoReserve * 2.75f);
+			InstaReload();
+		}
+		else if (weaponType == WeaponType.FULLAUTO && !shotgun)
+		{
+			fireRateToUse = originalFireRate * 0.3f;
+			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 1.25f);
+			maxAmmoReserve = (int)((float)maxAmmoReserve * 2);
+		}
+		else if (weaponType == WeaponType.FULLAUTO && shotgun)
+		{
+			fireRateToUse = originalFireRate * 0.2f;
+			numPelletsToUse = (int)((float)numPellets * 2);
+			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 3);
+			maxAmmoReserve = (int)((float)maxAmmoReserve * 4);
+		}
+		else if (weaponType == WeaponType.BURST)
+		{
+			fireRateToUse = originalFireRate * 0.8f;
+			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 1.5f);
+			maxAmmoReserve = (int)((float)maxAmmoReserve * 2.85);
+		}
+	}
+
 	private void Reload()
 	{
 		for (int i = 0; i < maxAmmoCapacity; i++)
@@ -247,5 +294,11 @@ public class WeaponBase : MonoBehaviour
 			else break;
 		}
 		reloading = false;
+	}
+
+	private void InstaReload()
+	{
+		ammoCapacity = maxAmmoCapacity;
+		ammoReserve = maxAmmoReserve;
 	}
 }
