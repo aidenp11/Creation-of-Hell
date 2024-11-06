@@ -136,6 +136,7 @@ MonoBehaviour:
   pierceToUse: 0
   pierceDamageFalloff: 0.85
   hitEffect: {fileID: 8088427377927014934, guid: 79f50474c2c86304896dbbec6b2c97e5, type: 3}
+  wallHitEffect: {fileID: 4505911417926750172, guid: 7b05eb20a1d20eb4cafcbda66123114e, type: 3}
 --- !u!58 &3079745912346267645
 CircleCollider2D:
   m_ObjectHideFlags: 0

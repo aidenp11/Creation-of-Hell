@@ -15,7 +15,8 @@ public class AmmoBase : MonoBehaviour
 	[SerializeField][Range(0, 1)] float pierceDamageFalloff;
 	[SerializeField] GameObject hitEffect;
 	private GameObject destroyHitEffect;
-	//[SerializeField] GameObject wallHitEffect;
+	private GameObject destroyWallHitEffect;
+	[SerializeField] GameObject wallHitEffect;
 	private GameObject player;
 
 	private float newDamage;
@@ -68,7 +69,8 @@ public class AmmoBase : MonoBehaviour
 	{
 		if (collision.CompareTag("Wall"))
 		{
-			//Instantiate(wallHitEffect, collision.transform);
+			destroyWallHitEffect = Instantiate(wallHitEffect, transform.position, transform.rotation);
+			Destroy(destroyWallHitEffect, 0.5f);
 			Destroy(gameObject);
 		}
 		if (pierceToUse > 0 && collision.CompareTag("Enemy"))
