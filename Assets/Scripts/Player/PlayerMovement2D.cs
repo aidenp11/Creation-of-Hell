@@ -59,6 +59,7 @@ public class PlayerMovement2D : MonoBehaviour
 			speedToUse = speed * 1.5f;
 		}
 		animator.SetFloat("Speed", Math.Abs(rb.linearVelocity.x));
+		animator.SetBool("Simulated", rb.simulated);
 		if (onSlope == true && onGround == false)
 		{
 			animator.SetBool("Jump", onSlope);
@@ -69,6 +70,21 @@ public class PlayerMovement2D : MonoBehaviour
 		}
 		horizontalDirection = GetInput().x;
 		if (canJump) Jump();
+
+		if (onSlope && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
+		{
+			rb.simulated = true;
+			acceleration = ogAccel * 12.5f;
+		}
+		else if (onSlope && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+		{
+			rb.simulated = false;
+		}
+		else
+		{
+			rb.simulated = true;
+			acceleration = ogAccel;
+		}
 	}
 
 	private void FixedUpdate()
@@ -83,15 +99,6 @@ public class PlayerMovement2D : MonoBehaviour
 		{
 			ApplyAirDrag();
 			FallMultiplier();
-		}
-
-		if (onSlope)
-		{
-			acceleration = ogAccel * 5;
-		}
-		else
-		{
-			acceleration = ogAccel;
 		}
 	}
 
