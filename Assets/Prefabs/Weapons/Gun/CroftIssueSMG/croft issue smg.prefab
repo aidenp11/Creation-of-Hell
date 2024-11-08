@@ -202,7 +202,7 @@ MonoBehaviour:
   bulletDrop: 1.2
   bulletPrefab: {fileID: 8095836295945202249, guid: 6567327c7d7a25542b0fa9437fb65e63, type: 3}
   weaponName: Croft Issue SMG
-  genieChance: 5
+  genieChance: 0
   reloadSpeed: 1.3
   bloom: 115
   fireRate: 0.195
@@ -214,6 +214,9 @@ MonoBehaviour:
   upgraded2: 0
   maxAmmoReserve: 0
   reloading: 0
+  laser: 0
+  laserObject: {fileID: 0}
+  laserLength: 0
   flippedMuzzleTransform: {fileID: 6916829673548727541}
   notFlippedMuzzleTransform: {fileID: 4863730916599834007}
   weaponType: 1

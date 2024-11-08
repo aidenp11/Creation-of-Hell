@@ -29,9 +29,15 @@ public class WeaponBase : MonoBehaviour
 	public bool reloading = false;
 	private bool outOfBullts = false;
 	private float originalFireRate;
+	[SerializeField] bool laser;
+	[SerializeField] GameObject laserObject;
+	[SerializeField] float laserLength;
+	private GameObject laser1;
+	private GameObject laser2;
 	private Transform muzzleTransform;
 	[SerializeField] Transform flippedMuzzleTransform;
 	[SerializeField] Transform notFlippedMuzzleTransform;
+
 	[SerializeField]
 	public enum WeaponType
 	{
@@ -84,16 +90,35 @@ public class WeaponBase : MonoBehaviour
 		fireRateToUse = 0;
 		maxAmmoCapacity = ammoCapacity;
 		maxAmmoReserve = ammoReserve;
+		if (laser)
+		{
+			laser1 = Instantiate(laserObject, flippedMuzzleTransform);
+			laser2 = Instantiate(laserObject, notFlippedMuzzleTransform);
+			laser1.transform.localScale = new Vector3(laserLength, laser1.transform.localScale.y, laser1.transform.localScale.z);
+			laser2.transform.localScale = new Vector3(laserLength, laser2.transform.localScale.y, laser2.transform.localScale.z);
+		}
+
 		if (GetComponent<SpriteRenderer>().flipY == true)
 		{
 			muzzleTransform = flippedMuzzleTransform;
 			cartridgeEjectionTransform = cartridgeEjectionTransformFlipped;
+			if (laser)
+			{
+				laser1.SetActive(true);
+				laser2.SetActive(false);
+			}
 		}
 		else
 		{
 			muzzleTransform = notFlippedMuzzleTransform;
 			cartridgeEjectionTransform = cartridgeEjectionTransformNotFlipped;
+			if (laser)
+			{
+				laser1.SetActive(false);
+				laser2.SetActive(true);
+			}
 		}
+
 	}
 
 	private void Update()
@@ -112,11 +137,21 @@ public class WeaponBase : MonoBehaviour
 		{
 			muzzleTransform = flippedMuzzleTransform;
 			cartridgeEjectionTransform = cartridgeEjectionTransformFlipped;
+			if (laser)
+			{
+				laser1.SetActive(true);
+				laser2.SetActive(false);
+			}
 		}
 		else
 		{
 			muzzleTransform = notFlippedMuzzleTransform;
 			cartridgeEjectionTransform = cartridgeEjectionTransformNotFlipped;
+			if (laser)
+			{
+				laser1.SetActive(false);
+				laser2.SetActive(true);
+			}
 		}
 		if (ammoCapacity <= 0 && ammoReserve <= 0)
 		{
