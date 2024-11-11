@@ -170,8 +170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 100
-  speed: 2
-  acceleration: 5
+  speed: 1.75
+  acceleration: 7
   attackObject: {fileID: 3004245026377214365, guid: bec4a3f830e69054185acdcd557d6e18, type: 3}
   attackSpeed: 0.9
   attackCooldown: 0.5
