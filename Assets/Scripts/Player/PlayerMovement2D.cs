@@ -85,13 +85,8 @@ public class PlayerMovement2D : MonoBehaviour
 			rb.simulated = true;
 			acceleration = ogAccel;
 		}
-	}
 
-	private void FixedUpdate()
-	{
-		CheckCollisions();
-		MovePlayer();
-		if (onGround)
+		if (onGround && !Input.GetButtonDown("Jump"))
 		{
 			ApplyDrag();
 		}
@@ -100,6 +95,13 @@ public class PlayerMovement2D : MonoBehaviour
 			ApplyAirDrag();
 			FallMultiplier();
 		}
+	}
+
+	private void FixedUpdate()
+	{
+		CheckCollisions();
+		MovePlayer();
+		
 	}
 
 	private Vector2 GetInput()
@@ -135,7 +137,7 @@ public class PlayerMovement2D : MonoBehaviour
 	}
 	private void Jump()
 	{
-		rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
+		//rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
 		rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 	}
 

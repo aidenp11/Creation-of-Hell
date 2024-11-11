@@ -214,6 +214,9 @@ MonoBehaviour:
   upgraded2: 0
   maxAmmoReserve: 0
   reloading: 0
+  laser: 0
+  laserObject: {fileID: 0}
+  laserLength: 0
   flippedMuzzleTransform: {fileID: 8264563486882182768}
   notFlippedMuzzleTransform: {fileID: 973791131969728060}
   weaponType: 0

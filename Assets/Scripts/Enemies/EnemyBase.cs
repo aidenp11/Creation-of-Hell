@@ -123,12 +123,12 @@ public class EnemyBase : MonoBehaviour
 		if (playerTransform.position.x - transform.position.x > 0)
 		{
 			sr.flipX = false;
-			rb.AddForce(new Vector2(playerTransform.position.x - transform.position.x, 0f) * acceleration);
+			rb.AddForce(new Vector2((playerTransform.position.x - transform.position.x) + (playerTransform.position.y - transform.position.y), 0f) * acceleration);
 		}
 		else if (playerTransform.position.x - transform.position.x < 0)
 		{
 			sr.flipX = true;
-			rb.AddForce(new Vector2(playerTransform.position.x - transform.position.x, 0f) * acceleration);
+			rb.AddForce(new Vector2((playerTransform.position.x - transform.position.x) + (playerTransform.position.y - transform.position.y), 0f) * acceleration);
 		}
 
 		if (Mathf.Abs(rb.linearVelocity.x) > speed)
