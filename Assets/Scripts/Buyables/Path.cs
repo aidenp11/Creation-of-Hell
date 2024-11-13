@@ -29,6 +29,8 @@ public class Path : MonoBehaviour
 	[SerializeField] float rotateRate;
 	private float distanceRotated = 0;
 
+	[SerializeField] Animator animator;
+
 	private void Start()
 	{
 		remove = false;
@@ -41,6 +43,7 @@ public class Path : MonoBehaviour
 			switch (removeType)
 			{
 				case RemoveType.DESTROY:
+					animator.SetTrigger("Destroy");
 					Invoke("DestroySelf", secondsToDo);
 					break;
 				case RemoveType.ANIMATE:
