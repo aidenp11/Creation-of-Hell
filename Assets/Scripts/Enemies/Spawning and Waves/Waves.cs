@@ -43,7 +43,7 @@ public class Waves : MonoBehaviour
 	{
 		playerTransform = player.GetComponent<Transform>();
 
-		for (int i = spawnNumber; i < spawnPoints.Count; )
+		for (int i = spawnNumber; i < spawnPoints.Count; i++)
 		{ 
 			if (Mathf.Abs(spawnPoints.ElementAt(i).transform.position.x - playerTransform.position.x) <= 30 && timeBetweenSpawns <= 0)
 			{
