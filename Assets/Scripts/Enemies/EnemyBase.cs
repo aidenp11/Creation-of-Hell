@@ -9,7 +9,7 @@ public class EnemyBase : MonoBehaviour
 	[Header("Enemy Data")]
 	private Rigidbody2D rb;
 	private SpriteRenderer sr;
-	[SerializeField] int Health;
+	[SerializeField] public int Health;
 	[SerializeField] float speed;
 	[SerializeField] float acceleration;
 	[SerializeField] GameObject attackObject;

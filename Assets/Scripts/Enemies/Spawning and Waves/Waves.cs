@@ -6,29 +6,38 @@ using UnityEngine.SceneManagement;
 
 public class Waves : MonoBehaviour
 {
-    [SerializeField] List<GameObject> spawnPoints;
-    [SerializeField] GameObject mmf;
-    [SerializeField] GameObject huggyBear;
-    [SerializeField] GameObject jumpster;
+	[SerializeField] List<GameObject> spawnPoints;
+	[SerializeField] GameObject mmf;
+	[SerializeField] GameObject huggyBear;
+	[SerializeField] GameObject jumpster;
+
+	private GameObject spawnedmmf;
+	private int mmfHealth;
 
 	private GameObject player;
 	private Transform playerTransform;
 
 	private int roundNumber;
-    public int mmfCount;
-    private int originalmmfCount;
-    public int huggyBearCount;
-    private int originalHuggyBearCount;
-    public int jumpsterCount;
-    private int originalJumpsterCount;
+	public int mmfCount;
+	private int originalmmfCount;
+	public int huggyBearCount;
+	private int originalHuggyBearCount;
+	public int jumpsterCount;
+	private int originalJumpsterCount;
+
+	private int totalToSpawn;
 	private int totalSpawned;
 
-	private float timeBetweenSpawns = 1;
-
-	private int spawnNumber = 0;
+	private float timeBetweenSpawns = 4.5f;
+	public float ogTimeBetweenSpawns;
 
 	private void Start()
 	{
+		roundNumber = 1;
+		totalToSpawn = mmfCount + huggyBearCount + jumpsterCount;
+		originalmmfCount = mmfCount;
+		ogTimeBetweenSpawns = timeBetweenSpawns;
+		mmfHealth = mmf.GetComponent<EnemyBase>().Health;
 		for (int i = 0; i < SceneManager.GetActiveScene().GetRootGameObjects().Length; i++)
 		{
 			if (SceneManager.GetActiveScene().GetRootGameObjects().ElementAt(i).GetComponent<PlayerMovement2D>())
@@ -43,35 +52,19 @@ public class Waves : MonoBehaviour
 	{
 		playerTransform = player.GetComponent<Transform>();
 
-		for (int i = spawnNumber; i < spawnPoints.Count; i++)
-		{ 
+		for (int i = 0; i < spawnPoints.Count; i++)
+		{
 			if (Mathf.Abs(spawnPoints.ElementAt(i).transform.position.x - playerTransform.position.x) <= 30 && timeBetweenSpawns <= 0)
 			{
-				if (mmfCount > 0)
+				if (mmfCount > 0 && spawnPoints.ElementAt(i).GetComponent<SpawnPoint>().valid)
 				{
-					Instantiate(mmf, spawnPoints.ElementAt(i).transform);
+					spawnedmmf = Instantiate(mmf, spawnPoints.ElementAt(i).transform);
+					spawnedmmf.GetComponent<EnemyBase>().Health = mmfHealth;
 					mmfCount--;
+					timeBetweenSpawns = ogTimeBetweenSpawns;
+					spawnPoints.ElementAt(i).GetComponent<SpawnPoint>().valid = false;
 				}
-				timeBetweenSpawns = 1;
-				if (spawnNumber < spawnPoints.Count)
-				{
-					spawnNumber++;
-				}
-				else
-				{
-					spawnNumber = 0;
-				}
-			}
-			else
-			{
-				if (spawnNumber < spawnPoints.Count)
-				{
-					spawnNumber++;
-				}
-				else
-				{
-					spawnNumber = 0;
-				}
+				else continue;
 			}
 		}
 
