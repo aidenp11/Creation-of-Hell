@@ -1,3 +1,4 @@
+using System.Data;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor.SearchService;
@@ -12,6 +13,7 @@ public class EnemyBase : MonoBehaviour
 	[SerializeField] public int Health;
 	[SerializeField] float speed;
 	[SerializeField] float acceleration;
+	private float ogAccel;
 	[SerializeField] GameObject attackObject;
 	private GameObject attack;
 	[SerializeField] float attackSpeed;
@@ -40,8 +42,14 @@ public class EnemyBase : MonoBehaviour
 
 	[Header("Player Stuff")]
 	private GameObject player;
+	private GameObject wave;
 	[SerializeField] float howCloseToPlayer;
 	private Transform playerTransform;
+
+	[SerializeField] LayerMask slopeLayer;
+	[SerializeField] float groundRaycastLength;
+	[SerializeField] private Vector3 groundRaycastOffset;
+	private bool onSlope;
 
 	private void Start()
 	{
@@ -53,8 +61,17 @@ public class EnemyBase : MonoBehaviour
 				break;
 			}
 		}
+		for (int i = 0; i < SceneManager.GetActiveScene().GetRootGameObjects().Length; i++)
+		{
+			if (SceneManager.GetActiveScene().GetRootGameObjects().ElementAt(i).GetComponent<Waves>())
+			{
+				wave = SceneManager.GetActiveScene().GetRootGameObjects().ElementAt(i);
+				break;
+			}
+		}
 		rb = GetComponent<Rigidbody2D>();
 		sr = GetComponent<SpriteRenderer>();
+		ogAccel = acceleration;
 		positiveJumpForwardForce = jumpForwardForce;
 		negativeJumpForwardForce = -jumpForwardForce;
 		if (GetComponent<SpriteRenderer>().flipX == true)
@@ -71,7 +88,37 @@ public class EnemyBase : MonoBehaviour
 
 	private void Update()
 	{
+		CheckCollisions();
 		playerTransform = player.GetComponent<Transform>();
+
+		if (Mathf.Abs(transform.position.x - playerTransform.position.x) >= 80)
+		{
+			if (enemyType == EnemyType.normal)
+			{
+				wave.GetComponent<Waves>().mmfCount++;
+				wave.GetComponent<Waves>().totalSpawned--;
+				Destroy(gameObject);
+			}
+			else if (enemyType == EnemyType.jumper)
+			{
+				wave.GetComponent<Waves>().jumpsterCount++;
+				wave.GetComponent<Waves>().totalSpawned--;
+				Destroy(gameObject);
+			}
+			else if (enemyType == EnemyType.hugger)
+			{
+				wave.GetComponent<Waves>().huggyBearCount++;
+				wave.GetComponent<Waves>().totalSpawned--;
+				Destroy(gameObject);
+			}
+		}
+
+		if (onSlope)
+		{
+			acceleration = ogAccel * 4.0f;
+		}
+		else acceleration = ogAccel;
+
 		animator.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
 		if (GetComponent<SpriteRenderer>().flipX == true)
 		{
@@ -123,18 +170,31 @@ public class EnemyBase : MonoBehaviour
 		if (playerTransform.position.x - transform.position.x > 0)
 		{
 			sr.flipX = false;
-			rb.AddForce(new Vector2((playerTransform.position.x - transform.position.x) + (playerTransform.position.y - transform.position.y), 0f) * acceleration);
+			rb.AddForce(new Vector2(1, 0f) * acceleration);
 		}
 		else if (playerTransform.position.x - transform.position.x < 0)
 		{
 			sr.flipX = true;
-			rb.AddForce(new Vector2((playerTransform.position.x - transform.position.x) + (playerTransform.position.y - transform.position.y), 0f) * acceleration);
+			rb.AddForce(new Vector2(-1, 0f) * acceleration);
 		}
 
 		if (Mathf.Abs(rb.linearVelocity.x) > speed)
 		{
 			rb.linearVelocity = new Vector2(Mathf.Sign(rb.linearVelocity.x) * speed, rb.linearVelocity.y);
 		}
+	}
+
+	private void CheckCollisions()
+	{
+		onSlope = Physics2D.Raycast(transform.position + groundRaycastOffset, Vector2.down, groundRaycastLength, slopeLayer) ||
+				   Physics2D.Raycast(transform.position - groundRaycastOffset, Vector2.down, groundRaycastLength, slopeLayer);
+	}
+
+	private void OnDrawGizmos()
+	{
+		Gizmos.color = Color.yellow;
+		Gizmos.DrawLine(transform.position + groundRaycastOffset, transform.position + groundRaycastOffset + Vector3.down * groundRaycastLength);
+		Gizmos.DrawLine(transform.position - groundRaycastOffset, transform.position - groundRaycastOffset + Vector3.down * groundRaycastLength);
 	}
 
 	private void Attack()

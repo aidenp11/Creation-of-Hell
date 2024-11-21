@@ -1,6 +1,9 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +13,8 @@ public class Waves : MonoBehaviour
 	[SerializeField] GameObject mmf;
 	[SerializeField] GameObject huggyBear;
 	[SerializeField] GameObject jumpster;
+
+	private List<GameObject> spawnedEnemies = new List<GameObject>();
 
 	private GameObject spawnedmmf;
 	private int mmfHealth;
@@ -25,15 +30,19 @@ public class Waves : MonoBehaviour
 	public int jumpsterCount;
 	private int originalJumpsterCount;
 
-	private int totalToSpawn;
-	private int totalSpawned;
+	public int totalToSpawn;
+	public int totalSpawned;
 
 	private float timeBetweenSpawns = 4.5f;
 	public float ogTimeBetweenSpawns;
 
+	[SerializeField] GameObject roundChangeText;
+	[SerializeField] GameObject roundText;
+
 	private void Start()
 	{
 		roundNumber = 1;
+		roundText.GetComponent<TextMeshProUGUI>().text = roundNumber.ToString();
 		totalToSpawn = mmfCount + huggyBearCount + jumpsterCount;
 		originalmmfCount = mmfCount;
 		ogTimeBetweenSpawns = timeBetweenSpawns;
@@ -52,6 +61,26 @@ public class Waves : MonoBehaviour
 	{
 		playerTransform = player.GetComponent<Transform>();
 
+		if (totalSpawned == totalToSpawn && spawnedEnemies.Count > 0)
+		{
+			foreach (GameObject se in spawnedEnemies)
+			{
+				if (!se.IsDestroyed()) break;
+				else if (se == spawnedEnemies.Last() && se.IsDestroyed())
+				{
+					totalSpawned = 0;
+					spawnedEnemies.Clear();
+					roundNumber++;
+					roundChangeText.GetComponent<TextMeshProUGUI>().text = "Round " + roundNumber;
+					roundChangeText.SetActive(true);
+					roundText.GetComponent<TextMeshProUGUI>().text = roundNumber.ToString();
+					Invoke("RoundChangeNumber", 3.5f);
+					Invoke("RoundChange", 10);
+					break;
+				}
+			}
+		}
+
 		for (int i = 0; i < spawnPoints.Count; i++)
 		{
 			if (Mathf.Abs(spawnPoints.ElementAt(i).transform.position.x - playerTransform.position.x) <= 30 && timeBetweenSpawns <= 0)
@@ -60,7 +89,9 @@ public class Waves : MonoBehaviour
 				{
 					spawnedmmf = Instantiate(mmf, spawnPoints.ElementAt(i).transform);
 					spawnedmmf.GetComponent<EnemyBase>().Health = mmfHealth;
+					spawnedEnemies.Add(spawnedmmf);
 					mmfCount--;
+					totalSpawned++;
 					timeBetweenSpawns = ogTimeBetweenSpawns;
 					spawnPoints.ElementAt(i).GetComponent<SpawnPoint>().valid = false;
 				}
@@ -80,6 +111,19 @@ public class Waves : MonoBehaviour
 
 	private void RoundChange()
 	{
+		originalmmfCount = (int)((float)originalmmfCount * 1.2f);
+		mmfCount = originalmmfCount;
+		mmfHealth = (int)((float)mmfHealth * 1.1f);
+		totalToSpawn = mmfCount + jumpsterCount + huggyBearCount;
+		if (ogTimeBetweenSpawns > 0.5f)
+		{
+			ogTimeBetweenSpawns = ogTimeBetweenSpawns * 0.975f;
+		}
+		else ogTimeBetweenSpawns = 0.5f;
+	}
 
+	private void RoundChangeNumber()
+	{
+		roundChangeText.SetActive(false);
 	}
 }
