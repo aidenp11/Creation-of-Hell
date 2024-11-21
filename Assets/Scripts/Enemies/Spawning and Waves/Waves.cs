@@ -43,9 +43,13 @@ public class Waves : MonoBehaviour
 	{
 		roundNumber = 1;
 		roundText.GetComponent<TextMeshProUGUI>().text = roundNumber.ToString();
+		roundChangeText.GetComponent<TextMeshProUGUI>().text = "Round: " + roundNumber;
+		roundChangeText.SetActive(true);
+		Invoke("RoundChangeNumber", 3.5f);
 		totalToSpawn = mmfCount + huggyBearCount + jumpsterCount;
 		originalmmfCount = mmfCount;
 		ogTimeBetweenSpawns = timeBetweenSpawns;
+		timeBetweenSpawns = 10;
 		mmfHealth = mmf.GetComponent<EnemyBase>().Health;
 		for (int i = 0; i < SceneManager.GetActiveScene().GetRootGameObjects().Length; i++)
 		{
