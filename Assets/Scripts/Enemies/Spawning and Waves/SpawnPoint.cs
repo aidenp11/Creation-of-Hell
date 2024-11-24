@@ -7,6 +7,7 @@ public class SpawnPoint : MonoBehaviour
 {
 	public bool valid = true;
 	private bool barrier = false;
+	private bool already = false;
 
 	[SerializeField] List<GameObject> barriers = new List<GameObject>();
 
@@ -17,11 +18,17 @@ public class SpawnPoint : MonoBehaviour
 			if (b.IsDestroyed()) { barrier = false; continue; }
 			else { valid = false; barrier = true; break; }
 		}
-		if (!valid && !barrier) Invoke("ChangeValid", GetComponentInParent<Waves>().ogTimeBetweenSpawns);
+		if (!valid && !barrier && !already)
+		{
+			Invoke("ChangeValid", GetComponentInParent<Waves>().ogTimeBetweenSpawns + 0.1f);
+			already = true;
+
+		}
 	}
 
 	private void ChangeValid()
 	{
 		valid = true;
+		already = false;
 	}
 }
