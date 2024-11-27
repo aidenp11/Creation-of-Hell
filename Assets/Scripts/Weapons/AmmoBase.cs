@@ -83,6 +83,7 @@ public class AmmoBase : MonoBehaviour
 			{
 				player.GetComponent<Inventory>().AddPoints(5);
 			}
+			collision.GetComponent<EnemyBase>().hit.Play();
 			destroyHitEffect = Instantiate(hitEffect, transform.position, transform.rotation);
 			Destroy(destroyHitEffect, 0.5f);
 			collision.GetComponent<EnemyBase>().ApplyDamage(damageToUse);
@@ -105,8 +106,8 @@ public class AmmoBase : MonoBehaviour
 		if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.SEMIAUTO
 			&& player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().shotgun == false)
 		{
-			damageToUse = (int)((float)damageToUse * 1.5f);
-			pierceToUse = (int)((float)pierceToUse * 2.5f);
+			damageToUse = (int)((float)damageToUse * 2f);
+			pierceToUse = (int)((float)pierceToUse * 2f);
 			piercePerkPierce = pierceToUse + 3;
 		}
 		else if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.SEMIAUTO
@@ -119,8 +120,8 @@ public class AmmoBase : MonoBehaviour
 		else if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.FULLAUTO
 			&& player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().shotgun == false)
 		{
-			damageToUse = (int)((float)damageToUse * 1.25f);
-			pierceToUse = (int)((float)pierceToUse * 1.25f);
+			damageToUse = (int)((float)damageToUse * 1.5f);
+			pierceToUse = (int)((float)pierceToUse * 1.5f);
 			piercePerkPierce = pierceToUse + 3;
 		}
 		else if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.FULLAUTO

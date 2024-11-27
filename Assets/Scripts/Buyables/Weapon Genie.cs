@@ -25,6 +25,8 @@ public class WeaponGenie : MonoBehaviour
 
 	[SerializeField] Animator animator;
 
+	[SerializeField] AudioSource jingle;
+
 	private int random;
 
 	private void Start()
@@ -49,7 +51,7 @@ public class WeaponGenie : MonoBehaviour
 			animator.SetBool("PlayerClose", true);
 			text.SetActive(true);
 		}
-		else if(!spinning)
+		else if(!spinning && animator.GetBool("PlayerClose"))
 		{
 			animator.SetBool("PlayerClose", false);
 			text.SetActive(false);
@@ -80,6 +82,7 @@ public class WeaponGenie : MonoBehaviour
 			weaponsList.Clear();
 			text.GetComponent<TextMeshProUGUI>().text = "";
 			player.GetComponent<Inventory>().AddPoints(-cost);
+			jingle.Play();
 			Invoke("GetRandomWeapon", 2.5f);
 			Invoke("SwitchState", 9f);
 			Invoke("SwitchAnimState", 9f);

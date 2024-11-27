@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d6a34d18f86514599d01f78b7b63ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletVelocity: 1750
+  bulletVelocity: 2100
   bulletDrop: 1.15
   bulletPrefab: {fileID: 8095836295945202249, guid: 548b69cd499498c41910df7942b06135, type: 3}
   weaponName: FK50
@@ -232,6 +232,8 @@ MonoBehaviour:
   cartridge: {fileID: 964497685209325265, guid: c3577cc5d314fa645be4af88bfcc11a9, type: 3}
   cartridgeEjectionTransformFlipped: {fileID: 6410415746902324397}
   cartridgeEjectionTransformNotFlipped: {fileID: 111242146703100433}
+  shotSound: {fileID: 0}
+  reloadSound: {fileID: 0}
 --- !u!95 &1138806096593438842
 Animator:
   serializedVersion: 7

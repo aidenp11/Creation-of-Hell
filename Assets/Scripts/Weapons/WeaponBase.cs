@@ -81,6 +81,10 @@ public class WeaponBase : MonoBehaviour
 	private bool upgradeDone = false;
 	private bool upgrade2Done = false;
 
+	[Header("Audio")]
+	[SerializeField] AudioSource shotSound;
+	[SerializeField] AudioSource reloadSound;
+
 	private void Start()
 	{
 		upgraded = false;
@@ -162,12 +166,14 @@ public class WeaponBase : MonoBehaviour
 			reloading = true;
 			animator.SetTrigger("Reload");
 			Invoke("Reload", reloadSpeed);
+			reloadSound.Play();
 		}
 		else if (Input.GetKeyDown(KeyCode.R) && ammoCapacity < maxAmmoCapacity && ammoReserve > 0 && !reloading && !burstFiring && !outOfBullts)
 		{
 			reloading = true;
 			animator.SetTrigger("Reload");
 			Invoke("Reload", reloadSpeed);
+			reloadSound.Play();
 		}
 		switch (weaponType)
 		{
@@ -176,6 +182,7 @@ public class WeaponBase : MonoBehaviour
 				{
 					fireRateToUse = originalFireRate;
 					Shoot();
+					shotSound.Play();
 					animator.SetTrigger("Shoot");
 					GameObject cartridged = Instantiate(cartridge, cartridgeEjectionTransform.position, cartridgeEjectionTransform.rotation);
 					cartridged.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 125));
@@ -196,6 +203,7 @@ public class WeaponBase : MonoBehaviour
 					{
 						ShotGunShoot();
 					}
+					shotSound.Play();
 				}
 				break;
 			case WeaponType.FULLAUTO:
@@ -208,6 +216,7 @@ public class WeaponBase : MonoBehaviour
 					Destroy(cartridged, 0.8f);
 					Destroy(Instantiate(shotEffect, muzzleTransform), secondsToDestroyShotEffect);
 					Shoot();
+					shotSound.Play();
 					ammoCapacity--;
 
 				}
@@ -224,6 +233,7 @@ public class WeaponBase : MonoBehaviour
 					{
 						ShotGunShoot();
 					}
+					shotSound.Play();
 				}
 				break;
 			case WeaponType.BURST:
@@ -252,6 +262,7 @@ public class WeaponBase : MonoBehaviour
 		if (!reloading)
 		{
 			animator.SetTrigger("Shoot");
+			shotSound.Play();
 		}
 		GameObject cartridged = Instantiate(cartridge, cartridgeEjectionTransform.position, cartridgeEjectionTransform.rotation);
 		cartridged.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 125));

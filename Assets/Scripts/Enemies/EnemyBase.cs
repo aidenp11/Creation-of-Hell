@@ -51,6 +51,9 @@ public class EnemyBase : MonoBehaviour
 	[SerializeField] private Vector3 groundRaycastOffset;
 	private bool onSlope;
 
+	[Header("Audio")]
+	[SerializeField] public AudioSource hit;
+
 	private void Start()
 	{
 		for (int i = 0; i < SceneManager.GetActiveScene().GetRootGameObjects().Length; i++)

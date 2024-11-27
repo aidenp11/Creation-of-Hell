@@ -21,6 +21,8 @@ public class PerkStation : MonoBehaviour
 	}
 	[SerializeField] PerkType perkType;
 
+	[SerializeField] AudioSource chaChing;
+
 	private void Start()
 	{
 		text.SetActive(false);
@@ -58,7 +60,7 @@ public class PerkStation : MonoBehaviour
 
 	private void OnTriggerStay2D(Collider2D collision)
 	{
-		if (text != null) text.SetActive(true);
+		if (text != null && collision.CompareTag("Player")) text.SetActive(true);
 		if (collision.CompareTag("Player") && !done)
 		{
 			switch (perkType)
@@ -66,6 +68,7 @@ public class PerkStation : MonoBehaviour
 				case PerkType.SPEED:
 					if (Input.GetKeyDown(KeyCode.E) && collision.GetComponent<Inventory>().GetPoints() >= cost)
 					{
+						chaChing.Play();
 						collision.GetComponent<PlayerMovement2D>().speedPerk = true;
 						collision.GetComponent<Inventory>().AddPoints(-cost);
 						Destroy(text);
@@ -76,6 +79,7 @@ public class PerkStation : MonoBehaviour
 				case PerkType.HEALTH:
 					if (Input.GetKeyDown(KeyCode.E) && collision.GetComponent<Inventory>().GetPoints() >= cost)
 					{
+						chaChing.Play();
 						collision.GetComponent<Inventory>().healthPerk = true;
 						collision.GetComponent<Inventory>().AddPoints(-cost);
 						Destroy(text);
@@ -86,6 +90,7 @@ public class PerkStation : MonoBehaviour
 				case PerkType.REGEN:
 					if (Input.GetKeyDown(KeyCode.E) && collision.GetComponent<Inventory>().GetPoints() >= cost)
 					{
+						chaChing.Play();
 						collision.GetComponent<Inventory>().regenPerk = true;
 						collision.GetComponent<Inventory>().AddPoints(-cost);
 						Destroy(text);
@@ -96,6 +101,7 @@ public class PerkStation : MonoBehaviour
 				case PerkType.PIERCE:
 					if (Input.GetKeyDown(KeyCode.E) && collision.GetComponent<Inventory>().GetPoints() >= cost)
 					{
+						chaChing.Play();
 						collision.GetComponent<Inventory>().piercePerk = true;
 						collision.GetComponent<Inventory>().AddPoints(-cost);
 						Destroy(text);
@@ -108,6 +114,7 @@ public class PerkStation : MonoBehaviour
 				case PerkType.GAMBLER:
 					if (Input.GetKeyDown(KeyCode.E) && collision.GetComponent<Inventory>().GetPoints() >= cost)
 					{
+						chaChing.Play();
 						collision.GetComponent<Inventory>().gambler = true;
 						collision.GetComponent<Inventory>().AddPoints(-cost);
 						Destroy(text);
@@ -121,6 +128,6 @@ public class PerkStation : MonoBehaviour
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
-		if (text != null) text.SetActive(false);
+		if (text != null && collision.CompareTag("Player")) text.SetActive(false);
 	}
 }

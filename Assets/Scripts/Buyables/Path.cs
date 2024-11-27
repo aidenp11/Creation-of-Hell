@@ -30,6 +30,9 @@ public class Path : MonoBehaviour
 	private float distanceRotated = 0;
 
 	[SerializeField] Animator animator;
+	[SerializeField] public AudioSource audioS;
+
+	private bool already = false;
 
 	private void Start()
 	{
@@ -47,6 +50,8 @@ public class Path : MonoBehaviour
 					Invoke("DestroySelf", secondsToDo);
 					break;
 				case RemoveType.ANIMATE:
+					if (!already) { animator.SetTrigger("Destroy"); already = true; }
+					Invoke("SwitchCollision", secondsToDo);
 					break;
 				case RemoveType.MOVEVERTICAL:
 					if (distanceToMove < 0)
@@ -91,5 +96,10 @@ public class Path : MonoBehaviour
 	private void DestroySelf()
 	{
 		Destroy(gameObject);
+	}
+
+	private void SwitchCollision()
+	{
+		GetComponent<Collider2D>().enabled = false;
 	}
 }

@@ -26,6 +26,7 @@ public class RemovableTrigger : MonoBehaviour
 			{
 				done = true;
 				toRemove.GetComponent<Path>().remove = true;
+				toRemove.GetComponent<Path>().audioS.Play();
 				collision.GetComponent<Inventory>().AddPoints(-costToRemove);
 				Destroy(text);
 				Invoke("DestroySelf", 0.1f);

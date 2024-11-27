@@ -20,6 +20,8 @@ public class WeaponsDealer : MonoBehaviour
 	private bool alreadyEquipped;
 	[SerializeField] string weaponName;
 
+	[SerializeField] AudioSource chaChing;
+
 	private void Start()
 	{
 		ammoCostToUse = ammoCost;
@@ -93,6 +95,7 @@ public class WeaponsDealer : MonoBehaviour
 					if (collision.GetComponent<Inventory>().currentWeapons.ElementAt(i).GetComponent<WeaponBase>().ammoReserve <
 						collision.GetComponent<Inventory>().currentWeapons.ElementAt(i).GetComponent<WeaponBase>().maxAmmoReserve)
 					{
+						chaChing.Play();
 						collision.GetComponent<Inventory>().currentWeapons.ElementAt(i).GetComponent<WeaponBase>().ammoReserve = collision.GetComponent<Inventory>().currentWeapons.ElementAt(i).GetComponent<WeaponBase>().maxAmmoReserve;
 						collision.GetComponent<Inventory>().AddPoints(-ammoCostToUse);
 						break;
@@ -107,6 +110,7 @@ public class WeaponsDealer : MonoBehaviour
 			text.GetComponent<TextMeshProUGUI>().text = ogText;
 			if (collision.GetComponent<Inventory>().currentWeapons.Count <= 2)
 			{
+				chaChing.Play();
 				collision.GetComponent<Inventory>().AddWeapon(weapon);
 				collision.GetComponent<Inventory>().AddPoints(-cost);
 				alreadyEquipped = true;
@@ -117,6 +121,7 @@ public class WeaponsDealer : MonoBehaviour
 			{
 				if (weapon.GetComponent<WeaponBase>().weaponClass == WeaponBase.WeaponClass.SECONDARY)
 				{
+					chaChing.Play();
 					collision.GetComponent<Inventory>().AddWeapon(weapon);
 					collision.GetComponent<Inventory>().AddPoints(-cost);
 					alreadyEquipped = true;
@@ -131,6 +136,7 @@ public class WeaponsDealer : MonoBehaviour
 				}
 				if (secondaryCount >= 2)
 				{
+					chaChing.Play();
 					collision.GetComponent<Inventory>().AddWeapon(weapon);
 					collision.GetComponent<Inventory>().AddPoints(-cost);
 					alreadyEquipped = true;
@@ -143,6 +149,7 @@ public class WeaponsDealer : MonoBehaviour
 			}
 			else
 			{
+				chaChing.Play();
 				collision.GetComponent<Inventory>().AddWeapon(weapon);
 				collision.GetComponent<Inventory>().AddPoints(-cost);
 				alreadyEquipped = true;
