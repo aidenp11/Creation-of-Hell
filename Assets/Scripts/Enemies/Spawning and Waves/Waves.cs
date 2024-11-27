@@ -17,7 +17,11 @@ public class Waves : MonoBehaviour
 	private List<GameObject> spawnedEnemies = new List<GameObject>();
 
 	private GameObject spawnedmmf;
+	private GameObject spawnedJumpster;
+	private GameObject spawnedHuggyBear;
 	private int mmfHealth;
+	private int jumpsterHealth;
+	private int huggyBearHealth;
 
 	private GameObject player;
 	private Transform playerTransform;
@@ -32,6 +36,8 @@ public class Waves : MonoBehaviour
 
 	public int totalToSpawn;
 	public int totalSpawned;
+
+	public int amountSpawned;
 
 	private float timeBetweenSpawns = 4.5f;
 	public float ogTimeBetweenSpawns;
@@ -51,6 +57,8 @@ public class Waves : MonoBehaviour
 		ogTimeBetweenSpawns = timeBetweenSpawns;
 		timeBetweenSpawns = 10;
 		mmfHealth = mmf.GetComponent<EnemyBase>().Health;
+		jumpsterHealth = jumpster.GetComponent<EnemyBase>().Health;
+		//huggyBearHealth = huggyBear.GetComponent<EnemyBase>().Health;
 		for (int i = 0; i < SceneManager.GetActiveScene().GetRootGameObjects().Length; i++)
 		{
 			if (SceneManager.GetActiveScene().GetRootGameObjects().ElementAt(i).GetComponent<PlayerMovement2D>())
@@ -85,21 +93,44 @@ public class Waves : MonoBehaviour
 			}
 		}
 
-		for (int i = 0; i < spawnPoints.Count; i++)
+		if (amountSpawned < 30)
 		{
-			if (Mathf.Abs(spawnPoints.ElementAt(i).transform.position.x - playerTransform.position.x) <= 20 && timeBetweenSpawns <= 0)
+			for (int i = 0; i < spawnPoints.Count; i++)
 			{
-				if (mmfCount > 0 && spawnPoints.ElementAt(i).GetComponent<SpawnPoint>().valid)
+				if (Mathf.Abs(spawnPoints.ElementAt(i).transform.position.x - playerTransform.position.x) <= 20 && timeBetweenSpawns <= 0)
 				{
-					spawnedmmf = Instantiate(mmf, spawnPoints.ElementAt(i).transform);
-					spawnedmmf.GetComponent<EnemyBase>().Health = mmfHealth;
-					spawnedEnemies.Add(spawnedmmf);
-					mmfCount--;
-					totalSpawned++;
-					timeBetweenSpawns = ogTimeBetweenSpawns;
-					spawnPoints.ElementAt(i).GetComponent<SpawnPoint>().valid = false;
+					if ((mmfCount > 0 && jumpsterCount <= 0 && huggyBearCount <= 0) && spawnPoints.ElementAt(i).GetComponent<SpawnPoint>().valid)
+					{
+						spawnedmmf = Instantiate(mmf, spawnPoints.ElementAt(i).transform);
+						spawnedmmf.GetComponent<EnemyBase>().Health = mmfHealth;
+						spawnedEnemies.Add(spawnedmmf);
+						mmfCount--;
+						totalSpawned++;
+						timeBetweenSpawns = ogTimeBetweenSpawns;
+						spawnPoints.ElementAt(i).GetComponent<SpawnPoint>().valid = false;
+					}
+					else if ((jumpsterCount > 0 && mmfCount <= 0 && huggyBearCount <= 0) && spawnPoints.ElementAt(i).GetComponent<SpawnPoint>().valid)
+					{
+						spawnedJumpster = Instantiate(jumpster, spawnPoints.ElementAt(i).transform);
+						spawnedJumpster.GetComponent<EnemyBase>().Health = jumpsterHealth;
+						spawnedEnemies.Add(spawnedJumpster);
+						jumpsterCount--;
+						totalSpawned++;
+						timeBetweenSpawns = ogTimeBetweenSpawns;
+						spawnPoints.ElementAt(i).GetComponent<SpawnPoint>().valid = false;
+					}
+					else if ((huggyBearCount > 0 && mmfCount <= 0 && jumpsterCount <= 0) && spawnPoints.ElementAt(i).GetComponent<SpawnPoint>().valid)
+					{
+						spawnedHuggyBear = Instantiate(huggyBear, spawnPoints.ElementAt(i).transform);
+						spawnedHuggyBear.GetComponent<EnemyBase>().Health = huggyBearHealth;
+						spawnedEnemies.Add(spawnedHuggyBear);
+						huggyBearCount--;
+						totalSpawned++;
+						timeBetweenSpawns = ogTimeBetweenSpawns;
+						spawnPoints.ElementAt(i).GetComponent<SpawnPoint>().valid = false;
+					}
+					else continue;
 				}
-				else continue;
 			}
 		}
 
@@ -113,15 +144,37 @@ public class Waves : MonoBehaviour
 		}
 	}
 
+	private void FixedUpdate()
+	{
+		int enemiesSpawned = 0;
+		for (int i = 0; i < spawnedEnemies.Count; i++)
+		{
+			if (spawnedEnemies.ElementAt(i).IsDestroyed())
+			{
+				continue;
+			}
+			else
+			{
+				enemiesSpawned++;
+			}
+		}
+		amountSpawned = enemiesSpawned;
+	}
+
 	private void RoundChange()
 	{
-		originalmmfCount = (int)((float)originalmmfCount * 1.2f);
+		if (roundNumber == 5)
+		{
+			jumpsterCount = 1;
+			originalJumpsterCount = jumpsterCount;
+		}
+		originalmmfCount = (int)((float)originalmmfCount * 1.25f);
 		mmfCount = originalmmfCount;
-		mmfHealth = (int)((float)mmfHealth * 1.1f);
+		mmfHealth = (int)((float)mmfHealth * 1.35f);
 		totalToSpawn = mmfCount + jumpsterCount + huggyBearCount;
 		if (ogTimeBetweenSpawns > 0.5f)
 		{
-			ogTimeBetweenSpawns = ogTimeBetweenSpawns * 0.975f;
+			ogTimeBetweenSpawns = ogTimeBetweenSpawns * 0.95f;
 		}
 		else ogTimeBetweenSpawns = 0.5f;
 	}
