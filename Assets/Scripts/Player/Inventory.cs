@@ -31,6 +31,8 @@ public class Inventory : MonoBehaviour
 	private float afterAttackHealingRecharge;
 	[SerializeField] float ableToBeAttackedCooldown;
 
+	[SerializeField] public AudioSource attacked;
+
 	[Header("Perks")]
 	public bool gambler;
 	public bool piercePerk;

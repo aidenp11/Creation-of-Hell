@@ -17,6 +17,7 @@ public class EnemyAttack : MonoBehaviour
 			Destroy(destroyHitEffect, 0.5f);
 			collision.GetComponent<Inventory>().ApplyDamage(damage);
 			collision.GetComponent<Inventory>().justAttacked = true;
+			collision.GetComponent<Inventory>().attacked.Play(); 
 			GetComponent<Collider2D>().enabled = false;
 		}
 		else if (collision.CompareTag("Player") && GetComponentInParent<EnemyBase>().enemyType == EnemyBase.EnemyType.hugger)

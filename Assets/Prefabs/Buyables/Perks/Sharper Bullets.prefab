@@ -104,6 +104,7 @@ MonoBehaviour:
   text: {fileID: 0}
   cost: 3000
   perkType: 3
+  chaChing: {fileID: 0}
 --- !u!61 &7195436008990829969
 BoxCollider2D:
   m_ObjectHideFlags: 0

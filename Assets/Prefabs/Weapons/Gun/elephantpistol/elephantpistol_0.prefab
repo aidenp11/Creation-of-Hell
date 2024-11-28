@@ -170,6 +170,8 @@ MonoBehaviour:
   cartridge: {fileID: 964497685209325265, guid: af03189f2b266fc4ab99f7046d08a0dd, type: 3}
   cartridgeEjectionTransformFlipped: {fileID: 5855185435188532933}
   cartridgeEjectionTransformNotFlipped: {fileID: 4340022873215444278}
+  shotSound: {fileID: 0}
+  reloadSound: {fileID: 0}
 --- !u!95 &2455421453948520946
 Animator:
   serializedVersion: 7
