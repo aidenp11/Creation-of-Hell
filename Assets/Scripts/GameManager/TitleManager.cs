@@ -3,19 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
-	private void Start()
+	public void OnStartButtonClick()
 	{
-        Cursor.visible = false;
+		SceneManager.LoadScene("SampleScene");
 	}
 
-	public void OnStartButtonClick()
-    {
-        Cursor.visible = true;
-        SceneManager.LoadScene("SampleScene");
-    }
-
-    public void OnQuitButtonClick()
-    {
-        Application.Quit();
-    }
+	public void OnQuitButtonClick()
+	{
+		Application.Quit();
+	}
 }
