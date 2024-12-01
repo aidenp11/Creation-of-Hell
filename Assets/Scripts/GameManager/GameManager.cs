@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour
 			state = State.PAUSE;
 		}
 
+		if (playerHealth <= 0)
+		{
+			state = State.GAMEOVER;
+		}
+
 		switch (state)
 		{
 			case State.RUNNING:
@@ -36,6 +41,7 @@ public class GameManager : MonoBehaviour
 				Time.timeScale = 0;
 				break;
 			case State.GAMEOVER:
+				SceneManager.LoadScene("GameOver");
 				break;
 		}
 	}
