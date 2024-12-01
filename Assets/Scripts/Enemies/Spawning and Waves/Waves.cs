@@ -100,7 +100,7 @@ public class Waves : MonoBehaviour
 		{
 			for (int i = 0; i < spawnPoints.Count; i++)
 			{
-				if (Mathf.Abs(spawnPoints.ElementAt(i).transform.position.x - playerTransform.position.x) <= 20 && timeBetweenSpawns <= 0)
+				if (Mathf.Abs(spawnPoints.ElementAt(i).transform.position.x - playerTransform.position.x) <= 12.5f && timeBetweenSpawns <= 0)
 				{
 					if ((mmfCount > 0 && jumpsterCount <= 0 && huggyBearCount <= 0) && spawnPoints.ElementAt(i).GetComponent<SpawnPoint>().valid)
 					{
