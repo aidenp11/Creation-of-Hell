@@ -31,8 +31,8 @@ public class EnemyAttack : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		if (GetComponentInParent<EnemyBase>().enemyType == EnemyBase.EnemyType.hugger && collided != null) collided.GetComponent<PlayerMovement2D>().enabled = true;
-		GetComponentInParent<EnemyBase>().attacking = false;
+		if (GetComponentInParent<EnemyBase>() && GetComponentInParent<EnemyBase>().enemyType == EnemyBase.EnemyType.hugger && collided != null) collided.GetComponent<PlayerMovement2D>().enabled = true;
+		if (GetComponentInParent<EnemyBase>()) GetComponentInParent<EnemyBase>().attacking = false;
 	}
 
 	private void OnDrawGizmos()

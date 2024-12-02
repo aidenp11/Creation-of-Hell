@@ -204,7 +204,7 @@ MonoBehaviour:
   bulletDrop: 1.15
   bulletPrefab: {fileID: 8095836295945202249, guid: 548b69cd499498c41910df7942b06135, type: 3}
   weaponName: FK50
-  genieChance: 2
+  genieChance: 3
   reloadSpeed: 2.15
   bloom: 175
   fireRate: 0.45

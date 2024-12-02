@@ -173,7 +173,7 @@ MonoBehaviour:
   bulletDrop: 1.1
   bulletPrefab: {fileID: 8671244544192245551, guid: 645e8d8b5ef12fd459eb432c70f83525, type: 3}
   weaponName: RTBBBAR
-  genieChance: 3
+  genieChance: 5
   reloadSpeed: 2.1
   bloom: 35
   fireRate: 0.75

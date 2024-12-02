@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &648249207713235275
+--- !u!1 &2047944816211504658
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,30 +8,30 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3795663062774458171}
+  - component: {fileID: 8346952030260508526}
   m_Layer: 0
-  m_Name: muzzlef
+  m_Name: cartejecnf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3795663062774458171
+--- !u!4 &8346952030260508526
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 648249207713235275}
+  m_GameObject: {fileID: 2047944816211504658}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.671, y: -0.162, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.121, y: 0.105, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 527630292903665576}
+  m_Father: {fileID: 2586769099124833123}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2677634240187279956
+--- !u!1 &2360454932225689408
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39,45 +39,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 527630292903665576}
-  - component: {fileID: 6230790289225035216}
-  - component: {fileID: 1175558688980246171}
-  - component: {fileID: 2455421453948520946}
-  - component: {fileID: -9117555479665244970}
-  - component: {fileID: -6374033073236292958}
+  - component: {fileID: 2586769099124833123}
+  - component: {fileID: 7282906116502721763}
+  - component: {fileID: 6177197750991104151}
+  - component: {fileID: 2515595539801847138}
+  - component: {fileID: 4641359085542673728}
+  - component: {fileID: -343631703590390731}
   m_Layer: 0
-  m_Name: elephantpistol_0
+  m_Name: glasscleaner_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &527630292903665576
+--- !u!4 &2586769099124833123
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2677634240187279956}
+  m_GameObject: {fileID: 2360454932225689408}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5182271728843314949}
-  - {fileID: 3795663062774458171}
-  - {fileID: 4340022873215444278}
-  - {fileID: 5855185435188532933}
+  - {fileID: 2481413072572858790}
+  - {fileID: 3887110491572656580}
+  - {fileID: 6110962758293240895}
+  - {fileID: 8346952030260508526}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6230790289225035216
+--- !u!212 &7282906116502721763
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2677634240187279956}
+  m_GameObject: {fileID: 2360454932225689408}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -115,76 +115,28 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 7996860362203274037, guid: 09753c1a9dd61a343a4af0deea58caf2, type: 3}
+  m_Sprite: {fileID: 1404777363959611591, guid: f81a67a367cd4c046acac2bd26861983, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.7375, y: 0.375}
+  m_Size: {x: 0.921875, y: 1.59375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1175558688980246171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2677634240187279956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30d6a34d18f86514599d01f78b7b63ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletVelocity: 1500
-  bulletDrop: 0
-  bulletPrefab: {fileID: 8095836295945202249, guid: d3de6a16de5c82942aec7827a7c023ad, type: 3}
-  weaponName: Elephant Pistol
-  genieChance: 3
-  reloadSpeed: 2.45
-  bloom: 0
-  fireRate: 0.1
-  fireRateToUse: 0
-  ammoCapacity: 1
-  maxAmmoCapacity: 0
-  ammoReserve: 20
-  upgraded: 0
-  upgraded2: 0
-  maxAmmoReserve: 0
-  reloading: 0
-  laser: 0
-  laserObject: {fileID: 0}
-  laserLength: 0
-  flippedMuzzleTransform: {fileID: 3795663062774458171}
-  notFlippedMuzzleTransform: {fileID: 5182271728843314949}
-  weaponType: 0
-  weaponClass: 1
-  shotgun: 0
-  numPellets: 10
-  horizontalSpread: 100
-  burstFireRate: 0
-  burstCount: 0
-  animator: {fileID: 2455421453948520946}
-  shotEffect: {fileID: 7972419756491564369, guid: 9e330b964f680204cbe6c31af9a73b8a, type: 3}
-  secondsToDestroyShotEffect: 0.25
-  cartridge: {fileID: 964497685209325265, guid: af03189f2b266fc4ab99f7046d08a0dd, type: 3}
-  cartridgeEjectionTransformFlipped: {fileID: 5855185435188532933}
-  cartridgeEjectionTransformNotFlipped: {fileID: 4340022873215444278}
-  shotSound: {fileID: -9117555479665244970}
-  reloadSound: {fileID: -6374033073236292958}
---- !u!95 &2455421453948520946
+--- !u!95 &6177197750991104151
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2677634240187279956}
+  m_GameObject: {fileID: 2360454932225689408}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a41dde137c3e5e04db437fc4544e809b, type: 2}
+  m_Controller: {fileID: 9100000, guid: ae9b1969b4edeb940af4ec75e8b9aba6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -196,18 +148,66 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!82 &-9117555479665244970
+--- !u!114 &2515595539801847138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2360454932225689408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d6a34d18f86514599d01f78b7b63ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletVelocity: 500
+  bulletDrop: 2
+  bulletPrefab: {fileID: 8095836295945202249, guid: 65244a511c2ed1341813d1d9098ab100, type: 3}
+  weaponName: GlassCleaner
+  genieChance: 1
+  reloadSpeed: 1.5
+  bloom: 125
+  fireRate: 0.3
+  fireRateToUse: 0
+  ammoCapacity: 15
+  maxAmmoCapacity: 0
+  ammoReserve: 75
+  upgraded: 0
+  upgraded2: 0
+  maxAmmoReserve: 0
+  reloading: 0
+  laser: 0
+  laserObject: {fileID: 0}
+  laserLength: 0
+  flippedMuzzleTransform: {fileID: 2481413072572858790}
+  notFlippedMuzzleTransform: {fileID: 3887110491572656580}
+  weaponType: 0
+  weaponClass: 0
+  shotgun: 1
+  numPellets: 50
+  horizontalSpread: 275
+  burstFireRate: 0
+  burstCount: 0
+  animator: {fileID: 6177197750991104151}
+  shotEffect: {fileID: 7201809989930957911, guid: e97bc46898aa6e1489421578d901e098, type: 3}
+  secondsToDestroyShotEffect: 0
+  cartridge: {fileID: 7201809989930957911, guid: e97bc46898aa6e1489421578d901e098, type: 3}
+  cartridgeEjectionTransformFlipped: {fileID: 6110962758293240895}
+  cartridgeEjectionTransformNotFlipped: {fileID: 8346952030260508526}
+  shotSound: {fileID: 4641359085542673728}
+  reloadSound: {fileID: -343631703590390731}
+--- !u!82 &4641359085542673728
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2677634240187279956}
+  m_GameObject: {fileID: 2360454932225689408}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 655505e753622d447837bbc9f537b38f, type: 3}
-  m_Resource: {fileID: 8300000, guid: 655505e753622d447837bbc9f537b38f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 79cf2f1246e887f4f815d88503b13da3, type: 3}
+  m_Resource: {fileID: 8300000, guid: 79cf2f1246e887f4f815d88503b13da3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -293,18 +293,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &-6374033073236292958
+--- !u!82 &-343631703590390731
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2677634240187279956}
+  m_GameObject: {fileID: 2360454932225689408}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a266659363dcb1a45bfc976f218c693c, type: 3}
-  m_Resource: {fileID: 8300000, guid: a266659363dcb1a45bfc976f218c693c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d62679d2ce0132e46bc42e53813c4e47, type: 3}
+  m_Resource: {fileID: 8300000, guid: d62679d2ce0132e46bc42e53813c4e47, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -390,7 +390,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &6870718195619587293
+--- !u!1 &3625412069476654821
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -398,69 +398,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4340022873215444278}
-  m_Layer: 0
-  m_Name: cartridgeejecnf
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4340022873215444278
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6870718195619587293}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.183, y: 0.194, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 527630292903665576}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7992118628581720947
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5855185435188532933}
-  m_Layer: 0
-  m_Name: cartridgeejecf
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5855185435188532933
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7992118628581720947}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.18, y: -0.192, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 527630292903665576}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8249860252278691425
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5182271728843314949}
+  - component: {fileID: 3887110491572656580}
   m_Layer: 0
   m_Name: muzzlenf
   m_TagString: Untagged
@@ -468,18 +406,80 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5182271728843314949
+--- !u!4 &3887110491572656580
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8249860252278691425}
+  m_GameObject: {fileID: 3625412069476654821}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.675, y: 0.15, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.276, y: 0.076, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 527630292903665576}
+  m_Father: {fileID: 2586769099124833123}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6942407113952834169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6110962758293240895}
+  m_Layer: 0
+  m_Name: cartejecf
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6110962758293240895
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6942407113952834169}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.117, y: -0.13, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2586769099124833123}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7628404905865140918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2481413072572858790}
+  m_Layer: 0
+  m_Name: muzzlef
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2481413072572858790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7628404905865140918}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.273, y: -0.092, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2586769099124833123}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
