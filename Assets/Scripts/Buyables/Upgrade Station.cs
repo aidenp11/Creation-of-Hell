@@ -13,6 +13,9 @@ public class UpgradeStation : MonoBehaviour
 	private bool upgraded;
 	private bool upgraded2;
 
+	[SerializeField] AudioSource upgradeSound;
+	[SerializeField] Animator animator;
+
 	private void Start()
 	{
 		text.SetActive(false);
@@ -68,6 +71,8 @@ public class UpgradeStation : MonoBehaviour
 				&& collision.GetComponent<Inventory>().GetPoints() >= cost)
 			{
 				upgraded = true;
+				animator.SetTrigger("upgrade");
+				upgradeSound.Play();
 				collision.GetComponent<Inventory>().AddPoints(-cost);
 			}
 			else if (collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded == true && 
@@ -75,6 +80,8 @@ public class UpgradeStation : MonoBehaviour
 				&& collision.GetComponent<Inventory>().GetPoints() >= cost * 2)
 			{
 				upgraded2 = true;
+				animator.SetTrigger("upgrade");
+				upgradeSound.Play();
 				collision.GetComponent<Inventory>().AddPoints(-cost * 2);
 			}
 		}
