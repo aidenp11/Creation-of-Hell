@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
 {
-    public void OnTitleButton()
+	public void OnTitleButton()
     {
         SceneManager.LoadScene("Title");
     }

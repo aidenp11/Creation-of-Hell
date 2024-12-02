@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6535da703fea746aae0db6e051bda5, type: 3}
   m_Name: PlayerScore
   m_EditorClassIdentifier: 
-  initialValue: 10000
-  value: 8715
+  initialValue: 500
+  value: 500
