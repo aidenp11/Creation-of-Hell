@@ -21,6 +21,7 @@ public class Inventory : MonoBehaviour
 	[SerializeField] IntVariable Score;
 	[SerializeField] TextMeshProUGUI scoreText;
 	[SerializeField] TextMeshProUGUI ammoText;
+	[SerializeField] TextMeshProUGUI weaponNameText;
 
 	[SerializeField] public float healingRecharge;
 	private float ogHealingRecharge;
@@ -62,6 +63,7 @@ public class Inventory : MonoBehaviour
 	{
 		scoreText.text = "Score: " + Score.value;
 		healthSlider.value = Health.value;
+		weaponNameText.text = activeWeapon.GetComponent<WeaponBase>().weaponName;
 		ammoText.text = "Ammo: " + activeWeapon.GetComponent<WeaponBase>().ammoCapacity + " | " + activeWeapon.GetComponent<WeaponBase>().ammoReserve;
 		if (regenPerk && !regenDone)
 		{
