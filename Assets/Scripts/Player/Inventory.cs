@@ -42,6 +42,11 @@ public class Inventory : MonoBehaviour
 	public bool regenPerk;
 	private bool regenDone;
 
+	[SerializeField] GameObject gi;
+	[SerializeField] GameObject ppi;
+	[SerializeField] GameObject hi;
+	[SerializeField] GameObject ri;
+
 	private void Start()
 	{
 		activeWeapon = Instantiate(startingWeapon, handPosition);
@@ -67,6 +72,7 @@ public class Inventory : MonoBehaviour
 		ammoText.text = "Ammo: " + activeWeapon.GetComponent<WeaponBase>().ammoCapacity + " | " + activeWeapon.GetComponent<WeaponBase>().ammoReserve;
 		if (regenPerk && !regenDone)
 		{
+			ri.SetActive(true);
 			healthToHeal = (int)((float)healthToRegen * 1.35f);
 			afterAttackHealingRecharge = afterAttackRegenRecharge * 0.85f;
 			ogHealingRecharge = ogHealingRecharge * 0.35f;
@@ -74,10 +80,19 @@ public class Inventory : MonoBehaviour
 		}
 		if (healthPerk && !healthDone)
 		{
+			hi.SetActive(true);
 			maxHealth = maxHealth * 2;
 			healthSlider.maxValue = maxHealth;
 			Health.value = maxHealth;
 			healthDone = true;
+		}
+		if (piercePerk)
+		{
+			ppi.SetActive(true);
+		}
+		if (gambler)
+		{
+			gi.SetActive(true);
 		}
 		if (justAttacked)
 		{

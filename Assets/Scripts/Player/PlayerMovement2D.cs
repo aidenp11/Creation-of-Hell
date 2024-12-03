@@ -44,6 +44,8 @@ public class PlayerMovement2D : MonoBehaviour
 	[Header("Perks")]
 	public bool speedPerk;
 
+	[SerializeField] GameObject si;
+
 	private void Start()
 	{
 		speedPerk = false;
@@ -56,6 +58,7 @@ public class PlayerMovement2D : MonoBehaviour
 	{
 		if (speedPerk)
 		{
+			si.SetActive(true);
 			speedToUse = speed * 1.5f;
 		}
 		animator.SetFloat("Speed", Math.Abs(rb.linearVelocity.x));
