@@ -161,7 +161,8 @@ public class WeaponBase : MonoBehaviour
 		{
 			outOfBullts = true;
 		}
-		else if (ammoCapacity <= 0 && !reloading && !outOfBullts)
+		else outOfBullts = false;
+		if (ammoCapacity <= 0 && !reloading && !outOfBullts)
 		{
 			reloading = true;
 			animator.SetTrigger("Reload");
