@@ -39,7 +39,7 @@ public class Waves : MonoBehaviour
 
 	public int amountSpawned;
 
-	private float timeBetweenSpawns = 4.5f;
+	private float timeBetweenSpawns = 4f;
 	public float ogTimeBetweenSpawns;
 
 	[SerializeField] GameObject roundChangeText;
@@ -296,11 +296,11 @@ public class Waves : MonoBehaviour
 			huggyBearHealth = (int)((float)huggyBearHealth * 1.35f);
 		}
 		totalToSpawn = mmfCount + jumpsterCount + huggyBearCount;
-		if (ogTimeBetweenSpawns > 0.5f)
+		if (ogTimeBetweenSpawns > 0.4f)
 		{
-			ogTimeBetweenSpawns = ogTimeBetweenSpawns * 0.925f;
+			ogTimeBetweenSpawns = ogTimeBetweenSpawns * 0.85f;
 		}
-		else ogTimeBetweenSpawns = 0.5f;
+		else ogTimeBetweenSpawns = 0.4f;
 	}
 
 	private void RoundChangeNumber()
