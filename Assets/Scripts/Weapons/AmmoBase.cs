@@ -37,9 +37,6 @@ public class AmmoBase : MonoBehaviour
 				break;
 			}
 		}
-	}
-	private void Update()
-	{
 		if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded == true && !doneUpgrade)
 		{
 			UpgradeBullet();
@@ -54,6 +51,10 @@ public class AmmoBase : MonoBehaviour
 		{
 			pierceToUse = piercePerkPierce;
 		}
+	}
+	private void Update()
+	{
+		
 		bulletLifespan -= Time.deltaTime;
 		if (pierceToUse <= 0)
 		{
@@ -77,11 +78,11 @@ public class AmmoBase : MonoBehaviour
 		{
 			if (player.GetComponent<Inventory>().gambler == true)
 			{
-				player.GetComponent<Inventory>().AddPoints(Random.Range(-10, 30));
+				player.GetComponent<Inventory>().AddPoints(Random.Range(-15, 60));
 			}
 			else
 			{
-				player.GetComponent<Inventory>().AddPoints(5);
+				player.GetComponent<Inventory>().AddPoints(10);
 			}
 			collision.GetComponent<EnemyBase>().hit.Play();
 			destroyHitEffect = Instantiate(hitEffect, transform.position, transform.rotation);

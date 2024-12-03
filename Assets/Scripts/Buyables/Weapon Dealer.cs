@@ -62,7 +62,7 @@ public class WeaponsDealer : MonoBehaviour
 				{
 					alreadyEquipped = true;
 					ammoCostToUse = ammoCost;
-					text.GetComponent<TextMeshProUGUI>().text = "Press E to Buy Ammo: " + ammoCostToUse;
+					text.GetComponent<TextMeshProUGUI>().text = "Press E to Buy Ammo" + '\n' + "Cost: " + ammoCostToUse;
 					break;
 				}
 				else if (collision.GetComponent<Inventory>().currentWeapons.ElementAt(i).GetComponent<WeaponBase>().weaponName == weaponName
@@ -70,7 +70,7 @@ public class WeaponsDealer : MonoBehaviour
 				{
 					alreadyEquipped = true;
 					ammoCostToUse = ammoCost * 4;
-					text.GetComponent<TextMeshProUGUI>().text = "Press E to Buy Ammo: " + ammoCostToUse;
+					text.GetComponent<TextMeshProUGUI>().text = "Press E to Buy Ammo" + '\n' + "Cost: " + ammoCostToUse;
 					break;
 				}
 				else
@@ -87,7 +87,7 @@ public class WeaponsDealer : MonoBehaviour
 		if (collision.CompareTag("Player") && Input.GetKey(KeyCode.E) &&
 			collision.GetComponent<Inventory>().GetPoints() >= ammoCostToUse && alreadyEquipped)
 		{
-			text.GetComponent<TextMeshProUGUI>().text = "Press E to Buy Ammo: " + ammoCostToUse;
+			text.GetComponent<TextMeshProUGUI>().text = "Press E to Buy Ammo" + '\n' + "Cost: " + ammoCostToUse;
 			for (int i = 0; i < collision.GetComponent<Inventory>().currentWeapons.Count; i++)
 			{
 				if (collision.GetComponent<Inventory>().currentWeapons.ElementAt(i).GetComponent<WeaponBase>().weaponName == weaponName)

@@ -224,15 +224,15 @@ public class EnemyBase : MonoBehaviour
 	{
 		if (enemyType == EnemyType.normal)
 		{
-			player.GetComponent<Inventory>().AddPoints(50);
+			player.GetComponent<Inventory>().AddPoints(75);
 		}
 		else if (enemyType == EnemyType.jumper)
 		{
-			player.GetComponent<Inventory>().AddPoints(65);
+			player.GetComponent<Inventory>().AddPoints(100);
 		}
 		else
 		{
-			player.GetComponent<Inventory>().AddPoints(90);
+			player.GetComponent<Inventory>().AddPoints(125);
 		}
 	}
 }

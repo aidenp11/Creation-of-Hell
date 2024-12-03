@@ -197,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 450
   speed: 2.25
-  acceleration: 9.75
+  acceleration: 13
   attackObject: {fileID: 3004245026377214365, guid: a24a31e20a2495a4796eb11916e33267, type: 3}
   attackSpeed: 1
   attackCooldown: 0.6
@@ -215,7 +215,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   groundRaycastLength: 0.67
-  groundRaycastOffset: {x: 0.1, y: 0, z: 0}
+  groundRaycastOffset: {x: 0.3, y: 0, z: 0}
   hit: {fileID: -3730058358361763316}
 --- !u!95 &3472334386415317007
 Animator:
@@ -289,7 +289,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 6b836ec1f9a080f4aa052715918a83f2, type: 3}
   m_Resource: {fileID: 8300000, guid: 6b836ec1f9a080f4aa052715918a83f2, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
