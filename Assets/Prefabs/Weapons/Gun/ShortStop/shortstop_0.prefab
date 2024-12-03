@@ -204,7 +204,7 @@ MonoBehaviour:
   bulletDrop: 1.25
   bulletPrefab: {fileID: 8095836295945202249, guid: 0ae206b959b902d48a6fb95fa18ce158, type: 3}
   weaponName: Short Stop
-  genieChance: 5
+  genieChance: 3
   reloadSpeed: 2.05
   bloom: 35
   fireRate: 1.5

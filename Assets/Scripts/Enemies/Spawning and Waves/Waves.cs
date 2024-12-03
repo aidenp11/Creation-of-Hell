@@ -272,12 +272,12 @@ public class Waves : MonoBehaviour
 	{
 		if (roundNumber == 5)
 		{
-			jumpsterCount = 4;
+			jumpsterCount = 10;
 			originalJumpsterCount = jumpsterCount;
 		}
 		if (roundNumber == 8)
 		{
-			huggyBearCount = 4;
+			huggyBearCount = 20;
 			originalHuggyBearCount = huggyBearCount;
 		}
 		originalmmfCount = (int)((float)originalmmfCount * 1.25f);

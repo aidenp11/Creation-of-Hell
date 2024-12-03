@@ -94,7 +94,7 @@ public class EnemyBase : MonoBehaviour
 		CheckCollisions();
 		playerTransform = player.GetComponent<Transform>();
 
-		if (Mathf.Abs(transform.position.x - playerTransform.position.x) >= 80)
+		if (Mathf.Abs(transform.position.x - playerTransform.position.x) >= 50)
 		{
 			if (enemyType == EnemyType.normal)
 			{

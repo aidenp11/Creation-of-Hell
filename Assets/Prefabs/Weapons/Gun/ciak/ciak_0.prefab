@@ -142,7 +142,7 @@ MonoBehaviour:
   bulletDrop: 1.25
   bulletPrefab: {fileID: 8671244544192245551, guid: 62c2b55dfd392f44fabe9d50070fc378, type: 3}
   weaponName: CI-AK
-  genieChance: 2
+  genieChance: 3
   reloadSpeed: 1.3
   bloom: 95
   fireRate: 0.25

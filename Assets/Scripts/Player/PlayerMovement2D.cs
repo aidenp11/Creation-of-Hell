@@ -45,6 +45,7 @@ public class PlayerMovement2D : MonoBehaviour
 	public bool speedPerk;
 
 	[SerializeField] GameObject si;
+	private bool alreadyActive = false;
 
 	private void Start()
 	{
@@ -58,7 +59,11 @@ public class PlayerMovement2D : MonoBehaviour
 	{
 		if (speedPerk)
 		{
-			si.SetActive(true);
+			if (!alreadyActive)
+			{
+				si.SetActive(true);
+				alreadyActive = true;
+			}
 			speedToUse = speed * 1.5f;
 		}
 		animator.SetFloat("Speed", Math.Abs(rb.linearVelocity.x));
@@ -104,7 +109,7 @@ public class PlayerMovement2D : MonoBehaviour
 	{
 		CheckCollisions();
 		MovePlayer();
-		
+
 	}
 
 	private Vector2 GetInput()

@@ -142,7 +142,7 @@ MonoBehaviour:
   bulletDrop: 1.05
   bulletPrefab: {fileID: 8671244544192245551, guid: 704e8fdbd4a73194aaf596c9e52c94fb, type: 3}
   weaponName: MP Stockless
-  genieChance: 4
+  genieChance: 2
   reloadSpeed: 1.65
   bloom: 225
   fireRate: 0.1

@@ -111,7 +111,7 @@ MonoBehaviour:
   bulletDrop: 1.0975
   bulletPrefab: {fileID: 8095836295945202249, guid: abf953a54c08c45409e871fae0294016, type: 3}
   weaponName: Burst Pistol
-  genieChance: 7
+  genieChance: 4
   reloadSpeed: 1.45
   bloom: 75
   fireRate: 0.3
