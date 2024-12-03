@@ -1,0 +1,661 @@
+fileFormatVersion: 2
+guid: 188206fb3b963934bba160b8de1a645c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6024341602299564848
+    second: rhinoreload_0
+  - first:
+      213: -2801524944223397296
+    second: rhinoreload_1
+  - first:
+      213: 9089370071015507264
+    second: rhinoreload_2
+  - first:
+      213: -2474568361968580113
+    second: rhinoreload_3
+  - first:
+      213: 311106084019248657
+    second: rhinoreload_4
+  - first:
+      213: 180943877435673037
+    second: rhinoreload_5
+  - first:
+      213: 1752789455843800427
+    second: rhinoreload_6
+  - first:
+      213: -1536446120006944874
+    second: rhinoreload_7
+  - first:
+      213: 6259474029500723412
+    second: rhinoreload_8
+  - first:
+      213: -4257006356196986127
+    second: rhinoreload_9
+  - first:
+      213: 4422378464485899037
+    second: rhinoreload_10
+  - first:
+      213: -895773818905782767
+    second: rhinoreload_11
+  - first:
+      213: -6223886389473410256
+    second: rhinoreload_12
+  - first:
+      213: -1781650625592307566
+    second: rhinoreload_13
+  - first:
+      213: 6926204020443136365
+    second: rhinoreload_14
+  - first:
+      213: 147839180411846435
+    second: rhinoreload_15
+  - first:
+      213: 8156874771429388397
+    second: rhinoreload_16
+  - first:
+      213: -8095892030874898913
+    second: rhinoreload_17
+  - first:
+      213: -4563684512170552023
+    second: rhinoreload_18
+  - first:
+      213: -6226817898839077530
+    second: rhinoreload_19
+  - first:
+      213: 4302579023481913377
+    second: rhinoreload_20
+  - first:
+      213: 8094518172858426507
+    second: rhinoreload_21
+  - first:
+      213: 9201432647093145861
+    second: rhinoreload_22
+  - first:
+      213: -5225202915054067579
+    second: rhinoreload_23
+  - first:
+      213: -5066010227870409887
+    second: rhinoreload_24
+  - first:
+      213: -4413949128185216683
+    second: rhinoreload_25
+  - first:
+      213: -4623404467314409870
+    second: rhinoreload_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Win64
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: rhinoreload_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 144
+        height: 160
+      alignment: 9
+      pivot: {x: 0.345, y: 0.73}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0335caad4c2ca9350800000000000000
+      internalID: 6024341602299564848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rhinoreload_1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 144
+        height: 160
+      alignment: 9
+      pivot: {x: 0.345, y: 0.73}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05a1b2608ebfe19d0800000000000000
+      internalID: -2801524944223397296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rhinoreload_2
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 144
+        height: 160
+      alignment: 9
+      pivot: {x: 0.345, y: 0.73}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04542fa0cede32e70800000000000000
+      internalID: 9089370071015507264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rhinoreload_3
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 0
+        width: 144
+        height: 160
+      alignment: 9
+      pivot: {x: 0.345, y: 0.73}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe941748f2198add0800000000000000
+      internalID: -2474568361968580113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rhinoreload_4
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 144
+        height: 160
+      alignment: 9
+      pivot: {x: 0.345, y: 0.73}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11e1e69c555415400800000000000000
+      internalID: 311106084019248657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rhinoreload_5
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 0
+        width: 144
+        height: 160
+      alignment: 9
+      pivot: {x: 0.345, y: 0.73}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc9c5d27f77d28200800000000000000
+      internalID: 180943877435673037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rhinoreload_6
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 0
+        width: 144
+        height: 160
+      alignment: 9
+      pivot: {x: 0.345, y: 0.73}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b65be9139b8235810800000000000000
+      internalID: 1752789455843800427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rhinoreload_7
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 0
+        width: 144
+        height: 160
+      alignment: 9
+      pivot: {x: 0.345, y: 0.73}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6977570f4627daae0800000000000000
+      internalID: -1536446120006944874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rhinoreload_8
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 144
+        height: 160
+      alignment: 9
+      pivot: {x: 0.345, y: 0.73}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d07c29377e1ed650800000000000000
+      internalID: 6259474029500723412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rhinoreload_9
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 0
+        width: 144
+        height: 160
+      alignment: 9
+      pivot: {x: 0.345, y: 0.73}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f27c4c06431ce4c0800000000000000
+      internalID: -4257006356196986127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rhinoreload_10
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 0
+        width: 144
+        height: 160
+      alignment: 9
+      pivot: {x: 0.345, y: 0.73}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1bf40e58c17f5d30800000000000000
+      internalID: 4422378464485899037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rhinoreload_11
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 0
+        width: 144
+        height: 160
+      alignment: 9
+      pivot: {x: 0.345, y: 0.73}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 116960d25729193f0800000000000000
+      internalID: -895773818905782767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rhinoreload_12
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 0
+        width: 144
+        height: 160
+      alignment: 9
+      pivot: {x: 0.345, y: 0.73}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0338c09ed4050a9a0800000000000000
+      internalID: -6223886389473410256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rhinoreload_13
+      rect:
+        serializedVersion: 2
+        x: 1872
+        y: 0
+        width: 144
+        height: 160
+      alignment: 9
+      pivot: {x: 0.345, y: 0.73}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 290d7b3123e4647e0800000000000000
+      internalID: -1781650625592307566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rhinoreload_14
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 0
+        width: 144
+        height: 160
+      alignment: 9
+      pivot: {x: 0.345, y: 0.73}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6145682cd1de1060800000000000000
+      internalID: 6926204020443136365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rhinoreload_15
+      rect:
+        serializedVersion: 2
+        x: 2160
+        y: 0
+        width: 144
+        height: 160
+      alignment: 9
+      pivot: {x: 0.345, y: 0.73}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32f355883fa3d0200800000000000000
+      internalID: 147839180411846435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rhinoreload_16
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 0
+        width: 144
+        height: 160
+      alignment: 9
+      pivot: {x: 0.345, y: 0.73}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d60f46c336a033170800000000000000
+      internalID: 8156874771429388397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rhinoreload_17
+      rect:
+        serializedVersion: 2
+        x: 2448
+        y: 0
+        width: 144
+        height: 160
+      alignment: 9
+      pivot: {x: 0.345, y: 0.73}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1e29cf771d95af80800000000000000
+      internalID: -8095892030874898913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rhinoreload_18
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 0
+        width: 144
+        height: 160
+      alignment: 9
+      pivot: {x: 0.345, y: 0.73}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9255f199d198aa0c0800000000000000
+      internalID: -4563684512170552023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 410a31e646e92b04e8b24683acad0502
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      rhinoreload_0: 6024341602299564848
+      rhinoreload_1: -2801524944223397296
+      rhinoreload_10: 4422378464485899037
+      rhinoreload_11: -895773818905782767
+      rhinoreload_12: -6223886389473410256
+      rhinoreload_13: -1781650625592307566
+      rhinoreload_14: 6926204020443136365
+      rhinoreload_15: 147839180411846435
+      rhinoreload_16: 8156874771429388397
+      rhinoreload_17: -8095892030874898913
+      rhinoreload_18: -4563684512170552023
+      rhinoreload_2: 9089370071015507264
+      rhinoreload_3: -2474568361968580113
+      rhinoreload_4: 311106084019248657
+      rhinoreload_5: 180943877435673037
+      rhinoreload_6: 1752789455843800427
+      rhinoreload_7: -1536446120006944874
+      rhinoreload_8: 6259474029500723412
+      rhinoreload_9: -4257006356196986127
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

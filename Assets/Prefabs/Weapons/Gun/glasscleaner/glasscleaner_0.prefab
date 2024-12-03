@@ -182,7 +182,7 @@ MonoBehaviour:
   flippedMuzzleTransform: {fileID: 2481413072572858790}
   notFlippedMuzzleTransform: {fileID: 3887110491572656580}
   weaponType: 0
-  weaponClass: 0
+  weaponClass: 1
   shotgun: 1
   numPellets: 50
   horizontalSpread: 275
