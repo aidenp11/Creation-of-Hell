@@ -60,7 +60,7 @@ public class Waves : MonoBehaviour
 		timeBetweenSpawns = 10;
 		mmfHealth = mmf.GetComponent<EnemyBase>().Health;
 		jumpsterHealth = jumpster.GetComponent<EnemyBase>().Health;
-		//huggyBearHealth = huggyBear.GetComponent<EnemyBase>().Health;
+		huggyBearHealth = huggyBear.GetComponent<EnemyBase>().Health;
 		for (int i = 0; i < SceneManager.GetActiveScene().GetRootGameObjects().Length; i++)
 		{
 			if (SceneManager.GetActiveScene().GetRootGameObjects().ElementAt(i).GetComponent<PlayerMovement2D>())
@@ -275,6 +275,11 @@ public class Waves : MonoBehaviour
 			jumpsterCount = 4;
 			originalJumpsterCount = jumpsterCount;
 		}
+		if (roundNumber == 8)
+		{
+			huggyBearCount = 4;
+			originalHuggyBearCount = huggyBearCount;
+		}
 		originalmmfCount = (int)((float)originalmmfCount * 1.25f);
 		mmfCount = originalmmfCount;
 		mmfHealth = (int)((float)mmfHealth * 1.35f);
@@ -283,6 +288,12 @@ public class Waves : MonoBehaviour
 			originalJumpsterCount = (int)((float)originalJumpsterCount * 1.25f);
 			jumpsterCount = originalJumpsterCount;
 			jumpsterHealth = (int)((float)jumpsterHealth * 1.35f);
+		}
+		if (roundNumber > 8)
+		{
+			originalHuggyBearCount = (int)((float)originalHuggyBearCount * 1.25f);
+			huggyBearCount = originalHuggyBearCount;
+			huggyBearHealth = (int)((float)huggyBearHealth * 1.35f);
 		}
 		totalToSpawn = mmfCount + jumpsterCount + huggyBearCount;
 		if (ogTimeBetweenSpawns > 0.5f)
