@@ -47,8 +47,23 @@ public class Inventory : MonoBehaviour
 	[SerializeField] GameObject hi;
 	[SerializeField] GameObject ri;
 
+	public int totalKilled;
+	public int mmfKilled;
+	public int jumpsterKilled;
+	public int huggyBearKilled;
+
+	private bool invbool;
+
+	[Header("InventoryUI")]
+	[SerializeField] GameObject inventoryUI;
+	[SerializeField] TextMeshProUGUI tkT;
+	[SerializeField] TextMeshProUGUI mmfkT;
+	[SerializeField] TextMeshProUGUI jkT;
+	[SerializeField] TextMeshProUGUI hbkT;
+
 	private void Start()
 	{
+		invbool = false;
 		activeWeapon = Instantiate(startingWeapon, handPosition);
 		currentWeapons.Add(activeWeapon);
 		ogHealingRecharge = healingRecharge;
@@ -66,6 +81,23 @@ public class Inventory : MonoBehaviour
 
 	private void Update()
 	{
+		if (Input.GetKeyDown(KeyCode.I))
+		{
+			invbool = !invbool;
+		}
+
+		if (invbool)
+		{
+			inventoryUI.SetActive(true);
+			tkT.SetText("Total Kills: " + totalKilled);
+			mmfkT.SetText("Mutant Man Fish Kills: " + mmfKilled);
+			jkT.SetText("Jumpster Kills: " + jumpsterKilled);
+			hbkT.SetText("Huggy Bear Kills: " + huggyBearKilled);
+		}
+		else
+		{
+			inventoryUI.SetActive(false);
+		}
 		scoreText.text = "Score: " + Score.value;
 		healthSlider.value = Health.value;
 		weaponNameText.text = activeWeapon.GetComponent<WeaponBase>().weaponName;

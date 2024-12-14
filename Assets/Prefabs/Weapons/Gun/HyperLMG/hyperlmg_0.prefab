@@ -180,7 +180,7 @@ MonoBehaviour:
   fireRateToUse: 0
   ammoCapacity: 125
   maxAmmoCapacity: 0
-  ammoReserve: 500
+  ammoReserve: 375
   upgraded: 0
   upgraded2: 0
   maxAmmoReserve: 0

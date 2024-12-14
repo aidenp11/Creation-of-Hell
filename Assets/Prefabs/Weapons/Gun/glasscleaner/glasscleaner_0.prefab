@@ -184,7 +184,7 @@ MonoBehaviour:
   weaponType: 0
   weaponClass: 1
   shotgun: 1
-  numPellets: 20
+  numPellets: 30
   horizontalSpread: 275
   burstFireRate: 0
   burstCount: 0

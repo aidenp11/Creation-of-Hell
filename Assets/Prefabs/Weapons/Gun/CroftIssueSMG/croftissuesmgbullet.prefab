@@ -129,12 +129,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2baace41bde6f2540959d60f5a7c1213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 135
+  damage: 155
   damageToUse: 0
   bulletLifespan: 1.15
-  pierce: 3
+  pierce: 2
   pierceToUse: 0
-  pierceDamageFalloff: 0.85
+  pierceDamageFalloff: 0.875
   hitEffect: {fileID: 8088427377927014934, guid: 79f50474c2c86304896dbbec6b2c97e5, type: 3}
   wallHitEffect: {fileID: 4505911417926750172, guid: 7b05eb20a1d20eb4cafcbda66123114e, type: 3}
 --- !u!58 &3079745912346267645

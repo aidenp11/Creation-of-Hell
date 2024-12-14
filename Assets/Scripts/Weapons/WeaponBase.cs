@@ -313,8 +313,8 @@ public class WeaponBase : MonoBehaviour
 		}
 		if (weaponType == WeaponType.SEMIAUTO && !shotgun)
 		{
-			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 1.5f);
-			maxAmmoReserve = (int)((float)maxAmmoReserve * 2.5f);
+			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 2f);
+			maxAmmoReserve = (int)((float)maxAmmoReserve * 1.75f);
 			InstaReload();
 		}
 		else if (weaponType == WeaponType.SEMIAUTO && shotgun)
@@ -327,7 +327,7 @@ public class WeaponBase : MonoBehaviour
 		else if (weaponType == WeaponType.FULLAUTO && !shotgun)
 		{
 			originalFireRate = originalFireRate * 0.75f;
-			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 1.25f);
+			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 1.45f);
 			maxAmmoReserve = (int)((float)maxAmmoReserve * 1.85f);
 			InstaReload();
 		}
@@ -342,8 +342,8 @@ public class WeaponBase : MonoBehaviour
 		else if (weaponType == WeaponType.BURST)
 		{
 			originalFireRate = originalFireRate * 0.8f;
-			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 1.5f);
-			maxAmmoReserve = (int)((float)maxAmmoReserve * 2.85f);
+			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 1.75f);
+			maxAmmoReserve = (int)((float)maxAmmoReserve * 2.15f);
 			InstaReload();
 		}
 	}

@@ -138,14 +138,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d6a34d18f86514599d01f78b7b63ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletVelocity: 750
+  bulletVelocity: 800
   bulletDrop: 1.05
   bulletPrefab: {fileID: 8671244544192245551, guid: 704e8fdbd4a73194aaf596c9e52c94fb, type: 3}
   weaponName: MP Stockless
   genieChance: 2
   reloadSpeed: 1.65
   bloom: 225
-  fireRate: 0.1
+  fireRate: 0.09
   fireRateToUse: 0
   ammoCapacity: 32
   maxAmmoCapacity: 0

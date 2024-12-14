@@ -44,6 +44,7 @@ public class Waves : MonoBehaviour
 
 	[SerializeField] GameObject roundChangeText;
 	[SerializeField] GameObject roundText;
+	[SerializeField] GameObject monstersLeftText;
 	[SerializeField] AudioSource roundChangeJingle;
 
 	private void Start()
@@ -73,6 +74,7 @@ public class Waves : MonoBehaviour
 
 	private void Update()
 	{
+		monstersLeftText.GetComponent<TextMeshProUGUI>().text = "Monsters Left: " + (mmfCount + jumpsterCount + huggyBearCount).ToString();
 		playerTransform = player.GetComponent<Transform>();
 
 		if (totalSpawned == totalToSpawn && spawnedEnemies.Count > 0)
@@ -272,35 +274,35 @@ public class Waves : MonoBehaviour
 	{
 		if (roundNumber == 5)
 		{
-			jumpsterCount = 10;
+			jumpsterCount = 12;
 			originalJumpsterCount = jumpsterCount;
 		}
 		if (roundNumber == 8)
 		{
-			huggyBearCount = 20;
+			huggyBearCount = 22;
 			originalHuggyBearCount = huggyBearCount;
 		}
-		originalmmfCount = (int)((float)originalmmfCount * 1.25f);
+		originalmmfCount = (int)((float)originalmmfCount * 1.2f);
 		mmfCount = originalmmfCount;
-		mmfHealth = (int)((float)mmfHealth * 1.35f);
+		mmfHealth = (int)((float)mmfHealth * 1.2f);
 		if (roundNumber > 5)
 		{
-			originalJumpsterCount = (int)((float)originalJumpsterCount * 1.25f);
+			originalJumpsterCount = (int)((float)originalJumpsterCount * 1.2f);
 			jumpsterCount = originalJumpsterCount;
-			jumpsterHealth = (int)((float)jumpsterHealth * 1.35f);
+			jumpsterHealth = (int)((float)jumpsterHealth * 1.2f);
 		}
 		if (roundNumber > 8)
 		{
-			originalHuggyBearCount = (int)((float)originalHuggyBearCount * 1.25f);
+			originalHuggyBearCount = (int)((float)originalHuggyBearCount * 1.2f);
 			huggyBearCount = originalHuggyBearCount;
-			huggyBearHealth = (int)((float)huggyBearHealth * 1.35f);
+			huggyBearHealth = (int)((float)huggyBearHealth * 1.2f);
 		}
 		totalToSpawn = mmfCount + jumpsterCount + huggyBearCount;
-		if (ogTimeBetweenSpawns > 0.4f)
+		if (ogTimeBetweenSpawns > 0.35f)
 		{
-			ogTimeBetweenSpawns = ogTimeBetweenSpawns * 0.85f;
+			ogTimeBetweenSpawns = ogTimeBetweenSpawns * 0.8f;
 		}
-		else ogTimeBetweenSpawns = 0.4f;
+		else ogTimeBetweenSpawns = 0.35f;
 	}
 
 	private void RoundChangeNumber()

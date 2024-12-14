@@ -74,7 +74,7 @@ public class AmmoBase : MonoBehaviour
 			Destroy(destroyWallHitEffect, 0.5f);
 			Destroy(gameObject);
 		}
-		if (pierceToUse > 0 && collision.CompareTag("Enemy"))
+		if (pierceToUse > 0 && collision.CompareTag("Enemy") && collision.GetComponent<EnemyBase>().Health >= 0)
 		{
 			if (player.GetComponent<Inventory>().gambler == true)
 			{
@@ -107,22 +107,22 @@ public class AmmoBase : MonoBehaviour
 		if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.SEMIAUTO
 			&& player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().shotgun == false)
 		{
-			damageToUse = (int)((float)damageToUse * 2f);
-			pierceToUse = (int)((float)pierceToUse * 2f);
+			damageToUse = (int)((float)damageToUse * 2.5f);
+			pierceToUse = (int)((float)pierceToUse * 2.25f);
 			piercePerkPierce = pierceToUse + 3;
 		}
 		else if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.SEMIAUTO
 			&& player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().shotgun == true)
 		{
-			damageToUse = (int)((float)damageToUse * 1.75f);
-			pierceToUse = pierceToUse + 2;
+			damageToUse = (int)((float)damageToUse * 2.75f);
+			pierceToUse = pierceToUse + 1;
 			piercePerkPierce = pierceToUse + 3;
 		}
 		else if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.FULLAUTO
 			&& player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().shotgun == false)
 		{
-			damageToUse = (int)((float)damageToUse * 1.5f);
-			pierceToUse = (int)((float)pierceToUse * 1.5f);
+			damageToUse = (int)((float)damageToUse * 1.9f);
+			pierceToUse = pierceToUse + 1;
 			piercePerkPierce = pierceToUse + 3;
 		}
 		else if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.FULLAUTO
