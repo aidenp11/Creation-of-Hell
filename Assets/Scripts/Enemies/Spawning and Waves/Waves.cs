@@ -102,7 +102,7 @@ public class Waves : MonoBehaviour
 		{
 			for (int i = 0; i < spawnPoints.Count; i++)
 			{
-				if (Mathf.Abs(spawnPoints.ElementAt(i).transform.position.x - playerTransform.position.x) <= 12.5f && timeBetweenSpawns <= 0)
+				if (Mathf.Abs(spawnPoints.ElementAt(i).transform.position.x - playerTransform.position.x) <= 13.5f && timeBetweenSpawns <= 0)
 				{
 					if ((mmfCount > 0 && jumpsterCount <= 0 && huggyBearCount <= 0) && spawnPoints.ElementAt(i).GetComponent<SpawnPoint>().valid)
 					{
@@ -282,18 +282,21 @@ public class Waves : MonoBehaviour
 			huggyBearCount = 22;
 			originalHuggyBearCount = huggyBearCount;
 		}
-		originalmmfCount = (int)((float)originalmmfCount * 1.2f);
+		float randommmf = Random.Range(1.15f, 1.50f);
+		originalmmfCount = (int)((float)originalmmfCount * randommmf);
 		mmfCount = originalmmfCount;
 		mmfHealth = (int)((float)mmfHealth * 1.2f);
 		if (roundNumber > 5)
 		{
-			originalJumpsterCount = (int)((float)originalJumpsterCount * 1.2f);
+			float randomjumpster = Random.Range(1.15f, 1.50f);
+			originalJumpsterCount = (int)((float)originalJumpsterCount * randomjumpster);
 			jumpsterCount = originalJumpsterCount;
 			jumpsterHealth = (int)((float)jumpsterHealth * 1.2f);
 		}
 		if (roundNumber > 8)
 		{
-			originalHuggyBearCount = (int)((float)originalHuggyBearCount * 1.2f);
+			float randomhuggy = Random.Range(1.15f, 1.50f);
+			originalHuggyBearCount = (int)((float)originalHuggyBearCount * randomhuggy);
 			huggyBearCount = originalHuggyBearCount;
 			huggyBearHealth = (int)((float)huggyBearHealth * 1.2f);
 		}
