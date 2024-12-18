@@ -1,0 +1,674 @@
+fileFormatVersion: 2
+guid: b792cdb26eda931469de16073cae0125
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3964879733772582394
+    second: labgnreload_0
+  - first:
+      213: 8240441876704627380
+    second: labgnreload_1
+  - first:
+      213: -8452078356143204626
+    second: labgnreload_2
+  - first:
+      213: 6769426854099435621
+    second: labgnreload_3
+  - first:
+      213: -6100043345068409774
+    second: labgnreload_4
+  - first:
+      213: -4884245535079297434
+    second: labgnreload_5
+  - first:
+      213: 2121920059374487378
+    second: labgnreload_6
+  - first:
+      213: 2437359474328375433
+    second: labgnreload_7
+  - first:
+      213: -15444244477720125
+    second: labgnreload_8
+  - first:
+      213: -4349971065781604723
+    second: labgnreload_9
+  - first:
+      213: 2763963646461573839
+    second: labgnreload_10
+  - first:
+      213: 8411728633672488441
+    second: labgnreload_11
+  - first:
+      213: -1812493317878292603
+    second: labgnreload_12
+  - first:
+      213: 1384035860273190937
+    second: labgnreload_13
+  - first:
+      213: 4229697036868616424
+    second: labgnreload_14
+  - first:
+      213: 5703908232277000956
+    second: labgnreload_15
+  - first:
+      213: 3100772350041906679
+    second: labgnreload_16
+  - first:
+      213: 5550641478523397189
+    second: labgnreload_17
+  - first:
+      213: -5896478896107656690
+    second: labgnreload_18
+  - first:
+      213: -4325548371441681805
+    second: labgnreload_19
+  - first:
+      213: -5019718399201505238
+    second: labgnreload_20
+  - first:
+      213: -4510656394510059992
+    second: labgnreload_21
+  - first:
+      213: -201905416041440768
+    second: labgnreload_22
+  - first:
+      213: -943994874018916690
+    second: labgnreload_23
+  - first:
+      213: -7169471386709539544
+    second: labgnreload_24
+  - first:
+      213: -61047176125996134
+    second: labgnreload_25
+  - first:
+      213: 8438723473126631370
+    second: labgnreload_26
+  - first:
+      213: -8573194044242509130
+    second: labgnreload_27
+  - first:
+      213: -3741091054423785772
+    second: labgnreload_28
+  - first:
+      213: -4811505286553637719
+    second: labgnreload_29
+  - first:
+      213: -6380570923449175920
+    second: labgnreload_30
+  - first:
+      213: -3307210852347714891
+    second: labgnreload_31
+  - first:
+      213: -3229571764626407257
+    second: labgnreload_32
+  - first:
+      213: -2962104694420254022
+    second: labgnreload_33
+  - first:
+      213: -1295121722406278972
+    second: labgnreload_34
+  - first:
+      213: -3955022767417728255
+    second: labgnreload_35
+  - first:
+      213: -7028463506245979886
+    second: labgnreload_36
+  - first:
+      213: 2730015193066707396
+    second: labgnreload_37
+  - first:
+      213: -6407997752286607796
+    second: labgnreload_38
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Win64
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: labgnreload_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 140
+        height: 120
+      alignment: 9
+      pivot: {x: 0.09, y: 0.635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afdf8ac6c15160730800000000000000
+      internalID: 3964879733772582394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labgnreload_1
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 0
+        width: 140
+        height: 120
+      alignment: 9
+      pivot: {x: 0.09, y: 0.635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ba8b352a3eeb5270800000000000000
+      internalID: 8240441876704627380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labgnreload_2
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 0
+        width: 140
+        height: 120
+      alignment: 9
+      pivot: {x: 0.09, y: 0.635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee61150248f24ba80800000000000000
+      internalID: -8452078356143204626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labgnreload_3
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 0
+        width: 140
+        height: 120
+      alignment: 9
+      pivot: {x: 0.09, y: 0.635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 560469b9bd5d1fd50800000000000000
+      internalID: 6769426854099435621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labgnreload_4
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 0
+        width: 140
+        height: 120
+      alignment: 9
+      pivot: {x: 0.09, y: 0.635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25c36b6a5ea485ba0800000000000000
+      internalID: -6100043345068409774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labgnreload_5
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 0
+        width: 140
+        height: 120
+      alignment: 9
+      pivot: {x: 0.09, y: 0.635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66e8fcd409ca73cb0800000000000000
+      internalID: -4884245535079297434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labgnreload_6
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 0
+        width: 140
+        height: 120
+      alignment: 9
+      pivot: {x: 0.09, y: 0.635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 257cac43d03927d10800000000000000
+      internalID: 2121920059374487378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labgnreload_7
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 0
+        width: 140
+        height: 120
+      alignment: 9
+      pivot: {x: 0.09, y: 0.635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9809649378d33d120800000000000000
+      internalID: 2437359474328375433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labgnreload_8
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 0
+        width: 140
+        height: 120
+      alignment: 9
+      pivot: {x: 0.09, y: 0.635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c9c41e9a8129cff0800000000000000
+      internalID: -15444244477720125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labgnreload_9
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 0
+        width: 140
+        height: 120
+      alignment: 9
+      pivot: {x: 0.09, y: 0.635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8e2cd0ec5cc1a3c0800000000000000
+      internalID: -4349971065781604723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labgnreload_10
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 0
+        width: 140
+        height: 120
+      alignment: 9
+      pivot: {x: 0.09, y: 0.635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fca7f67da429b5620800000000000000
+      internalID: 2763963646461573839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labgnreload_11
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 0
+        width: 140
+        height: 120
+      alignment: 9
+      pivot: {x: 0.09, y: 0.635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f5d70500a67cb470800000000000000
+      internalID: 8411728633672488441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labgnreload_12
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 0
+        width: 140
+        height: 120
+      alignment: 9
+      pivot: {x: 0.09, y: 0.635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58f581e2eeab8d6e0800000000000000
+      internalID: -1812493317878292603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labgnreload_13
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 0
+        width: 140
+        height: 120
+      alignment: 9
+      pivot: {x: 0.09, y: 0.635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9185cff2845153310800000000000000
+      internalID: 1384035860273190937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labgnreload_14
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 0
+        width: 140
+        height: 120
+      alignment: 9
+      pivot: {x: 0.09, y: 0.635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e0831e8b07e2ba30800000000000000
+      internalID: 4229697036868616424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labgnreload_15
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 0
+        width: 140
+        height: 120
+      alignment: 9
+      pivot: {x: 0.09, y: 0.635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf20c40115a582f40800000000000000
+      internalID: 5703908232277000956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labgnreload_16
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 0
+        width: 140
+        height: 120
+      alignment: 9
+      pivot: {x: 0.09, y: 0.635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fdd9951608280b20800000000000000
+      internalID: 3100772350041906679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labgnreload_17
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 0
+        width: 140
+        height: 120
+      alignment: 9
+      pivot: {x: 0.09, y: 0.635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 544afe22407d70d40800000000000000
+      internalID: 5550641478523397189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 4050cd789b3dd834aa31b721ee0c5ff5
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      labgnreload_0: 3964879733772582394
+      labgnreload_1: 8240441876704627380
+      labgnreload_10: 2763963646461573839
+      labgnreload_11: 8411728633672488441
+      labgnreload_12: -1812493317878292603
+      labgnreload_13: 1384035860273190937
+      labgnreload_14: 4229697036868616424
+      labgnreload_15: 5703908232277000956
+      labgnreload_16: 3100772350041906679
+      labgnreload_17: 5550641478523397189
+      labgnreload_2: -8452078356143204626
+      labgnreload_3: 6769426854099435621
+      labgnreload_4: -6100043345068409774
+      labgnreload_5: -4884245535079297434
+      labgnreload_6: 2121920059374487378
+      labgnreload_7: 2437359474328375433
+      labgnreload_8: -15444244477720125
+      labgnreload_9: -4349971065781604723
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
