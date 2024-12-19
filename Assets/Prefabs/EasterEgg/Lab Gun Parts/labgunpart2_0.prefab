@@ -140,3 +140,6 @@ MonoBehaviour:
   eepart1: 0
   eepart2: 1
   eepart3: 0
+  p1: {fileID: 0}
+  p2: {fileID: 0}
+  p3: {fileID: 0}
