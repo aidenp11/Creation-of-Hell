@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class LabGunPartAccuisitionArea : MonoBehaviour
@@ -32,7 +33,9 @@ public class LabGunPartAccuisitionArea : MonoBehaviour
 
         if (part2)
         {
-            if (collision.CompareTag("Player"))
+            if (collision.CompareTag("Player") && (collision.GetComponent<Inventory>().currentWeapons.ElementAt(0).GetComponent<WeaponBase>().upgraded2 ||
+				collision.GetComponent<Inventory>().currentWeapons.ElementAt(1).GetComponent<WeaponBase>().upgraded2) ||
+				collision.GetComponent<Inventory>().currentWeapons.ElementAt(2).GetComponent<WeaponBase>().upgraded2)
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -45,7 +48,7 @@ public class LabGunPartAccuisitionArea : MonoBehaviour
 
         if (part3)
         {
-			if (collision.CompareTag("Player"))
+			if (collision.CompareTag("Player") && collision.GetComponent<Inventory>().mmfKilled >= 200)
 			{
 				if (Input.GetKeyDown(KeyCode.E))
 				{
