@@ -54,6 +54,10 @@ public class Inventory : MonoBehaviour
 
 	private bool invbool;
 
+	public bool part1;
+	public bool part2;
+	public bool part3;
+
 	[Header("InventoryUI")]
 	[SerializeField] GameObject inventoryUI;
 	[SerializeField] TextMeshProUGUI tkT;
