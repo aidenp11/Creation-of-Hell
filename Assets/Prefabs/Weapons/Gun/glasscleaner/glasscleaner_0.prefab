@@ -166,12 +166,12 @@ MonoBehaviour:
   weaponName: GlassCleaner
   genieChance: 1
   reloadSpeed: 1.5
-  bloom: 125
+  bloom: 100
   fireRate: 0.3
   fireRateToUse: 0
   ammoCapacity: 15
   maxAmmoCapacity: 0
-  ammoReserve: 75
+  ammoReserve: 60
   upgraded: 0
   upgraded2: 0
   maxAmmoReserve: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   weaponType: 0
   weaponClass: 1
   shotgun: 1
-  numPellets: 30
+  numPellets: 23
   horizontalSpread: 275
   burstFireRate: 0
   burstCount: 0

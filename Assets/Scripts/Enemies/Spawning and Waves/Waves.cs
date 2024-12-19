@@ -282,28 +282,28 @@ public class Waves : MonoBehaviour
 			huggyBearCount = 22;
 			originalHuggyBearCount = huggyBearCount;
 		}
-		float randommmf = Random.Range(1.15f, 1.50f);
+		float randommmf = Random.Range(1.15f, 1.35f);
 		originalmmfCount = (int)((float)originalmmfCount * randommmf);
 		mmfCount = originalmmfCount;
-		mmfHealth = (int)((float)mmfHealth * 1.2f);
+		mmfHealth = (int)((float)mmfHealth * 1.25f);
 		if (roundNumber > 5)
 		{
-			float randomjumpster = Random.Range(1.15f, 1.50f);
+			float randomjumpster = Random.Range(1.15f, 1.35f);
 			originalJumpsterCount = (int)((float)originalJumpsterCount * randomjumpster);
 			jumpsterCount = originalJumpsterCount;
-			jumpsterHealth = (int)((float)jumpsterHealth * 1.2f);
+			jumpsterHealth = (int)((float)jumpsterHealth * 1.25f);
 		}
 		if (roundNumber > 8)
 		{
-			float randomhuggy = Random.Range(1.15f, 1.50f);
+			float randomhuggy = Random.Range(1.15f, 1.35f);
 			originalHuggyBearCount = (int)((float)originalHuggyBearCount * randomhuggy);
 			huggyBearCount = originalHuggyBearCount;
-			huggyBearHealth = (int)((float)huggyBearHealth * 1.2f);
+			huggyBearHealth = (int)((float)huggyBearHealth * 1.25f);
 		}
 		totalToSpawn = mmfCount + jumpsterCount + huggyBearCount;
 		if (ogTimeBetweenSpawns > 0.35f)
 		{
-			ogTimeBetweenSpawns = ogTimeBetweenSpawns * 0.8f;
+			ogTimeBetweenSpawns = ogTimeBetweenSpawns * 0.85f;
 		}
 		else ogTimeBetweenSpawns = 0.35f;
 	}

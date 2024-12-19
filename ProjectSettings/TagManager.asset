@@ -7,6 +7,7 @@ TagManager:
   - PlayerBullet
   - Wall
   - Enemy
+  - LabGunBullet
   layers:
   - Default
   - TransparentFX
