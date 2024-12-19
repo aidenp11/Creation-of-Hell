@@ -12,6 +12,8 @@ public class LabGunPartAccuisitionArea : MonoBehaviour
     [SerializeField] bool part3;
 
     [SerializeField] GameObject text;
+
+    private bool sexMode = false;
     
 	private void OnTriggerStay2D(Collider2D collision)
 	{
@@ -33,11 +35,16 @@ public class LabGunPartAccuisitionArea : MonoBehaviour
 
         if (part2)
         {
-            if (collision.CompareTag("Player") && (collision.GetComponent<Inventory>().currentWeapons.ElementAt(0).GetComponent<WeaponBase>().upgraded2 ||
-				collision.GetComponent<Inventory>().currentWeapons.ElementAt(1).GetComponent<WeaponBase>().upgraded2) ||
-				collision.GetComponent<Inventory>().currentWeapons.ElementAt(2).GetComponent<WeaponBase>().upgraded2)
+            if (collision.CompareTag("Player"))
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                for (int i = 0; i < collision.GetComponent<Inventory>().currentWeapons.Count; i++)
+                {
+                    if (collision.GetComponent<Inventory>().currentWeapons.ElementAt(i).GetComponent<WeaponBase>().upgraded2)
+                    {
+                        sexMode = true;
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.E) && sexMode)
                 {
                     labGunPart2.SetActive(true);
                     Destroy(text);
