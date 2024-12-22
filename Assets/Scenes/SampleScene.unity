@@ -7244,7 +7244,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 168.61, y: 4.7, z: -10}
+  m_LocalPosition: {x: -0.14, y: 5.55, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15760,7 +15760,7 @@ Transform:
   m_GameObject: {fileID: 1133628213}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 168.61, y: 4.7, z: -10}
+  m_LocalPosition: {x: -0.14, y: 5.55, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23754,7 +23754,7 @@ Transform:
   m_GameObject: {fileID: 1696967231}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 168.61, y: 1.9, z: 0}
+  m_LocalPosition: {x: -0.14, y: 2.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23821,7 +23821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddfe026ef537ae348956349a51c9d1ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingWeapon: {fileID: 8360351994988729312, guid: 53e0a6405dec15d44955420bf812a399, type: 3}
+  startingWeapon: {fileID: 2383315606957800594, guid: 212f7a71855938742a17343079fe6c8d, type: 3}
   handPosition: {fileID: 2070655505}
   activeWeapon: {fileID: 0}
   currentWeapons: []
