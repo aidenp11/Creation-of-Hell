@@ -1,4 +1,3 @@
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class Skins : MonoBehaviour
@@ -11,8 +10,8 @@ public class Skins : MonoBehaviour
     [SerializeField] Sprite soldierHand;
     [SerializeField] Sprite miku;
     [SerializeField] Sprite mikuHand;
-    [SerializeField] AnimatorController soldierController;
-    [SerializeField] AnimatorController mikuController;
+    [SerializeField] RuntimeAnimatorController soldierController;
+    [SerializeField] RuntimeAnimatorController mikuController;
 
 	private void Start()
 	{
