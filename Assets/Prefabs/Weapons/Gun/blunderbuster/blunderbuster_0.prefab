@@ -207,7 +207,7 @@ MonoBehaviour:
   genieChance: 0
   reloadSpeed: 2.55
   bloom: 400
-  fireRate: 0.1
+  fireRate: 0.3
   fireRateToUse: 0
   ammoCapacity: 1
   maxAmmoCapacity: 0

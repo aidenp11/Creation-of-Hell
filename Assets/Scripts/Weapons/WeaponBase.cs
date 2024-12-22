@@ -313,14 +313,16 @@ public class WeaponBase : MonoBehaviour
 		}
 		if (weaponType == WeaponType.SEMIAUTO && !shotgun)
 		{
-			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 2f);
+			if (maxAmmoCapacity == 1) maxAmmoCapacity = 3;
+			else maxAmmoCapacity = (int)((float)maxAmmoCapacity * 1.75f);
 			maxAmmoReserve = (int)((float)maxAmmoReserve * 1.75f);
 			InstaReload();
 		}
 		else if (weaponType == WeaponType.SEMIAUTO && shotgun)
 		{
+			if (maxAmmoCapacity == 1 && weaponName != "Lab Gun") maxAmmoCapacity = 4;
+			else maxAmmoCapacity = (int)((float)maxAmmoCapacity * 1.65f);
 			numPelletsToUse = (int)((float)numPelletsToUse * 1.5f);
-			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 1.25f);
 			maxAmmoReserve = (int)((float)maxAmmoReserve * 1.75f);
 			InstaReload();
 		}
@@ -342,8 +344,8 @@ public class WeaponBase : MonoBehaviour
 		else if (weaponType == WeaponType.BURST)
 		{
 			originalFireRate = originalFireRate * 0.8f;
-			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 1.75f);
-			maxAmmoReserve = (int)((float)maxAmmoReserve * 2.15f);
+			maxAmmoCapacity = (int)((float)maxAmmoCapacity * 1.65f);
+			maxAmmoReserve = (int)((float)maxAmmoReserve * 2.05f);
 			InstaReload();
 		}
 	}

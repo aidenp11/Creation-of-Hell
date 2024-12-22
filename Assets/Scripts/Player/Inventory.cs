@@ -52,7 +52,7 @@ public class Inventory : MonoBehaviour
 	public int jumpsterKilled;
 	public int huggyBearKilled;
 
-	private bool invbool;
+	public bool invbool;
 
 	public bool part1;
 	public bool part2;

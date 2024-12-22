@@ -26,7 +26,7 @@ public class Waves : MonoBehaviour
 	private GameObject player;
 	private Transform playerTransform;
 
-	private int roundNumber;
+	public int roundNumber;
 	public int mmfCount;
 	private int originalmmfCount;
 	public int huggyBearCount;
@@ -285,20 +285,20 @@ public class Waves : MonoBehaviour
 		float randommmf = Random.Range(1.15f, 1.35f);
 		originalmmfCount = (int)((float)originalmmfCount * randommmf);
 		mmfCount = originalmmfCount;
-		mmfHealth = (int)((float)mmfHealth * 1.25f);
+		mmfHealth = (int)((float)mmfHealth * 1.5f);
 		if (roundNumber > 5)
 		{
 			float randomjumpster = Random.Range(1.15f, 1.35f);
 			originalJumpsterCount = (int)((float)originalJumpsterCount * randomjumpster);
 			jumpsterCount = originalJumpsterCount;
-			jumpsterHealth = (int)((float)jumpsterHealth * 1.25f);
+			jumpsterHealth = (int)((float)jumpsterHealth * 1.5f);
 		}
 		if (roundNumber > 8)
 		{
 			float randomhuggy = Random.Range(1.15f, 1.35f);
 			originalHuggyBearCount = (int)((float)originalHuggyBearCount * randomhuggy);
 			huggyBearCount = originalHuggyBearCount;
-			huggyBearHealth = (int)((float)huggyBearHealth * 1.25f);
+			huggyBearHealth = (int)((float)huggyBearHealth * 1.5f);
 		}
 		totalToSpawn = mmfCount + jumpsterCount + huggyBearCount;
 		if (ogTimeBetweenSpawns > 0.35f)
