@@ -16,6 +16,8 @@ public class ExitDoor : MonoBehaviour
 
 	[SerializeField] GameObject text;
 
+	[SerializeField] GameObject wall;
+
 	[SerializeField] FloatVariable finalTime;
 	[SerializeField] IntVariable enemiesKilled;
 	[SerializeField] IntVariable mmfsKilled;
@@ -29,8 +31,9 @@ public class ExitDoor : MonoBehaviour
 		timer += Time.deltaTime;
 		if (boss.IsDestroyed())
 		{
+			wall.SetActive(false);
 			bossMusic.Stop();
-		}
+		} else if (boss.active) wall.SetActive(true);
 	}
 
 	private void OnTriggerStay2D(Collider2D collision)
