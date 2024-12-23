@@ -26,7 +26,7 @@ public class LabGunCreationTable : MonoBehaviour
 				{
 					text.GetComponent<TextMeshProUGUI>().text = "Press E to pickup Lab Gun";
 					text.SetActive(true);
-					if (Input.GetKeyDown(KeyCode.E) && !collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().reloading &&
+					if (Input.GetKey(KeyCode.E) && !collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().reloading &&
 					collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().fireRateToUse <= 0)
 					{
 						collision.GetComponent<Inventory>().AddWeapon(labGun);
@@ -39,7 +39,7 @@ public class LabGunCreationTable : MonoBehaviour
 			{
 				text.GetComponent<TextMeshProUGUI>().text = "Press E to create Lab Gun";
 				text.SetActive(true);
-				if (Input.GetKeyDown(KeyCode.E))
+				if (Input.GetKey(KeyCode.E))
 				{
 					labGunDisplay.SetActive(true);
 					created = true;

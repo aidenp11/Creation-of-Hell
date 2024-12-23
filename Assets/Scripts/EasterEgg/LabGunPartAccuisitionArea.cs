@@ -24,7 +24,7 @@ public class LabGunPartAccuisitionArea : MonoBehaviour
             if (collision.CompareTag("Player") && collision.GetComponent<Inventory>().gambler && collision.GetComponent<Inventory>().healthPerk && 
                 collision.GetComponent<Inventory>().piercePerk && collision.GetComponent<Inventory>().regenPerk && collision.GetComponent<PlayerMovement2D>().speedPerk)
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKey(KeyCode.E))
                 {
                     labGunPart1.SetActive(true);
                     Destroy(text);
@@ -44,7 +44,7 @@ public class LabGunPartAccuisitionArea : MonoBehaviour
                         sexMode = true;
                     }
                 }
-                if (Input.GetKeyDown(KeyCode.E) && sexMode)
+                if (Input.GetKey(KeyCode.E) && sexMode)
                 {
                     labGunPart2.SetActive(true);
                     Destroy(text);
@@ -57,7 +57,7 @@ public class LabGunPartAccuisitionArea : MonoBehaviour
         {
 			if (collision.CompareTag("Player") && collision.GetComponent<Inventory>().mmfKilled >= 200)
 			{
-				if (Input.GetKeyDown(KeyCode.E))
+				if (Input.GetKey(KeyCode.E))
 				{
 					labGunPart3.SetActive(true);
 					Destroy(text);

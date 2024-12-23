@@ -13,21 +13,21 @@ public class LabGunPart : MonoBehaviour
 
 	private void OnTriggerStay2D(Collider2D collision)
 	{
-		if (collision.CompareTag("Player") && eepart1 && Input.GetKeyDown(KeyCode.E))
+		if (collision.CompareTag("Player") && eepart1 && Input.GetKey(KeyCode.E))
 		{
 			collision.GetComponent<Inventory>().part1 = true;
 			p1.color = Color.white;
 			Destroy(gameObject);
 		}
 
-		if (collision.CompareTag("Player") && eepart2 && Input.GetKeyDown(KeyCode.E))
+		if (collision.CompareTag("Player") && eepart2 && Input.GetKey(KeyCode.E))
 		{
 			collision.GetComponent<Inventory>().part2 = true;
 			p2.color = Color.white;
 			Destroy(gameObject);
 		}
 
-		if (collision.CompareTag("Player") && eepart3 && Input.GetKeyDown(KeyCode.E))
+		if (collision.CompareTag("Player") && eepart3 && Input.GetKey(KeyCode.E))
 		{
 			collision.GetComponent<Inventory>().part3 = true;
 			p3.color = Color.white;

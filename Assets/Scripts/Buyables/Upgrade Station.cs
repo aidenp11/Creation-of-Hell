@@ -38,7 +38,8 @@ public class UpgradeStation : MonoBehaviour
 		{
 			player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded = true;
 			upgraded = false;
-		} else if (upgraded2)
+		}
+		else if (upgraded2)
 		{
 			player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded2 = true;
 			upgraded2 = false;
@@ -54,7 +55,7 @@ public class UpgradeStation : MonoBehaviour
 		}
 		else if (collision.CompareTag("Player") && collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded2 == false)
 		{
-			text.GetComponent<TextMeshProUGUI>().text = "Press E to upgrade again" + '\n' + "Cost: " + cost * 2;
+			text.GetComponent<TextMeshProUGUI>().text = "Press E to upgrade again" + '\n' + "Cost: " + cost * 3;
 			text.SetActive(true);
 		}
 		if (collision.CompareTag("Player") && collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded == true &&
@@ -63,29 +64,31 @@ public class UpgradeStation : MonoBehaviour
 			text.GetComponent<TextMeshProUGUI>().text = "Weapon is already upgraded";
 			text.SetActive(true);
 		}
-		if (collision.CompareTag("Player") && Input.GetKeyDown(KeyCode.E) &&
+		if (collision.CompareTag("Player") && Input.GetKey(KeyCode.E) &&
 			!collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().reloading
-			&& collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().fireRateToUse <= 0)
-		{
-			if (collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded == false
+			&& collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().fireRateToUse <= 0 &&
+			collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded == false
 				&& collision.GetComponent<Inventory>().GetPoints() >= cost)
-			{
-				upgraded = true;
-				animator.SetTrigger("upgrade");
-				upgradeSound.Play();
-				collision.GetComponent<Inventory>().AddPoints(-cost);
-			}
-			else if (collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded == true && 
-				collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded2 == false
-				&& collision.GetComponent<Inventory>().GetPoints() >= cost * 2)
-			{
-				upgraded2 = true;
-				animator.SetTrigger("upgrade");
-				upgradeSound.Play();
-				collision.GetComponent<Inventory>().AddPoints(-cost * 2);
-			}
+		{
+			Invoke("SetUpgradeTrue", 2);
+			animator.SetTrigger("upgrade");
+			upgradeSound.Play();
+			collision.GetComponent<Inventory>().AddPoints(-cost);
+		}
+		else if (collision.CompareTag("Player") && Input.GetKey(KeyCode.E) &&
+			!collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().reloading
+			&& collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().fireRateToUse <= 0 && 
+			collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded == true &&
+			collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded2 == false
+			&& collision.GetComponent<Inventory>().GetPoints() >= cost * 3)
+		{
+			Invoke("SetUpgrade2True", 2);
+			animator.SetTrigger("upgrade");
+			upgradeSound.Play();
+			collision.GetComponent<Inventory>().AddPoints(-cost * 3);
 		}
 	}
+
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
@@ -93,5 +96,15 @@ public class UpgradeStation : MonoBehaviour
 		{
 			text.SetActive(false);
 		}
+	}
+
+	private void SetUpgradeTrue()
+	{
+		upgraded = true;
+	}
+
+	private void SetUpgrade2True()
+	{
+		upgraded2 = true;
 	}
 }

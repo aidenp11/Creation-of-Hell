@@ -45,7 +45,7 @@ public class ExitDoor : MonoBehaviour
 			text.GetComponent<TextMeshProUGUI>().text = "Press E to exit the lab and Win";
 		}
 
-		if (collision.CompareTag("Player") && boss.IsDestroyed() && Input.GetKeyDown(KeyCode.E))
+		if (collision.CompareTag("Player") && boss.IsDestroyed() && Input.GetKey(KeyCode.E))
 		{
 			enemiesKilled.value = player.GetComponent<Inventory>().totalKilled;
 			mmfsKilled.value = player.GetComponent<Inventory>().mmfKilled;

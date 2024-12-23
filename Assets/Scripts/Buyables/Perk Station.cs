@@ -66,7 +66,7 @@ public class PerkStation : MonoBehaviour
 			switch (perkType)
 			{
 				case PerkType.SPEED:
-					if (Input.GetKeyDown(KeyCode.E) && collision.GetComponent<Inventory>().GetPoints() >= cost)
+					if (Input.GetKey(KeyCode.E) && collision.GetComponent<Inventory>().GetPoints() >= cost)
 					{
 						chaChing.Play();
 						collision.GetComponent<PlayerMovement2D>().speedPerk = true;
@@ -77,7 +77,7 @@ public class PerkStation : MonoBehaviour
 					}
 					break;
 				case PerkType.HEALTH:
-					if (Input.GetKeyDown(KeyCode.E) && collision.GetComponent<Inventory>().GetPoints() >= cost)
+					if (Input.GetKey(KeyCode.E) && collision.GetComponent<Inventory>().GetPoints() >= cost)
 					{
 						chaChing.Play();
 						collision.GetComponent<Inventory>().healthPerk = true;
@@ -88,7 +88,7 @@ public class PerkStation : MonoBehaviour
 					}
 					break;
 				case PerkType.REGEN:
-					if (Input.GetKeyDown(KeyCode.E) && collision.GetComponent<Inventory>().GetPoints() >= cost)
+					if (Input.GetKey(KeyCode.E) && collision.GetComponent<Inventory>().GetPoints() >= cost)
 					{
 						chaChing.Play();
 						collision.GetComponent<Inventory>().regenPerk = true;
@@ -99,7 +99,7 @@ public class PerkStation : MonoBehaviour
 					}
 					break;
 				case PerkType.PIERCE:
-					if (Input.GetKeyDown(KeyCode.E) && collision.GetComponent<Inventory>().GetPoints() >= cost)
+					if (Input.GetKey(KeyCode.E) && collision.GetComponent<Inventory>().GetPoints() >= cost)
 					{
 						chaChing.Play();
 						collision.GetComponent<Inventory>().piercePerk = true;
@@ -112,7 +112,7 @@ public class PerkStation : MonoBehaviour
 				case PerkType.NOEXPLOSIONDAMAGE:
 					break;
 				case PerkType.GAMBLER:
-					if (Input.GetKeyDown(KeyCode.E) && collision.GetComponent<Inventory>().GetPoints() >= cost)
+					if (Input.GetKey(KeyCode.E) && collision.GetComponent<Inventory>().GetPoints() >= cost)
 					{
 						chaChing.Play();
 						collision.GetComponent<Inventory>().gambler = true;
