@@ -54,7 +54,7 @@ public class AmmoBase : MonoBehaviour
 	}
 	private void Update()
 	{
-		
+
 		bulletLifespan -= Time.deltaTime;
 		if (pierceToUse <= 0)
 		{
@@ -78,7 +78,7 @@ public class AmmoBase : MonoBehaviour
 		{
 			if (player.GetComponent<Inventory>().gambler == true)
 			{
-				player.GetComponent<Inventory>().AddPoints(Random.Range(-15, 60));
+				player.GetComponent<Inventory>().AddPoints(Random.Range(-15, 20));
 			}
 			else
 			{
@@ -107,23 +107,49 @@ public class AmmoBase : MonoBehaviour
 		if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.SEMIAUTO
 			&& player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().shotgun == false)
 		{
-			damageToUse = (int)((float)damageToUse * 2.5f);
-			pierceToUse = (int)((float)pierceToUse * 2.25f);
-			piercePerkPierce = pierceToUse + 3;
+			if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponName == "Pistol")
+			{
+				damageToUse = (int)((float)damageToUse * 15);
+				pierceToUse = (int)((float)pierceToUse * 3.25f);
+				piercePerkPierce = pierceToUse + 3;
+			}
+			else
+			{
+				damageToUse = (int)((float)damageToUse * 2.5f);
+				pierceToUse = (int)((float)pierceToUse * 2.25f);
+				piercePerkPierce = pierceToUse + 3;
+			}
 		}
 		else if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.SEMIAUTO
 			&& player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().shotgun == true)
 		{
-			damageToUse = (int)((float)damageToUse * 2.75f);
-			pierceToUse = pierceToUse + 1;
-			piercePerkPierce = pierceToUse + 3;
+			if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponName == "Lab Gun")
+			{
+				damageToUse = (int)((float)damageToUse * 2);
+				pierceToUse = (int)((float)pierceToUse * 1.5f);
+			}
+			else
+			{
+				damageToUse = (int)((float)damageToUse * 2.25f);
+				pierceToUse = pierceToUse + 1;
+				piercePerkPierce = pierceToUse + 3;
+			}
 		}
 		else if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.FULLAUTO
 			&& player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().shotgun == false)
 		{
-			damageToUse = (int)((float)damageToUse * 1.9f);
-			pierceToUse = pierceToUse + 1;
-			piercePerkPierce = pierceToUse + 3;
+			if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponName == "Pistol")
+			{
+				damageToUse = (int)((float)damageToUse * 15);
+				pierceToUse = (int)((float)pierceToUse * 3.25f);
+				piercePerkPierce = pierceToUse + 3;
+			}
+			else
+			{
+				damageToUse = (int)((float)damageToUse * 4.25f);
+				pierceToUse = pierceToUse + 1;
+				piercePerkPierce = pierceToUse + 3;
+			}
 		}
 		else if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.FULLAUTO
 			&& player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().shotgun == true)
@@ -134,7 +160,7 @@ public class AmmoBase : MonoBehaviour
 		}
 		else if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.BURST)
 		{
-			damageToUse = (int)((float)damageToUse * 2.25f);
+			damageToUse = (int)((float)damageToUse * 4.75f);
 			pierceToUse = pierceToUse + 2;
 			piercePerkPierce = pierceToUse + 3;
 		}

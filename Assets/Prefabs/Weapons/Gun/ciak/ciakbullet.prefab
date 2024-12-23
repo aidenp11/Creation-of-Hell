@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2baace41bde6f2540959d60f5a7c1213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 800
+  damage: 1999
   damageToUse: 0
   bulletLifespan: 1.15
   pierce: 4

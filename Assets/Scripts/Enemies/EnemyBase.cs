@@ -224,19 +224,19 @@ public class EnemyBase : MonoBehaviour
 	{
 		if (enemyType == EnemyType.normal)
 		{
-			player.GetComponent<Inventory>().AddPoints(75);
+			player.GetComponent<Inventory>().AddPoints(70);
 			player.GetComponent<Inventory>().mmfKilled++;
 			player.GetComponent<Inventory>().totalKilled++;
 		}
 		else if (enemyType == EnemyType.jumper)
 		{
-			player.GetComponent<Inventory>().AddPoints(100);
+			player.GetComponent<Inventory>().AddPoints(80);
 			player.GetComponent<Inventory>().jumpsterKilled++;
 			player.GetComponent<Inventory>().totalKilled++;
 		}
 		else
 		{
-			player.GetComponent<Inventory>().AddPoints(125);
+			player.GetComponent<Inventory>().AddPoints(90);
 			player.GetComponent<Inventory>().huggyBearKilled++;
 			player.GetComponent<Inventory>().totalKilled++;
 		}

@@ -316,6 +316,11 @@ public class WeaponBase : MonoBehaviour
 			if (maxAmmoCapacity == 1) maxAmmoCapacity = 3;
 			else maxAmmoCapacity = (int)((float)maxAmmoCapacity * 1.75f);
 			maxAmmoReserve = (int)((float)maxAmmoReserve * 1.75f);
+			if (weaponName == "Pistol" && upgraded2)
+			{
+				weaponType = WeaponType.FULLAUTO;
+				originalFireRate = 0.1f;
+			}
 			InstaReload();
 		}
 		else if (weaponType == WeaponType.SEMIAUTO && shotgun)

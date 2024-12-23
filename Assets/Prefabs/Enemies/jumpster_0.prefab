@@ -199,8 +199,8 @@ MonoBehaviour:
   speed: 2.25
   acceleration: 13
   attackObject: {fileID: 3004245026377214365, guid: a24a31e20a2495a4796eb11916e33267, type: 3}
-  attackSpeed: 1
-  attackCooldown: 0.6
+  attackSpeed: 0.9
+  attackCooldown: 0.5
   notFlippedAttackPosition: {fileID: 8960324484153653034}
   flippedAttackPosition: {fileID: 2258947759149996069}
   fadeSeconds: 1.5
