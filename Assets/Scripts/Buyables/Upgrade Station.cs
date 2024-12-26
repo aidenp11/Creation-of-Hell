@@ -13,6 +13,9 @@ public class UpgradeStation : MonoBehaviour
 	private bool upgraded;
 	private bool upgraded2;
 
+	private bool upgrading = false;
+	private bool upgrading2 = false;
+
 	[SerializeField] AudioSource upgradeSound;
 	[SerializeField] Animator animator;
 
@@ -68,8 +71,10 @@ public class UpgradeStation : MonoBehaviour
 			!collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().reloading
 			&& collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().fireRateToUse <= 0 &&
 			collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded == false
-				&& collision.GetComponent<Inventory>().GetPoints() >= cost)
+				&& collision.GetComponent<Inventory>().GetPoints() >= cost && !upgrading)
 		{
+			upgrading = true;
+			Invoke("Set1", 2);
 			Invoke("SetUpgradeTrue", 2);
 			animator.SetTrigger("upgrade");
 			upgradeSound.Play();
@@ -80,8 +85,10 @@ public class UpgradeStation : MonoBehaviour
 			&& collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().fireRateToUse <= 0 && 
 			collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded == true &&
 			collision.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded2 == false
-			&& collision.GetComponent<Inventory>().GetPoints() >= cost * 3)
+			&& collision.GetComponent<Inventory>().GetPoints() >= cost * 3 && !upgrading2)
 		{
+			upgrading2 = true;
+			Invoke("Set2", 2);
 			Invoke("SetUpgrade2True", 2);
 			animator.SetTrigger("upgrade");
 			upgradeSound.Play();
@@ -106,5 +113,15 @@ public class UpgradeStation : MonoBehaviour
 	private void SetUpgrade2True()
 	{
 		upgraded2 = true;
+	}
+
+	private void Set1()
+	{
+		upgrading = false;
+	}
+
+	private void Set2()
+	{
+		upgrading2 = false;
 	}
 }

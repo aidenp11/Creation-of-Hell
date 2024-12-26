@@ -27,6 +27,7 @@ public class LabGunPartAccuisitionArea : MonoBehaviour
                 if (Input.GetKey(KeyCode.E))
                 {
                     labGunPart1.SetActive(true);
+                    labGunPart1.GetComponent<LabGunPart>().SetGrabIt();
                     Destroy(text);
                     Destroy(gameObject);
                 }
@@ -47,7 +48,8 @@ public class LabGunPartAccuisitionArea : MonoBehaviour
                 if (Input.GetKey(KeyCode.E) && sexMode)
                 {
                     labGunPart2.SetActive(true);
-                    Destroy(text);
+					labGunPart2.GetComponent<LabGunPart>().SetGrabIt();
+					Destroy(text);
                     Destroy(gameObject);
                 }
             }
@@ -60,6 +62,7 @@ public class LabGunPartAccuisitionArea : MonoBehaviour
 				if (Input.GetKey(KeyCode.E))
 				{
 					labGunPart3.SetActive(true);
+					labGunPart3.GetComponent<LabGunPart>().SetGrabIt();
 					Destroy(text);
 					Destroy(gameObject);
 				}

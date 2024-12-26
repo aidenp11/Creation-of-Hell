@@ -11,27 +11,42 @@ public class LabGunPart : MonoBehaviour
 	[SerializeField] Image p2;
 	[SerializeField] Image p3;
 
+	private bool grabIt = true;
+
+	private void Update()
+	{
+		if (!grabIt)
+		{
+			Invoke("SetGrabIt", 0.1f);
+		}
+	}
+
 	private void OnTriggerStay2D(Collider2D collision)
 	{
-		if (collision.CompareTag("Player") && eepart1 && Input.GetKey(KeyCode.E))
+		if (collision.CompareTag("Player") && eepart1 && Input.GetKey(KeyCode.E) && grabIt)
 		{
 			collision.GetComponent<Inventory>().part1 = true;
 			p1.color = Color.white;
 			Destroy(gameObject);
 		}
 
-		if (collision.CompareTag("Player") && eepart2 && Input.GetKey(KeyCode.E))
+		if (collision.CompareTag("Player") && eepart2 && Input.GetKey(KeyCode.E) && grabIt)
 		{
 			collision.GetComponent<Inventory>().part2 = true;
 			p2.color = Color.white;
 			Destroy(gameObject);
 		}
 
-		if (collision.CompareTag("Player") && eepart3 && Input.GetKey(KeyCode.E))
+		if (collision.CompareTag("Player") && eepart3 && Input.GetKey(KeyCode.E) && grabIt)
 		{
 			collision.GetComponent<Inventory>().part3 = true;
 			p3.color = Color.white;
 			Destroy(gameObject);
 		}
+	}
+
+	public void SetGrabIt()
+	{
+		grabIt = !grabIt;
 	}
 }
