@@ -6,26 +6,27 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Rigidbody2D))]
 public class ExplosionAmmo : MonoBehaviour
 {
+	[SerializeField] GameObject explosion;
 	[SerializeField] int damage;
-	private int damageToUse;
+	public int damageToUse;
 	[SerializeField] float bulletLifespan;
-	[SerializeField] int pierce;
-	private int piercePerkPierce;
-	private int pierceToUse;
-	[SerializeField][Range(0, 1)] float pierceDamageFalloff;
-	[SerializeField] GameObject hitEffect;
-	private GameObject destroyHitEffect;
-	//[SerializeField] GameObject wallHitEffect;
+	[SerializeField] GameObject explosionEffect;
+	private GameObject destroyExplosionEffect;
+	private GameObject explosionPrefab;
 	private GameObject player;
 
-	private float newDamage;
+	private int pierce = 1;
+
+	public bool piercePerk;
 
 	private bool doneUpgrade = false;
+	private bool doneUpgrade2 = false;
+
+	public bool upgrade1;
+	public bool upgrade2;
 
 	private void Start()
 	{
-		piercePerkPierce = pierce + 3;
-		pierceToUse = pierce;
 		damageToUse = damage;
 		for (int i = 0; i < SceneManager.GetActiveScene().GetRootGameObjects().Length; i++)
 		{
@@ -35,24 +36,35 @@ public class ExplosionAmmo : MonoBehaviour
 				break;
 			}
 		}
-	}
-	private void Update()
-	{
 		if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded == true && !doneUpgrade)
 		{
-			UpgradeExplosionBullet();
+			UpgradeBullet();
+			upgrade1 = true;
 			doneUpgrade = true;
+		}
+		if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded2 == true && !doneUpgrade2)
+		{
+			UpgradeBullet();
+			upgrade2 = true;
+			doneUpgrade2 = true;
 		}
 		if (player.GetComponent<Inventory>().piercePerk == true)
 		{
-			pierceToUse = piercePerkPierce;
+			piercePerk = true;
 		}
+	}
+	private void Update()
+	{
+
 		bulletLifespan -= Time.deltaTime;
-		if (pierceToUse <= 0)
+		if (bulletLifespan < 0)
 		{
+			Instantiate(explosion, transform.position, transform.rotation);
+			destroyExplosionEffect = Instantiate(explosionEffect, transform.position, transform.rotation);
+			Destroy(destroyExplosionEffect, 0.2f);
 			Destroy(gameObject);
 		}
-		if (bulletLifespan < 0)
+		if (pierce <= 0)
 		{
 			Destroy(gameObject);
 		}
@@ -62,63 +74,66 @@ public class ExplosionAmmo : MonoBehaviour
 	{
 		if (collision.CompareTag("Wall"))
 		{
-			//Instantiate(wallHitEffect, collision.transform);
+			Instantiate(explosion, transform.position, transform.rotation);
+			destroyExplosionEffect = Instantiate(explosionEffect, transform.position, transform.rotation);
+			Destroy(destroyExplosionEffect, 0.2f);
 			Destroy(gameObject);
 		}
-		if (pierceToUse > 0 && collision.CompareTag("Enemy"))
+		if (pierce > 0 && collision.CompareTag("Enemy") && collision.GetComponent<EnemyBase>().Health >= 0)
 		{
+			pierce--;
 			if (player.GetComponent<Inventory>().gambler == true)
 			{
-				player.GetComponent<Inventory>().AddPoints(Random.Range(-10, 30));
+				player.GetComponent<Inventory>().AddPoints(Random.Range(-15, 20));
 			}
 			else
 			{
-				player.GetComponent<Inventory>().AddPoints(5);
+				player.GetComponent<Inventory>().AddPoints(10);
 			}
-			destroyHitEffect = Instantiate(hitEffect, transform.position, transform.rotation);
-			Destroy(destroyHitEffect, 0.5f);
+			Instantiate(explosion, transform.position, transform.rotation);
+			collision.GetComponent<EnemyBase>().hit.Play();
+			destroyExplosionEffect = Instantiate(explosionEffect, transform.position, transform.rotation);
+			Destroy(destroyExplosionEffect, 0.2f);
 			collision.GetComponent<EnemyBase>().ApplyDamage(damageToUse);
-			pierceToUse--;
-			newDamage = (float)damageToUse * pierceDamageFalloff;
-			damageToUse = (int)newDamage;
+			Destroy(gameObject);
 		}
 	}
 
-	private void UpgradeExplosionBullet()
+	private void UpgradeBullet()
 	{
+		if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded && !player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().upgraded2)
+		{
+			GetComponent<SpriteRenderer>().color = new Color(1 * 2, 0.9109956f * 2, 0.4371068f * 2);
+		}
+		else
+		{
+			GetComponent<SpriteRenderer>().color = new Color(1.5f, 0, 2.3f);
+		}
 		if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.SEMIAUTO
 			&& player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().shotgun == false)
 		{
-			damageToUse = (int)((float)damage * 2.5f);
-			pierceToUse = (int)((float)pierce * 3.5f);
-			piercePerkPierce = pierceToUse + 3;
+			damageToUse = (int)((float)damageToUse * 2f);
 		}
 		else if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.SEMIAUTO
 			&& player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().shotgun == true)
 		{
-			damageToUse = (int)((float)damage * 2.75f);
-			pierceToUse = pierce + 3;
-			piercePerkPierce = pierceToUse + 3;
+
+			damageToUse = (int)((float)damageToUse * 1.75f);
 		}
 		else if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.FULLAUTO
 			&& player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().shotgun == false)
 		{
-			damageToUse = (int)((float)damage * 2.25f);
-			pierceToUse = (int)((float)pierce * 2.25f);
-			piercePerkPierce = pierceToUse + 3;
+
+			damageToUse = (int)((float)damageToUse * 1.85f);
 		}
 		else if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.FULLAUTO
 			&& player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().shotgun == true)
 		{
-			damageToUse = (int)((float)damage * 3.5f);
-			pierceToUse = pierce + 4;
-			piercePerkPierce = pierceToUse + 3;
+			damageToUse = (int)((float)damageToUse * 2.25f);
 		}
 		else if (player.GetComponent<Inventory>().activeWeapon.GetComponent<WeaponBase>().weaponType == WeaponBase.WeaponType.BURST)
 		{
-			damageToUse = (int)((float)damage * 3.25f);
-			pierceToUse = pierce + 2;
-			piercePerkPierce = pierceToUse + 3;
+			damageToUse = (int)((float)damageToUse * 3.5f);
 		}
 	}
 }
